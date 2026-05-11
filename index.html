@@ -834,11 +834,69 @@
     color: var(--ink);
   }
 
-  /* Responsive overrides for hero */
+  /* ─── Mobile responsive ─── */
   @media (max-width: 960px) {
-    .hero-edit { grid-template-columns: 1fr; padding-top: 120px; }
-    .hero-edit .badge { order: -1; max-width: 280px; margin: 0 0 12px; }
-    .contact-dark .contact-meta { grid-template-columns: 1fr; }
+    /* Hero */
+    .hero-edit {
+      grid-template-columns: 1fr !important;
+      padding: 110px 22px 60px !important;
+      gap: 32px !important;
+      min-height: auto !important;
+    }
+    .hero-edit h1 { font-size: clamp(40px, 9vw, 64px) !important; margin: 18px 0 22px !important; }
+    .hero-edit .lede { font-size: 15px !important; margin-bottom: 28px !important; }
+    .hero-edit .hero-meta { gap: 18px !important; margin-top: 32px !important; }
+    .hero-edit .hero-meta .divider { display: none; }
+    .hero-edit .badge,
+    .hero-edit > div:nth-of-type(2) { max-width: 240px; margin: 0 auto; order: 2; }
+    .badge-core .ng { font-size: clamp(56px, 14vw, 78px) !important; }
+
+    /* Marquees */
+    .marquee { padding: 18px 0; }
+    .marquee-track > span { font-size: clamp(28px, 8vw, 44px); padding: 0 22px; }
+    .marquee-track > span::after { width: 8px; height: 8px; margin-left: 28px; }
+    .marquee.mono .marquee-track > span { font-size: 12px; padding: 0 20px; }
+
+    /* About — stack 1-col and reposition portrait badge inside the viewport */
+    .about-grid { grid-template-columns: 1fr !important; gap: 56px !important; }
+    .about-grid > div:last-child { max-width: 320px; margin-left: 0; }
+    .portrait-badge {
+      bottom: -22px !important; right: -10px !important;
+      width: 92px !important; height: 92px !important;
+    }
+
+    /* Contact (ink-on-dark) */
+    .contact-dark h2 { font-size: clamp(44px, 12vw, 72px) !important; line-height: 1.04 !important; margin: 18px 0 22px !important; }
+    .contact-dark .lede { font-size: 15px !important; margin-bottom: 32px !important; }
+    .contact-dark .contact-row { flex-direction: column; border-radius: 12px; gap: 4px; padding: 4px; }
+    .contact-dark .contact-row input { padding: 14px 18px; }
+    .contact-dark .contact-row button { width: 100%; margin: 0; justify-content: center; padding: 14px; }
+    .contact-dark .contact-meta { grid-template-columns: 1fr !important; gap: 22px; }
+    .contact-dark .big-badge { right: -160px; top: 20px; width: 240px; height: 240px; opacity: 0.18; }
+
+    /* Pill button — full width on mobile so taps are easy */
+    .hero-edit .btn-pill { width: 100%; justify-content: space-between; padding: 14px 22px; }
+    .hero-edit .btn-pill .arrow { margin-left: auto; }
+
+    /* General section padding tightening */
+    section { padding-left: 22px; padding-right: 22px; }
+
+    /* Tweaks panel — hide on mobile (it overlays content and is hard to use) */
+    #tweaks-panel { display: none !important; }
+
+    /* Site nav — drop links on mobile, keep brand visible */
+    .site-nav { padding: 16px 22px !important; }
+    .site-nav-links { display: none !important; }
+  }
+
+  @media (max-width: 540px) {
+    .hero-edit { padding-top: 96px !important; }
+    .hero-edit h1 { font-size: clamp(36px, 11vw, 52px) !important; }
+    .hero-edit .hero-meta { gap: 14px !important; flex-direction: column; align-items: flex-start; }
+    .hero-edit .hero-meta .stat { flex-direction: row; align-items: baseline; gap: 12px; }
+    .hero-edit .hero-meta .stat b { font-size: 26px; }
+    .marquee-track > span { font-size: clamp(22px, 8vw, 32px); padding: 0 16px; }
+    .contact-dark .contact-meta .col p { font-size: 17px; }
   }
 </style>
 </head>
@@ -2574,7 +2632,7 @@ function Nav({ accent }) {
     return () => window.removeEventListener('scroll', h);
   }, []);
   return (
-    <nav style={{
+    <nav className="site-nav" style={{
       position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
       padding: '20px 48px',
       background: scrolled ? 'rgba(234,230,220,0.88)' : 'transparent',
@@ -2586,7 +2644,7 @@ function Nav({ accent }) {
       <div style={{ fontFamily: "'Instrument Serif',serif", fontSize: 18, fontWeight: 700, color: 'var(--ink)', letterSpacing: '-0.01em' }}>Nick Glenny
 
       </div>
-      <div style={{ display: 'flex', gap: 32, alignItems: 'center' }}>
+      <div className="site-nav-links" style={{ display: 'flex', gap: 32, alignItems: 'center' }}>
         {['Work', 'Services', 'About', 'Contact'].map((item) =>
         <a key={item} href={`#${item.toLowerCase()}`} style={{ fontSize: 12, color: 'var(--ink-dim)', textDecoration: 'none', letterSpacing: '0.08em', textTransform: 'uppercase', fontFamily: "'Manrope',sans-serif", transition: 'color 0.2s' }}
         onMouseEnter={(e) => e.target.style.color = accent}
@@ -2989,7 +3047,7 @@ function App() {
 
       {/* ── ABOUT ── */}
       <section id="about" style={{ padding: '100px 8vw', background: 'var(--bg2)', borderTop: '1px solid var(--hair)' }}>
-        <div ref={aboutRef} style={{
+        <div ref={aboutRef} className="about-grid" style={{
           display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', alignItems: 'center',
           transition: 'opacity 0.8s, transform 0.8s',
           opacity: aboutVisible ? 1 : 0,
@@ -3088,10 +3146,17 @@ function App() {
         @media (max-width: 900px) {
           .work-grid { grid-template-columns: 1fr !important; }
           .case-panel-grid { grid-template-columns: 1fr !important; gap: 48px !important; }
-          .case-panel-image { order: 1 !important; }
-          .case-panel-copy { order: 2 !important; }
-          .service-row { grid-template-columns: 48px 1fr !important; gap: 24px !important; }
+          .case-panel-image { order: 1 !important; width: 100%; min-width: 0; max-width: 100%; }
+          .case-panel-image > div { max-width: 100%; }
+          .case-panel-copy { order: 2 !important; min-width: 0; }
+          .service-row { grid-template-columns: 48px 1fr !important; gap: 24px !important; padding: 28px 0 !important; }
           .service-row > div:last-child { grid-column: 2 / 3; margin-top: 8px; }
+        }
+        @media (max-width: 540px) {
+          /* Case study panels — tighten padding so mockup matches rest of content width */
+          .case-panel-grid { gap: 32px !important; }
+          /* Services rows */
+          .service-row > div:first-child > div { width: 44px !important; height: 44px !important; font-size: 14px !important; }
         }
       `}</style>
     </>);
