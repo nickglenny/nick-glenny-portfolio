@@ -1408,7 +1408,7 @@ function Marquee({ items, italic = true, slow = false, reverse = false }) {
   );
 }
 
-function RotatingBadge({ text = 'NICK GLENNY · FITNESS MARKETING · ' }) {
+function RotatingBadge({ text = 'NICK GLENNY · ' }) {
   const id = useMemo(() => 'p' + Math.random().toString(36).slice(2, 8), []);
   return (
     <div className="badge">
