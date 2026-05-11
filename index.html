@@ -772,16 +772,16 @@ const PROJECTS = [
   client: 'Ironhouse Strength Co.',
   type: 'Meta Ads',
   tag: 'Meta Ad Campaign',
-  metric: '847',
-  metricLabel: 'leads in 30 days',
+  metric: 'Cold to floor.',
+  metricLabel: 'a Meta ads system, built end to end',
   accent: '#F59E0B',
   size: 'large',
   goal: 'Fill the new-member roster from a free-week intro offer, in a neighborhood with three big-box gyms within five blocks.',
-  approach: "Cold traffic met short video ads built around the 'first week free' hook. Anyone who watched 50% or visited the site got direct-response photo ads with social proof and a hard deadline. Refreshed creative every 7-10 days so the same person never saw the same ad twice in a row.",
+  approach: "Cold traffic met short video ads built around the 'first week free' hook. Anyone who watched it through or visited the site got direct-response photo ads with social proof and a hard deadline. Refreshed creative on a weekly cadence so the same person never saw the same ad twice in a row.",
   results: [
-  { val: '847', label: 'Leads generated' },
-  { val: '$4.82', label: 'Cost per lead' },
-  { val: '3.2x', label: 'Return on ad spend' }],
+  { val: 'Hook', label: 'Built around the three real buyer objections' },
+  { val: 'Cadence', label: 'Weekly creative refresh' },
+  { val: 'Audience', label: 'Cold acquisition + retargeted viewers' }],
 
   creatives: [
   { kind: 'photo', offerLabel: 'New Member Special', headline: 'Your first week is on us.', sub: 'No contracts. No sales pitch. Just seven days to see if it sticks.', cta: 'Claim Free Week', photoIndex: 0 },
@@ -819,16 +819,16 @@ const PROJECTS = [
   client: 'Lumen Pilates',
   type: 'Email + SMS',
   tag: 'Email + SMS Nurture',
-  metric: '42%',
-  metricLabel: 'email open rate · 98% on SMS',
+  metric: 'Trial to member.',
+  metricLabel: 'an email + SMS welcome sequence',
   accent: '#C8B8A2',
   size: 'medium',
   goal: 'Convert free intro class attendees into paying monthly members with a multi-channel welcome sequence.',
-  approach: "Designed around the three real objections (cost, commitment, and time), with one barrier addressed per email and a soft close every time. Layered SMS in at the two highest-friction decision points: a soft mid-sequence nudge and a final urgency text. Email open rates run 20-30% industry-wide, but text hits 98%, so the moments where a missed message kills the conversion shipped via SMS, not email.",
+  approach: "Designed around the three real objections (cost, commitment, and time), with one barrier addressed per email and a soft close every time. Layered SMS in at the two highest-friction decision points: a soft mid-sequence nudge and a final urgency text. The moments where a missed message kills the conversion shipped via SMS, not email. That's the channel people actually read in the moment.",
   results: [
-  { val: '42%', label: 'Email open rate' },
-  { val: '98%', label: 'SMS open rate' },
-  { val: '18%', label: 'Trial-to-member conversion' }],
+  { val: 'Channels', label: 'Email for objection answers, SMS for urgency' },
+  { val: 'Cadence', label: 'Multi-touch over two weeks' },
+  { val: 'Frame', label: 'One objection per message' }],
 
   creatives: [
   {
@@ -884,7 +884,7 @@ const PROJECTS = [
   {
     kind: 'sms',
     headline: 'Mid-sequence nudge',
-    sub: 'Soft text the day after the value email. SMS hits 98% open rate vs ~42% on email, perfect for re-surfacing a missed CTA.',
+    sub: 'Soft text the day after the value email. SMS gets opened in the moment, which makes it perfect for re-surfacing a missed CTA.',
     type: 'SMS Nudge',
     day: 8,
     messages: [
@@ -989,19 +989,47 @@ const PROJECTS = [
 
 const SERVICES = [
 {
-  icon: '◈',
+  step: '01',
+  kicker: 'Attract',
   title: 'Meta Ads',
-  desc: 'Lead-gen campaigns priced for studios, not agencies. Hooks tested weekly so cost-per-lead drops instead of climbing as creative fatigues.'
+  body: 'Hooks built around the things that stop a sign-up: price, time, and "I\'ll start Monday." New creative every week so ads don\'t fatigue and cost-per-lead doesn\'t drift up as the audience saturates.',
+  included: ['Daily ad management', 'Weekly creative drop', 'Monthly performance readout']
 },
 {
-  icon: '◉',
-  title: 'Email & SMS',
-  desc: 'Five- to seven-touch sequences that handle the three real objections — price, time, and "I\'ll start Monday" — and book the trial.'
+  step: '02',
+  kicker: 'Nurture',
+  title: 'Email + SMS',
+  body: 'A multi-touch sequence across two channels. Email carries the long-form objection answers. SMS carries the time-sensitive nudges that get opened in the moment. Each message handles one objection at a time.',
+  included: ['Full sequence build', 'Copywriting', 'Deliverability setup', 'Ongoing testing']
 },
 {
-  icon: '◎',
-  title: 'AI Phone Agents',
-  desc: 'An after-hours phone agent that books the trial, texts the confirmation, and follows up if the caller hangs up first.'
+  step: '03',
+  kicker: 'Capture',
+  title: 'AI Phone Agent',
+  body: 'Calls don\'t stop when the front desk goes home. The agent picks up after hours, books the trial, sends a confirmation text, and follows up if the caller drops. Trained on your intro offer, pricing, and class schedule, so callers don\'t bail the second they hit a robot.',
+  included: ['Voice agent setup', 'Knowledge base build', 'Booking-system integration']
+}];
+
+const FAQS = [
+{
+  q: "How do I get more members for my fitness studio?",
+  a: "Owner-operated studios grow by running three levers in parallel: paid acquisition that targets buyers (not curiosity), follow-up that handles real objections instead of repeating the same generic email, and a way to capture inquiries that come in after hours. The mistake most studios make is running one of those three in isolation and blaming the channel when conversion stays flat."
+},
+{
+  q: "Won't my members hate dealing with an AI phone agent?",
+  a: "The agent only picks up calls your front desk can't get to: after hours, when you're teaching, when the line is busy. Existing members never know it exists unless they call at 9pm. If anyone asks for a human, the agent can hand off or send a callback message. It's a safety net, not a replacement."
+},
+{
+  q: "What's the best follow-up sequence for new fitness leads?",
+  a: "A multi-touch sequence that handles one objection per message and uses two channels: email for the long-form answers (pricing, member experience, what to expect on a first visit) and SMS for the time-sensitive nudges (trial confirmations, “we held your spot” reminders). The mistake is cramming everything into one giant email. The sequence has to feel like a person, not a CRM blast."
+},
+{
+  q: "What's the minimum ad budget I need for this to be worth it?",
+  a: "Not a hard dollar number. It's whatever lets Meta's learning phase find the right audience. If your ad spend can't pay for itself in a small handful of trial sign-ups per week, the math doesn't work yet. We'll model that out before you commit anything."
+},
+{
+  q: "I use a specific booking software. Can you make this work with my setup?",
+  a: "The phone agent integrates with most studio platforms via API or Zapier: Mindbody, Mariana Tek, ClassPass partner systems, and the major CRMs. If yours isn't on that list, I'll tell you upfront before we sign anything. I'd rather lose the project than promise a workaround that breaks two weeks in."
 }];
 
 
@@ -2251,6 +2279,7 @@ function App() {
   const [compact, setCompact] = useState(false);
   const [contactEmail, setContactEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
+  const [openFaq, setOpenFaq] = useState(null);
 
   const [heroRef, heroVisible] = useReveal(0, true);
   const [aboutRef, aboutVisible] = useReveal(0.1);
@@ -2467,37 +2496,166 @@ function App() {
 
       {/* ── SERVICES ── */}
       <section id="services" style={{ padding: '100px 8vw', background: 'var(--bg2)', borderTop: '1px solid var(--hair)' }}>
-        <div style={{ marginBottom: 64 }}>
+        <div style={{ marginBottom: 72, maxWidth: 760 }}>
           <div style={{ fontSize: 10, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--ink-dim)', marginBottom: 16, fontFamily: "'Inter',sans-serif" }}>Services</div>
-          <h2 style={{ fontFamily: "'Playfair Display',serif", fontSize: 'clamp(28px,4vw,52px)', fontWeight: 700, color: 'var(--ink)', letterSpacing: '-0.02em' }}>The whole funnel, one operator.</h2>
+          <h2 style={{ fontFamily: "'Playfair Display',serif", fontSize: 'clamp(28px,4vw,52px)', fontWeight: 700, color: 'var(--ink)', letterSpacing: '-0.02em', lineHeight: 1.1 }}>Three steps from cold scroll<br/><em style={{ color: accent }}>to booked class.</em></h2>
+          <p style={{ fontSize: 15, color: 'var(--ink-soft)', marginTop: 20, fontFamily: "'Inter',sans-serif", lineHeight: 1.65, fontWeight: 'var(--body-weight)' }}>Same operator runs all three. No handoffs, no agency middle-layer.</p>
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 12 }}>
-          {SERVICES.map((s, i) => {
-            const [hov, setHov] = useState(false);
-            const [ref, vis] = useReveal(0.1);
-            const inverted = i === 1; // middle card flipped — dark on light row
-            const cardBg = inverted ? '#0E0D0A' : '#FFFFFF';
-            const titleColor = inverted ? '#FAF7EE' : 'var(--ink)';
-            const bodyColor = inverted ? 'rgba(250,247,238,0.72)' : 'var(--ink-soft)';
-            const iconColor = inverted ? (hov ? accent : 'rgba(250,247,238,0.55)') : (hov ? accent : 'var(--ink-dim)');
-            const borderColor = inverted ? (hov ? accent + '60' : 'rgba(250,247,238,0.08)') : (hov ? accent + '60' : 'var(--hair)');
-            return (
-              <div key={i} ref={ref} onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)} style={{
-                  background: cardBg,
-                  border: `1px solid ${borderColor}`,
-                  borderRadius: 2,
-                  padding: '40px 36px',
-                  transition: 'background 0.3s, border-color 0.3s, transform 0.4s, opacity 0.6s',
-                  transform: vis ? hov ? 'translateY(-4px)' : 'translateY(0)' : 'translateY(20px)',
-                  opacity: vis ? 1 : 0,
-                  cursor: 'default',
-                  boxShadow: inverted ? '0 1px 2px rgba(14,13,10,0.04), 0 18px 48px rgba(14,13,10,0.18)' : '0 1px 2px rgba(14,13,10,0.04), 0 12px 30px rgba(14,13,10,0.06)'
-                }}>
-                <div style={{ fontSize: 28, marginBottom: 24, color: iconColor, transition: 'color 0.3s' }}>{s.icon}</div>
-                <h3 style={{ fontFamily: "'Playfair Display',serif", fontSize: 22, fontWeight: 700, color: titleColor, marginBottom: 16, letterSpacing: '-0.01em' }}>{s.title}</h3>
-                <p style={{ fontSize: 14, color: bodyColor, lineHeight: 1.7, fontFamily: "'Inter',sans-serif", fontWeight: 'var(--body-weight)' }}>{s.desc}</p>
-              </div>);
 
+        <div style={{ position: 'relative', maxWidth: 1100 }}>
+          {/* Vertical spine connecting the step numbers */}
+          <div style={{ position: 'absolute', left: 27, top: 28, bottom: 28, width: 1, background: `linear-gradient(to bottom, ${accent}00 0%, ${accent}66 8%, ${accent}66 92%, ${accent}00 100%)`, zIndex: 0 }} />
+
+          {SERVICES.map((s, i) => {
+            const [ref, vis] = useReveal(0.15);
+            const isLast = i === SERVICES.length - 1;
+            return (
+              <div key={i}>
+                <div ref={ref} className="service-row" style={{
+                  display: 'grid',
+                  gridTemplateColumns: '56px 1fr 220px',
+                  gap: 48,
+                  alignItems: 'start',
+                  padding: '36px 0',
+                  position: 'relative',
+                  transition: 'opacity 0.7s, transform 0.7s',
+                  transitionDelay: `${i * 80}ms`,
+                  opacity: vis ? 1 : 0,
+                  transform: vis ? 'translateY(0)' : 'translateY(24px)'
+                }}>
+                  {/* Step number disc on the spine */}
+                  <div style={{ position: 'relative', zIndex: 1 }}>
+                    <div style={{
+                      width: 56, height: 56, borderRadius: '50%',
+                      background: 'var(--bg2)',
+                      border: `1px solid ${accent}55`,
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      fontFamily: "'Playfair Display',serif",
+                      fontSize: 18, fontWeight: 700, color: accent,
+                      letterSpacing: '0.02em'
+                    }}>{s.step}</div>
+                  </div>
+
+                  {/* Copy column */}
+                  <div>
+                    <div style={{ fontSize: 10, letterSpacing: '0.22em', textTransform: 'uppercase', color: accent, marginBottom: 8, fontFamily: "'Inter',sans-serif", fontWeight: 600 }}>{s.kicker}</div>
+                    <h3 style={{ fontFamily: "'Playfair Display',serif", fontSize: 28, fontWeight: 700, color: 'var(--ink)', marginBottom: 16, letterSpacing: '-0.01em', lineHeight: 1.15 }}>{s.title}</h3>
+                    <p style={{ fontSize: 15, color: 'var(--ink-soft)', lineHeight: 1.75, fontFamily: "'Inter',sans-serif", fontWeight: 'var(--body-weight)', maxWidth: 560 }}>{s.body}</p>
+                  </div>
+
+                  {/* Included column */}
+                  <div style={{ paddingTop: 4 }}>
+                    <div style={{ fontSize: 9, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--ink-dim)', marginBottom: 14, fontFamily: "'Inter',sans-serif", fontWeight: 600 }}>Included</div>
+                    <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                      {s.included.map((item, j) =>
+                        <li key={j} style={{ fontSize: 13, color: 'var(--ink-soft)', lineHeight: 1.6, fontFamily: "'Inter',sans-serif", fontWeight: 'var(--body-weight)', paddingLeft: 14, position: 'relative', marginBottom: 6 }}>
+                          <span style={{ position: 'absolute', left: 0, top: 0, color: accent }}>+</span>
+                          {item}
+                        </li>
+                      )}
+                    </ul>
+                  </div>
+                </div>
+
+                {/* Flow arrow between rows */}
+                {!isLast &&
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 12, paddingLeft: 27, marginLeft: -27, transform: 'translateX(15px)' }}>
+                    <svg width="24" height="36" viewBox="0 0 24 36" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ display: 'block' }}>
+                      <line x1="12" y1="2" x2="12" y2="26" stroke={accent} strokeOpacity="0.5" strokeWidth="1" />
+                      <polyline points="6,22 12,30 18,22" stroke={accent} strokeWidth="1.2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </div>
+                }
+              </div>);
+          })}
+        </div>
+
+        {/* Closing line that points to the next step (contact) */}
+        <div style={{ marginTop: 64, paddingTop: 32, borderTop: '1px solid var(--hair)', maxWidth: 760 }}>
+          <p style={{ fontSize: 14, color: 'var(--ink-dim)', fontFamily: "'Inter',sans-serif", lineHeight: 1.7, fontStyle: 'italic' }}>
+            Each piece works alone. Together they cover the funnel from the first scroll on Instagram to the booked trial confirmation. <a href="#contact" style={{ color: accent, textDecoration: 'none', borderBottom: `1px solid ${accent}55`, fontStyle: 'normal' }}>See if it fits your studio →</a>
+          </p>
+        </div>
+      </section>
+
+      {/* ── FAQ ── */}
+      <section id="faq" style={{ padding: '100px 8vw', background: 'var(--bg2)', borderTop: '1px solid var(--hair)' }}>
+        <div style={{ marginBottom: 56, maxWidth: 760 }}>
+          <div style={{ fontSize: 10, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--ink-dim)', marginBottom: 16, fontFamily: "'Inter',sans-serif" }}>FAQ</div>
+          <h2 style={{ fontFamily: "'Playfair Display',serif", fontSize: 'clamp(28px,4vw,52px)', fontWeight: 700, color: 'var(--ink)', letterSpacing: '-0.02em', lineHeight: 1.1 }}>Before you book<br/><em style={{ color: accent }}>the call.</em></h2>
+        </div>
+
+        <div style={{ maxWidth: 820 }}>
+          {FAQS.map((item, i) => {
+            const [ref, vis] = useReveal(0.1);
+            const isOpen = openFaq === i;
+            return (
+              <div key={i} ref={ref} style={{
+                borderTop: '1px solid var(--hair)',
+                borderBottom: i === FAQS.length - 1 ? '1px solid var(--hair)' : 'none',
+                transition: 'opacity 0.6s, transform 0.6s',
+                transitionDelay: `${i * 50}ms`,
+                opacity: vis ? 1 : 0,
+                transform: vis ? 'translateY(0)' : 'translateY(16px)'
+              }}>
+                <button
+                  onClick={() => setOpenFaq(isOpen ? null : i)}
+                  style={{
+                    width: '100%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    gap: 24,
+                    padding: '28px 0',
+                    background: 'transparent',
+                    border: 'none',
+                    cursor: 'pointer',
+                    textAlign: 'left',
+                    fontFamily: "'Inter',sans-serif",
+                    color: 'var(--ink)'
+                  }}>
+                  <span style={{
+                    fontSize: 'clamp(16px,1.5vw,18px)',
+                    fontWeight: 500,
+                    lineHeight: 1.4,
+                    color: isOpen ? accent : 'var(--ink)',
+                    transition: 'color 0.25s'
+                  }}>{item.q}</span>
+                  <span style={{
+                    flexShrink: 0,
+                    width: 28, height: 28,
+                    border: `1px solid ${isOpen ? accent : 'var(--hair)'}`,
+                    borderRadius: '50%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    transition: 'transform 0.3s ease, border-color 0.25s, background 0.25s',
+                    transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+                    background: isOpen ? accent + '14' : 'transparent'
+                  }}>
+                    <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <polyline points="1,1 5,5 9,1" stroke={isOpen ? accent : 'var(--ink-dim)'} strokeWidth="1.4" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </span>
+                </button>
+                <div style={{
+                  maxHeight: isOpen ? 400 : 0,
+                  opacity: isOpen ? 1 : 0,
+                  overflow: 'hidden',
+                  transition: 'max-height 0.4s ease, opacity 0.3s ease'
+                }}>
+                  <p style={{
+                    fontSize: 15,
+                    color: 'var(--ink-soft)',
+                    lineHeight: 1.75,
+                    fontFamily: "'Inter',sans-serif",
+                    fontWeight: 'var(--body-weight)',
+                    padding: '0 0 32px 0',
+                    maxWidth: 680,
+                    margin: 0
+                  }}>{item.a}</p>
+                </div>
+              </div>);
           })}
         </div>
       </section>
@@ -2615,6 +2773,8 @@ function App() {
           .case-panel-grid { grid-template-columns: 1fr !important; gap: 48px !important; }
           .case-panel-image { order: 1 !important; }
           .case-panel-copy { order: 2 !important; }
+          .service-row { grid-template-columns: 48px 1fr !important; gap: 24px !important; }
+          .service-row > div:last-child { grid-column: 2 / 3; margin-top: 8px; }
         }
       `}</style>
     </>);
