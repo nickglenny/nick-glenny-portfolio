@@ -5,7 +5,8 @@
 <title>Nick Glenny — Marketing for fitness studio owners</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap" rel="stylesheet">
 <style>/* cyrillic-ext */
 @font-face {
   font-family: 'Inter';
@@ -399,7 +400,7 @@
     --accent-soft: rgba(194,65,12,0.12);
     --body-weight: 400;
     --display: 'Instrument Serif', 'Playfair Display', Georgia, serif;
-    --sans: 'Manrope', system-ui, sans-serif;
+    --sans: 'Google Sans', system-ui, sans-serif;
     --mono: 'JetBrains Mono', ui-monospace, monospace;
     --serif: var(--display); /* legacy alias */
     --border: var(--hair);
@@ -607,7 +608,7 @@
   @keyframes spin-slow { from { transform: rotate(0); } to { transform: rotate(360deg); } }
   .badge {
     position: relative; width: 100%;
-    aspect-ratio: 1/1; max-width: 460px;
+    aspect-ratio: 1/1; max-width: 360px;
     margin: 0 auto;
   }
   .badge-ring { position: absolute; inset: 0; animation: spin-slow 28s linear infinite; }
@@ -618,6 +619,7 @@
     fill: var(--ink); text-transform: uppercase;
     font-weight: 500;
   }
+  .hero-edit.has-video .badge-ring text { fill: #FBF6E8; }
   .badge-core {
     position: absolute; inset: 18%;
     border-radius: 50%;
@@ -678,43 +680,67 @@
   /* Hero editorial layout */
   .hero-edit {
     min-height: 100vh;
-    padding: 140px clamp(20px, 5vw, 56px) 80px;
+    padding: 110px clamp(20px, 5vw, 56px) 56px;
     display: grid;
-    grid-template-columns: 1.15fr 1fr;
-    gap: 64px;
+    grid-template-columns: 1.85fr 1fr;
+    gap: 28px;
     align-items: center;
     position: relative;
     background: var(--bg);
   }
+  .hero-edit .badge { margin: 0 0 0 auto; }
   .hero-edit .hero-grain {
     position: absolute; inset: 0;
     background-image:
       radial-gradient(circle at 20% 10%, rgba(194,65,12,0.05), transparent 55%),
       radial-gradient(circle at 80% 70%, rgba(26,22,18,0.04), transparent 60%);
     pointer-events: none;
+    z-index: 1;
   }
-  .hero-edit .hero-content { position: relative; }
+  .hero-edit .hero-video {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.7;
+  }
+  .hero-edit .hero-scrim {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(26,22,18,0.5) 0%, rgba(26,22,18,0.62) 55%, rgba(26,22,18,0.78) 100%);
+    z-index: 1;
+    pointer-events: none;
+  }
+  .hero-edit .hero-content,
+  .hero-edit .hero-badge-wrap { position: relative; z-index: 2; }
+  .hero-edit.has-video { background: var(--ink); }
+  .hero-edit.has-video h1 { color: #FBF6E8; }
+  .hero-edit.has-video .lede { color: rgba(251,246,232,0.82); }
+  .hero-edit.has-video .eyebrow-line { color: rgba(251,246,232,0.65); }
+  .hero-edit.has-video .stat span { color: rgba(251,246,232,0.55); }
+  .hero-edit.has-video .btn-ghost { color: #FBF6E8; border-color: rgba(251,246,232,0.55); }
+  .hero-edit.has-video .btn-ghost:hover { background: #FBF6E8; color: var(--ink); border-color: #FBF6E8; }
   .hero-edit h1 {
     font-family: var(--display);
     font-weight: 400;
-    font-size: clamp(56px, 9vw, 132px);
-    line-height: 1.02;
+    font-size: clamp(44px, 6.2vw, 84px);
+    line-height: 1.04;
     letter-spacing: -0.01em;
     color: var(--ink);
-    margin: 26px 0 32px;
+    margin: 18px 0 22px;
   }
   .hero-edit h1 em { font-style: italic; color: var(--accent); }
   .hero-edit .lede {
     font-family: var(--sans);
-    font-size: clamp(15px, 1.3vw, 18px);
+    font-size: clamp(14px, 1.15vw, 17px);
     color: var(--ink-soft);
-    max-width: 38ch;
-    line-height: 1.7;
-    margin-bottom: 40px;
+    max-width: 42ch;
+    line-height: 1.65;
+    margin-bottom: 28px;
   }
   .hero-edit .hero-meta {
     display: flex; gap: 28px; align-items: center;
-    margin-top: 48px;
+    margin-top: 32px;
     flex-wrap: wrap;
   }
   .hero-edit .stat { display: flex; flex-direction: column; gap: 4px; }
@@ -843,12 +869,22 @@
       gap: 32px !important;
       min-height: auto !important;
     }
+    /* On mobile drop the video and the dark scrim — revert to the warm paper hero */
+    .hero-edit .hero-video,
+    .hero-edit .hero-scrim { display: none !important; }
+    .hero-edit.has-video { background: var(--bg); }
+    .hero-edit.has-video h1 { color: var(--ink); }
+    .hero-edit.has-video .lede { color: var(--ink-soft); }
+    .hero-edit.has-video .eyebrow-line { color: var(--ink-dim); }
+    .hero-edit.has-video .stat span { color: var(--ink-dim); }
+    .hero-edit.has-video .btn-ghost { color: var(--ink); border-color: var(--ink); }
+    .hero-edit.has-video .btn-ghost:hover { background: var(--ink); color: #FBF6E8; border-color: var(--ink); }
     .hero-edit h1 { font-size: clamp(40px, 9vw, 64px) !important; margin: 18px 0 22px !important; }
     .hero-edit .lede { font-size: 15px !important; margin-bottom: 28px !important; }
     .hero-edit .hero-meta { gap: 18px !important; margin-top: 32px !important; }
     .hero-edit .hero-meta .divider { display: none; }
     .hero-edit .badge,
-    .hero-edit > div:nth-of-type(2) { max-width: 240px; margin: 0 auto; order: 2; }
+    .hero-edit .hero-badge-wrap { max-width: 240px; margin: 0 auto; order: 2; }
     .badge-core .ng { font-size: clamp(56px, 14vw, 78px) !important; }
 
     /* Marquees */
@@ -964,149 +1000,6 @@
 
 const { useState, useEffect, useRef, useCallback, useMemo } = React;
 
-// ─── WebGL Smoke ──────────────────────────────────────────────────────────────
-const FRAG = `#version 300 es
-precision highp float;
-out vec4 O;
-uniform float time;
-uniform vec2 resolution;
-uniform vec3 u_color;
-uniform vec3 u_bg;
-#define FC gl_FragCoord.xy
-#define R resolution
-#define T (time+660.)
-float rnd(vec2 p){p=fract(p*vec2(12.9898,78.233));p+=dot(p,p+34.56);return fract(p.x*p.y);}
-float noise(vec2 p){vec2 i=floor(p),f=fract(p),u=f*f*(3.-2.*f);return mix(mix(rnd(i),rnd(i+vec2(1,0)),u.x),mix(rnd(i+vec2(0,1)),rnd(i+1.),u.x),u.y);}
-float fbm(vec2 p){float t=.0,a=1.;for(int i=0;i<5;i++){t+=a*noise(p);p*=mat2(1,-1.2,.2,1.2)*2.;a*=.5;}return t;}
-void main(){
-  vec2 uv=(FC-.5*R)/R.y;
-  uv.x+=.25;
-  uv*=vec2(2,1);
-  float n=fbm(uv*.28-vec2(T*.01,0));
-  n=noise(uv*3.+n*2.);
-  // Build smoke density (0 = clear, 1 = densest)
-  float density = (
-    fbm(uv+vec2(0,T*.015)+n) +
-    fbm(uv*1.003+vec2(0,T*.015)+n+.003) +
-    fbm(uv*1.006+vec2(0,T*.015)+n+.006)
-  ) / 3.;
-  density = clamp(density, 0., 1.);
-  // Base = light bg, smoke darkens slightly toward warm shadow tinted with accent
-  vec3 shadow = mix(u_bg * 0.78, u_color, 0.18);
-  vec3 col = mix(u_bg, shadow, density * 0.55);
-  // Subtle accent kiss on the brightest highlights
-  col = mix(col, u_color * 0.5 + col * 0.5, smoothstep(.55,.85,1.-density) * 0.06);
-  // fade-in from bg
-  col = mix(u_bg, col, min(time*.15, 1.));
-  O = vec4(col, 1);
-}`;
-
-const VERT = `#version 300 es
-precision highp float;
-in vec4 position;
-void main(){gl_Position=position;}`;
-
-function SmokeCanvas({ color }) {
-  const canvasRef = useRef(null);
-  const stateRef = useRef({});
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const gl = canvas.getContext('webgl2');
-    if (!gl) return;
-
-    function compile(shader, src) {
-      gl.shaderSource(shader, src);
-      gl.compileShader(shader);
-    }
-
-    const vs = gl.createShader(gl.VERTEX_SHADER);
-    const fs = gl.createShader(gl.FRAGMENT_SHADER);
-    compile(vs, VERT);
-    compile(fs, FRAG);
-    const prog = gl.createProgram();
-    gl.attachShader(prog, vs);gl.attachShader(prog, fs);
-    gl.linkProgram(prog);
-
-    const buf = gl.createBuffer();
-    gl.bindBuffer(gl.ARRAY_BUFFER, buf);
-    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, 1, -1, -1, 1, 1, 1, -1]), gl.STATIC_DRAW);
-    const pos = gl.getAttribLocation(prog, 'position');
-    gl.enableVertexAttribArray(pos);
-    gl.vertexAttribPointer(pos, 2, gl.FLOAT, false, 0, 0);
-
-    const uRes = gl.getUniformLocation(prog, 'resolution');
-    const uTime = gl.getUniformLocation(prog, 'time');
-    const uColor = gl.getUniformLocation(prog, 'u_color');
-    const uBg = gl.getUniformLocation(prog, 'u_bg');
-
-    // Helper: read CSS hex/rgb token → [r,g,b] in 0..1
-    const cssToRgb = (str) => {
-      str = str.trim();
-      if (str.startsWith('#')) {
-        const h = str.slice(1);
-        const n = h.length === 3 ? h.split('').map((c) => c + c).join('') : h;
-        return [parseInt(n.slice(0,2),16)/255, parseInt(n.slice(2,4),16)/255, parseInt(n.slice(4,6),16)/255];
-      }
-      const m = str.match(/rgba?\(([^)]+)\)/);
-      if (m) { const p = m[1].split(',').map((v) => parseFloat(v)); return [p[0]/255, p[1]/255, p[2]/255]; }
-      return [0.92, 0.90, 0.86];
-    };
-    const readBgVar = () => {
-      const v = getComputedStyle(document.documentElement).getPropertyValue('--bg');
-      return v ? cssToRgb(v) : [0.92, 0.90, 0.86];
-    };
-
-    stateRef.current = { gl, prog, buf, uRes, uTime, uColor, uBg, color: [0.76, 0.25, 0.05], bg: readBgVar() };
-
-    // Re-read bg on theme changes (poll lightly — palette swaps are rare)
-    const bgPoll = setInterval(() => { stateRef.current.bg = readBgVar(); }, 600);
-
-    function resize() {
-      const dpr = Math.max(1, window.devicePixelRatio);
-      canvas.width = canvas.offsetWidth * dpr;
-      canvas.height = canvas.offsetHeight * dpr;
-      gl.viewport(0, 0, canvas.width, canvas.height);
-    }
-    resize();
-    window.addEventListener('resize', resize);
-
-    let raf;
-    function loop(now) {
-      const s = stateRef.current;
-      gl.clearColor(s.bg[0], s.bg[1], s.bg[2], 1);gl.clear(gl.COLOR_BUFFER_BIT);
-      gl.useProgram(s.prog);
-      gl.bindBuffer(gl.ARRAY_BUFFER, s.buf);
-      gl.uniform2f(s.uRes, canvas.width, canvas.height);
-      gl.uniform1f(s.uTime, now * 1e-3);
-      gl.uniform3fv(s.uColor, s.color);
-      gl.uniform3fv(s.uBg, s.bg);
-      gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
-      raf = requestAnimationFrame(loop);
-    }
-    raf = requestAnimationFrame(loop);
-
-    return () => {
-      cancelAnimationFrame(raf);
-      clearInterval(bgPoll);
-      window.removeEventListener('resize', resize);
-      gl.deleteProgram(prog);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (!color) return;
-    const hex = color.replace('#', '');
-    const r = parseInt(hex.slice(0, 2), 16) / 255;
-    const g = parseInt(hex.slice(2, 4), 16) / 255;
-    const b = parseInt(hex.slice(4, 6), 16) / 255;
-    stateRef.current.color = [r, g, b];
-  }, [color]);
-
-  return <canvas ref={canvasRef} style={{ width: '100%', height: '100%', display: 'block' }} />;
-}
-
 // ─── Data ────────────────────────────────────────────────────────────────────
 const PROJECTS = [
 {
@@ -1165,7 +1058,7 @@ const PROJECTS = [
   metricLabel: 'an email + SMS welcome sequence',
   accent: '#C8B8A2',
   size: 'medium',
-  goal: 'Convert free intro class attendees into paying monthly members with a multi-channel welcome sequence.',
+  goal: 'Convert free intro class attendees into paying monthly members with a multi channel welcome sequence.',
   approach: "Designed around the three real objections (cost, commitment, and time), with one barrier addressed per email and a soft close every time. Layered SMS in at the two highest-friction decision points: a soft mid-sequence nudge and a final urgency text. The moments where a missed message kills the conversion shipped via SMS, not email. That's the channel people actually read in the moment.",
   results: [
   { val: 'Channels', label: 'Email for objection answers, SMS for urgency' },
@@ -1341,7 +1234,7 @@ const SERVICES = [
   step: '02',
   kicker: 'Nurture',
   title: 'Email + SMS',
-  body: 'A multi-touch sequence across two channels. Email carries the long-form objection answers. SMS carries the time-sensitive nudges that get opened in the moment. Each message handles one objection at a time.',
+  body: 'A multi touch sequence across two channels. Email handles the long objection answers. SMS handles the time-sensitive nudges that get opened in the moment. Each message handles one objection at a time.',
   included: ['Full sequence build', 'Copywriting', 'Deliverability setup', 'Ongoing testing']
 },
 {
@@ -1355,7 +1248,7 @@ const SERVICES = [
 const FAQS = [
 {
   q: "How do I get more members for my fitness studio?",
-  a: "Owner-operated studios grow by running three levers in parallel: paid acquisition that targets buyers (not curiosity), follow-up that handles real objections instead of repeating the same generic email, and a way to capture inquiries that come in after hours. The mistake most studios make is running one of those three in isolation and blaming the channel when conversion stays flat."
+  a: "Owner operated studios grow by running three levers in parallel: paid acquisition that targets buyers (not curiosity), follow up that handles real objections instead of repeating the same generic email, and a way to capture inquiries that come in after hours. The mistake most studios make is running one of those three in isolation and blaming the channel when conversion stays flat."
 },
 {
   q: "Won't my members hate dealing with an AI phone agent?",
@@ -1363,7 +1256,7 @@ const FAQS = [
 },
 {
   q: "What's the best follow-up sequence for new fitness leads?",
-  a: "A multi-touch sequence that handles one objection per message and uses two channels: email for the long-form answers (pricing, member experience, what to expect on a first visit) and SMS for the time-sensitive nudges (trial confirmations, “we held your spot” reminders). The mistake is cramming everything into one giant email. The sequence has to feel like a person, not a CRM blast."
+  a: "A multi touch sequence that handles one objection per message and uses two channels: email for the long answers (pricing, member experience, what to expect on a first visit) and SMS for the time-sensitive nudges (trial confirmations, \"we held your spot\" reminders). The mistake is cramming everything into one giant email. The sequence has to feel like a person, not a CRM blast."
 },
 {
   q: "What's the minimum ad budget I need for this to be worth it?",
@@ -1390,6 +1283,143 @@ function useReveal(threshold = 0.1, startVisible = false) {
     return () => obs.disconnect();
   }, [startVisible]);
   return [ref, visible];
+}
+
+// ─── prefers-reduced-motion check ─────────────────────────────────────────────
+const prefersReducedMotion = () =>
+  typeof window !== 'undefined' &&
+  window.matchMedia &&
+  window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// ─── Word-by-word reveal helper ───────────────────────────────────────────────
+// Renders `text` split into per-word <span>s with a staggered translate+fade.
+// `visible` is driven by the parent's IntersectionObserver. `base` lets a second
+// line start later than the first so two-line headings cascade naturally.
+function Words({ text, visible, base = 0, step = 55, style }) {
+  const reduce = prefersReducedMotion();
+  const words = text.split(' ');
+  return words.map((w, i) =>
+    <React.Fragment key={i}>
+      <span style={{
+        display: 'inline-block',
+        opacity: visible ? 1 : 0,
+        transform: visible ? 'translateY(0)' : 'translateY(0.45em)',
+        transition: reduce ? 'none' : 'opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1)',
+        transitionDelay: reduce ? '0ms' : `${base + i * step}ms`,
+        willChange: 'transform, opacity',
+        ...style
+      }}>{w}</span>
+      {i < words.length - 1 && ' '}
+    </React.Fragment>
+  );
+}
+
+// ─── Scroll-driven word color fill ────────────────────────────────────────────
+// Each word transitions from `dimColor` → `fullColor` as the heading scrolls
+// from `fillRange[0]` × viewport-height to `fillRange[1]` × viewport-height
+// (measured from the top of the viewport). Tighter range = punchier moment.
+function ScrollFillWords({ text, dimColor, fullColor, fillRange = [0.7, 0.3] }) {
+  const ref = useRef(null);
+  const [progress, setProgress] = useState(() => (prefersReducedMotion() ? 1 : 0));
+  const words = text.split(' ');
+
+  useEffect(() => {
+    if (prefersReducedMotion()) return;
+    const el = ref.current;
+    if (!el) return;
+    let raf = null;
+    const update = () => {
+      const rect = el.getBoundingClientRect();
+      const vh = window.innerHeight || 1;
+      const startY = vh * fillRange[0];
+      const endY = vh * fillRange[1];
+      const p = (startY - rect.top) / (startY - endY);
+      setProgress(Math.max(0, Math.min(1, p)));
+    };
+    const onScroll = () => {
+      if (raf) return;
+      raf = requestAnimationFrame(() => { update(); raf = null; });
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    update();
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, [fillRange[0], fillRange[1]]);
+
+  return (
+    <span ref={ref}>
+      {words.map((w, i) => {
+        const threshold = words.length > 1 ? i / (words.length - 1) : 0;
+        const filled = progress >= threshold;
+        return (
+          <React.Fragment key={i}>
+            <span style={{
+              color: filled ? fullColor : dimColor,
+              transition: 'color 0.45s cubic-bezier(0.22, 1, 0.36, 1)'
+            }}>{w}</span>
+            {i < words.length - 1 && ' '}
+          </React.Fragment>
+        );
+      })}
+    </span>
+  );
+}
+
+// ─── Magnetic button wrapper ──────────────────────────────────────────────────
+// Outer span = stable position anchor (its rect drives the cursor distance math).
+// Inner span = magnetic translate (the part that visibly drifts toward cursor).
+// Inner <a> keeps .btn-pill:hover transform intact — both transforms compose.
+function MagneticButton({ href, className, children, strength = 0.28, radius = 110 }) {
+  const wrapRef = useRef(null);
+  const innerRef = useRef(null);
+
+  useEffect(() => {
+    if (prefersReducedMotion()) return;
+    const wrap = wrapRef.current;
+    const inner = innerRef.current;
+    if (!wrap || !inner) return;
+
+    let raf = null;
+    let lastX = 0, lastY = 0;
+
+    const onMove = (e) => {
+      const rect = wrap.getBoundingClientRect();
+      const cx = rect.left + rect.width / 2;
+      const cy = rect.top + rect.height / 2;
+      const dx = e.clientX - cx;
+      const dy = e.clientY - cy;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      const inRange = dist < radius;
+      const tx = inRange ? dx * strength : 0;
+      const ty = inRange ? dy * strength : 0;
+      if (Math.abs(tx - lastX) < 0.4 && Math.abs(ty - lastY) < 0.4) return;
+      lastX = tx; lastY = ty;
+      if (raf) cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        inner.style.transform = `translate(${tx}px, ${ty}px)`;
+      });
+    };
+
+    document.addEventListener('mousemove', onMove);
+    return () => {
+      document.removeEventListener('mousemove', onMove);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, [strength, radius]);
+
+  return (
+    <span ref={wrapRef} style={{ display: 'inline-block' }}>
+      <span ref={innerRef} style={{
+        display: 'inline-block',
+        transition: 'transform 0.45s cubic-bezier(0.22, 1, 0.36, 1)',
+        willChange: 'transform'
+      }}>
+        <a href={href} className={className}>{children}</a>
+      </span>
+    </span>
+  );
 }
 
 // ─── Marquee + Rotating badge (editorial redesign) ──────────────────────────
@@ -1464,7 +1494,7 @@ function AdLightbox({ children, onClose }) {
           color: '#aaa', width: 36, height: 36, borderRadius: '50%',
           cursor: 'pointer', fontSize: 18, display: 'flex', alignItems: 'center', justifyContent: 'center'
         }}>×</button>
-        <p style={{ textAlign: 'center', marginTop: 14, fontSize: 11, color: 'rgba(255,255,255,0.5)', fontFamily: "'Manrope',sans-serif", letterSpacing: '0.08em' }}>
+        <p style={{ textAlign: 'center', marginTop: 14, fontSize: 11, color: 'rgba(255,255,255,0.5)', fontFamily: "'Google Sans',sans-serif", letterSpacing: '0.08em' }}>
           Click outside or press ESC to close
         </p>
       </div>
@@ -1496,10 +1526,10 @@ function PhotoAdMockup({ offerLabel, headline, sub, brand, cta = 'Claim Offer', 
   <div style={{ borderRadius: 4, overflow: 'hidden', background: '#0A0A0A', boxShadow: '0 4px 24px rgba(0,0,0,0.6)', userSelect: 'none' }}>
       {/* FB/IG ad header */}
       <div style={{ background: '#111', padding: '8px 12px', display: 'flex', alignItems: 'center', gap: 10, borderBottom: '1px solid #1A1A1A' }}>
-        <div style={{ width: 32, height: 32, borderRadius: '50%', background: `linear-gradient(135deg, ${accent}, ${accent}88)`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 11, fontWeight: 700, color: '#000', fontFamily: "'Manrope',sans-serif", flexShrink: 0 }}>{brand.slice(0, 2).toUpperCase()}</div>
+        <div style={{ width: 32, height: 32, borderRadius: '50%', background: `linear-gradient(135deg, ${accent}, ${accent}88)`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 11, fontWeight: 700, color: '#000', fontFamily: "'Google Sans',sans-serif", flexShrink: 0 }}>{brand.slice(0, 2).toUpperCase()}</div>
         <div style={{ flex: 1, minWidth: 0 }}>
-          <div style={{ fontSize: 11, fontWeight: 600, color: '#D0D0CC', fontFamily: "'Manrope',sans-serif", whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{brand}</div>
-          <div style={{ fontSize: 9, color: '#555', fontFamily: "'Manrope',sans-serif" }}>Sponsored · 🌐</div>
+          <div style={{ fontSize: 11, fontWeight: 600, color: '#D0D0CC', fontFamily: "'Google Sans',sans-serif", whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{brand}</div>
+          <div style={{ fontSize: 9, color: '#555', fontFamily: "'Google Sans',sans-serif" }}>Sponsored · 🌐</div>
         </div>
         <div style={{ fontSize: 16, color: '#444' }}>···</div>
       </div>
@@ -1508,12 +1538,12 @@ function PhotoAdMockup({ offerLabel, headline, sub, brand, cta = 'Claim Offer', 
         <img src={photo} alt="gym" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', filter: 'brightness(0.55) saturate(0.8)', transition: 'transform 0.4s', transform: hovered && !enlarged ? 'scale(1.03)' : 'scale(1)' }} />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 30%, rgba(0,0,0,0.7) 70%, rgba(0,0,0,0.92) 100%)' }} />
         <div style={{ position: 'absolute', top: 14, left: 0, right: 0, textAlign: 'center' }}>
-          <span style={{ display: 'inline-block', background: accent, color: '#000', fontSize: 10, fontWeight: 800, fontFamily: "'Manrope',sans-serif", letterSpacing: '0.1em', textTransform: 'uppercase', padding: '5px 14px', borderRadius: 2 }}>{offerLabel}</span>
+          <span style={{ display: 'inline-block', background: accent, color: '#000', fontSize: 10, fontWeight: 800, fontFamily: "'Google Sans',sans-serif", letterSpacing: '0.1em', textTransform: 'uppercase', padding: '5px 14px', borderRadius: 2 }}>{offerLabel}</span>
         </div>
-        <div style={{ position: 'absolute', top: 14, left: 14, fontSize: 10, fontWeight: 700, color: 'rgba(255,255,255,0.5)', fontFamily: "'Manrope',sans-serif", letterSpacing: '0.08em', textTransform: 'uppercase' }}>{brand}</div>
+        <div style={{ position: 'absolute', top: 14, left: 14, fontSize: 10, fontWeight: 700, color: 'rgba(255,255,255,0.5)', fontFamily: "'Google Sans',sans-serif", letterSpacing: '0.08em', textTransform: 'uppercase' }}>{brand}</div>
         <div style={{ position: 'absolute', bottom: 20, left: 16, right: 16 }}>
-          <p style={{ fontFamily: "'Manrope',sans-serif", fontSize: 'clamp(20px,4vw,28px)', fontWeight: 900, color: '#FFFFFF', lineHeight: 1.1, textTransform: 'uppercase', textShadow: '0 2px 12px rgba(0,0,0,0.9)', marginBottom: 8 }}>{headline}</p>
-          <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.65)', fontFamily: "'Manrope',sans-serif", fontWeight: 400, lineHeight: 1.4 }}>{sub}</p>
+          <p style={{ fontFamily: "'Google Sans',sans-serif", fontSize: 'clamp(20px,4vw,28px)', fontWeight: 900, color: '#FFFFFF', lineHeight: 1.1, textTransform: 'uppercase', textShadow: '0 2px 12px rgba(0,0,0,0.9)', marginBottom: 8 }}>{headline}</p>
+          <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.65)', fontFamily: "'Google Sans',sans-serif", fontWeight: 400, lineHeight: 1.4 }}>{sub}</p>
         </div>
         {/* Enlarge hint */}
         {hovered && !enlarged &&
@@ -1522,8 +1552,8 @@ function PhotoAdMockup({ offerLabel, headline, sub, brand, cta = 'Claim Offer', 
       </div>
       {/* Ad footer */}
       <div style={{ background: '#111', padding: '10px 14px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid #1A1A1A' }}>
-        <div style={{ fontSize: 10, color: '#666', fontFamily: "'Manrope',sans-serif", maxWidth: 160, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{brand.toLowerCase().replace(/\s+/g, '')} · Fitness</div>
-        <button style={{ padding: '7px 16px', background: accent, color: '#000', border: 'none', borderRadius: 3, fontSize: 11, fontWeight: 700, fontFamily: "'Manrope',sans-serif", cursor: 'pointer', letterSpacing: '0.04em' }}>{cta}</button>
+        <div style={{ fontSize: 10, color: '#666', fontFamily: "'Google Sans',sans-serif", maxWidth: 160, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{brand.toLowerCase().replace(/\s+/g, '')} · Fitness</div>
+        <button style={{ padding: '7px 16px', background: accent, color: '#000', border: 'none', borderRadius: 3, fontSize: 11, fontWeight: 700, fontFamily: "'Google Sans',sans-serif", cursor: 'pointer', letterSpacing: '0.04em' }}>{cta}</button>
       </div>
     </div>;
 
@@ -1536,532 +1566,6 @@ function PhotoAdMockup({ offerLabel, headline, sub, brand, cta = 'Claim Offer', 
       </div>
       {enlarged && <AdLightbox onClose={() => setEnlarged(false)}>{card}</AdLightbox>}
     </>);
-
-}
-
-// ─── Carousel Info Post (Instagram-style static tip post) ─────────────────────
-function CarouselInfoPost({ slideNum, totalSlides, title, items, brand, accent = '#F59E0B', theme = 'dark' }) {
-  const [enlarged, setEnlarged] = useState(false);
-  const [hovered, setHovered] = useState(false);
-
-  const card =
-  <div style={{ borderRadius: 4, overflow: 'hidden', background: '#0A0A0A', boxShadow: '0 4px 24px rgba(0,0,0,0.5)', userSelect: 'none' }}>
-      {/* IG header */}
-      <div style={{ background: '#111', padding: '8px 12px', display: 'flex', alignItems: 'center', gap: 10, borderBottom: '1px solid #1A1A1A' }}>
-        <div style={{ width: 30, height: 30, borderRadius: '50%', background: `linear-gradient(135deg, ${accent}, ${accent}88)`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 10, fontWeight: 700, color: '#000', fontFamily: "'Manrope',sans-serif" }}>{brand.slice(0, 2).toUpperCase()}</div>
-        <div style={{ fontSize: 11, fontWeight: 600, color: '#D0D0CC', fontFamily: "'Manrope',sans-serif", flex: 1 }}>{brand}</div>
-        <div style={{ fontSize: 10, color: '#555', fontFamily: "'Manrope',sans-serif" }}>{slideNum}/{totalSlides} ›</div>
-      </div>
-      {/* Slide content */}
-      <div style={{ aspectRatio: '1/1', background: theme === 'dark' ? '#0D0D0D' : '#111', position: 'relative', display: 'flex', flexDirection: 'column', padding: '24px 20px 20px', overflow: 'hidden' }}>
-        {/* Subtle grid lines */}
-        <div style={{ position: 'absolute', inset: 0, backgroundImage: `linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px)`, backgroundSize: '40px 40px' }} />
-        {/* Accent bar left */}
-        <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 4, background: accent }} />
-        <div style={{ position: 'relative', flex: 1, display: 'flex', flexDirection: 'column' }}>
-          {/* Slide number */}
-          <div style={{ fontSize: 9, color: accent, letterSpacing: '0.18em', textTransform: 'uppercase', fontFamily: "'Manrope',sans-serif", fontWeight: 600, marginBottom: 10 }}>0{slideNum} / 0{totalSlides}</div>
-          {/* Title */}
-          <h3 style={{ fontFamily: "'Instrument Serif',serif", fontSize: 'clamp(15px,2.5vw,20px)', fontWeight: 700, color: '#F5F5F0', lineHeight: 1.2, marginBottom: 16 }}>{title}</h3>
-          {/* Items */}
-          <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 10 }}>
-            {items.map((item, i) =>
-          <div key={i} style={{ display: 'flex', gap: 10, alignItems: 'flex-start' }}>
-                <div style={{ width: 22, height: 22, borderRadius: '50%', background: `${accent}20`, border: `1px solid ${accent}60`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: 1 }}>
-                  <span style={{ fontSize: 10, fontWeight: 700, color: accent, fontFamily: "'Manrope',sans-serif" }}>{i + 1}</span>
-                </div>
-                <p style={{ fontSize: 12, color: '#A0A09C', lineHeight: 1.5, fontFamily: "'Manrope',sans-serif", fontWeight: 300 }}>{item}</p>
-              </div>
-          )}
-          </div>
-          {/* Brand footer */}
-          <div style={{ marginTop: 14, paddingTop: 12, borderTop: '1px solid rgba(245,245,240,0.06)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <span style={{ fontSize: 9, color: '#444', fontFamily: "'Manrope',sans-serif", letterSpacing: '0.1em', textTransform: 'uppercase' }}>{brand}</span>
-            <span style={{ fontSize: 9, color: accent, fontFamily: "'Manrope',sans-serif", letterSpacing: '0.06em' }}>Save for later →</span>
-          </div>
-        </div>
-      </div>
-      {/* IG footer */}
-      <div style={{ background: '#111', padding: '10px 14px', display: 'flex', gap: 14, borderTop: '1px solid #1A1A1A' }}>
-        {['♡', '💬', '⇪'].map((icon, i) => <span key={i} style={{ fontSize: 16, color: '#555', cursor: 'pointer' }}>{icon}</span>)}
-        <span style={{ marginLeft: 'auto', fontSize: 16, color: '#555' }}>🔖</span>
-      </div>
-    </div>;
-
-
-  return (
-    <>
-      <div onClick={() => setEnlarged(true)} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}
-      style={{ cursor: 'zoom-in', transition: 'transform 0.2s', transform: hovered ? 'translateY(-2px)' : 'none', position: 'relative' }}>
-        {card}
-        {hovered &&
-        <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', background: 'rgba(0,0,0,0.65)', border: '1px solid rgba(255,255,255,0.2)', borderRadius: '50%', width: 44, height: 44, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 18, color: '#fff', pointerEvents: 'none', zIndex: 10 }}>⊕</div>
-        }
-      </div>
-      {enlarged && <AdLightbox onClose={() => setEnlarged(false)}>{card}</AdLightbox>}
-    </>);
-
-}
-
-// ─── Carousel for post groups ──────────────────────────────────────────────────
-function MetaAdMockup({ headline, sub, brand, cta = "Learn More", index = 0, accent = '#F59E0B' }) {
-  // Different gym scene configs per index
-  const scenes = [
-  { // Barbell / powerlifting
-    bg: ['#0A0A0A', '#1A1208'],
-    figure:
-    <g>
-          {/* Barbell */}
-          <rect x="60" y="195" width="180" height="6" rx="3" fill="#333" />
-          <rect x="52" y="180" width="24" height="34" rx="4" fill="#2A2A2A" stroke="#444" strokeWidth="1" />
-          <rect x="224" y="180" width="24" height="34" rx="4" fill="#2A2A2A" stroke="#444" strokeWidth="1" />
-          {/* Body - deadlift position */}
-          <ellipse cx="150" cy="168" rx="18" ry="18" fill="#1E1E1E" stroke="#2A2A2A" strokeWidth="1" />
-          <path d="M150 186 L138 220 L162 220 Z" fill="#1E1E1E" />
-          <line x1="138" y1="192" x2="100" y2="198" stroke="#1E1E1E" strokeWidth="10" strokeLinecap="round" />
-          <line x1="162" y1="192" x2="200" y2="198" stroke="#1E1E1E" strokeWidth="10" strokeLinecap="round" />
-        </g>
-
-  },
-  { // Running / treadmill silhouette
-    bg: ['#080C10', '#0A1020'],
-    figure:
-    <g>
-          {/* Treadmill base */}
-          <rect x="60" y="230" width="180" height="8" rx="4" fill="#222" />
-          <rect x="70" y="238" width="160" height="4" rx="2" fill="#1A1A1A" />
-          {/* Runner */}
-          <ellipse cx="150" cy="150" rx="17" ry="17" fill="#1E1E1E" stroke="#2A2A2A" strokeWidth="1" />
-          <path d="M150 167 L142 200 L155 200 Z" fill="#1E1E1E" />
-          {/* Arms */}
-          <line x1="145" y1="178" x2="118" y2="196" stroke="#1E1E1E" strokeWidth="9" strokeLinecap="round" />
-          <line x1="155" y1="178" x2="182" y2="165" stroke="#1E1E1E" strokeWidth="9" strokeLinecap="round" />
-          {/* Legs - running stride */}
-          <line x1="148" y1="200" x2="125" y2="232" stroke="#1E1E1E" strokeWidth="9" strokeLinecap="round" />
-          <line x1="152" y1="200" x2="175" y2="220" stroke="#1E1E1E" strokeWidth="9" strokeLinecap="round" />
-        </g>
-
-  },
-  { // Cycling */
-    bg: ['#0A0808', '#180A00'],
-    figure:
-    <g>
-          {/* Bike wheels */}
-          <circle cx="110" cy="220" r="32" fill="none" stroke="#282828" strokeWidth="6" />
-          <circle cx="110" cy="220" r="6" fill="#333" />
-          <circle cx="190" cy="220" r="32" fill="none" stroke="#282828" strokeWidth="6" />
-          <circle cx="190" cy="220" r="6" fill="#333" />
-          {/* Frame */}
-          <line x1="110" y1="220" x2="150" y2="175" stroke="#2A2A2A" strokeWidth="5" />
-          <line x1="150" y1="175" x2="190" y2="220" stroke="#2A2A2A" strokeWidth="5" />
-          <line x1="150" y1="175" x2="145" y2="148" stroke="#2A2A2A" strokeWidth="5" />
-          {/* Rider */}
-          <ellipse cx="145" cy="135" rx="15" ry="15" fill="#1E1E1E" />
-          <path d="M145 150 C138 160 130 170 128 185" stroke="#1E1E1E" strokeWidth="10" strokeLinecap="round" fill="none" />
-          <line x1="128" y1="185" x2="108" y2="175" stroke="#1E1E1E" strokeWidth="8" strokeLinecap="round" />
-          <line x1="128" y1="185" x2="152" y2="172" stroke="#1E1E1E" strokeWidth="8" strokeLinecap="round" />
-        </g>
-
-  }];
-
-  const scene = scenes[index % scenes.length];
-  const id = `grad-${index}-${Math.random().toString(36).slice(2, 6)}`;
-
-  return (
-    <div style={{ borderRadius: 4, overflow: 'hidden', background: '#0A0A0A', boxShadow: '0 4px 24px rgba(0,0,0,0.6)', userSelect: 'none' }}>
-      {/* Ad header - Facebook style */}
-      <div style={{ background: '#111', padding: '8px 12px', display: 'flex', alignItems: 'center', gap: 10, borderBottom: '1px solid #1A1A1A' }}>
-        <div style={{ width: 32, height: 32, borderRadius: '50%', background: `linear-gradient(135deg, ${accent}, ${accent}88)`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 11, fontWeight: 700, color: '#000', fontFamily: "'Manrope',sans-serif", flexShrink: 0 }}>
-          {brand.slice(0, 2).toUpperCase()}
-        </div>
-        <div style={{ flex: 1, minWidth: 0 }}>
-          <div style={{ fontSize: 11, fontWeight: 600, color: '#D0D0CC', fontFamily: "'Manrope',sans-serif", whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{brand}</div>
-          <div style={{ fontSize: 9, color: '#555', fontFamily: "'Manrope',sans-serif", letterSpacing: '0.04em' }}>Sponsored · <span style={{ color: '#444' }}>&#9872;</span></div>
-        </div>
-        <div style={{ fontSize: 16, color: '#444', cursor: 'pointer' }}>···</div>
-      </div>
-
-      {/* Ad image - SVG gym scene */}
-      <svg viewBox="0 0 300 300" style={{ width: '100%', display: 'block' }} xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id={id} x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor={scene.bg[0]} />
-            <stop offset="100%" stopColor={scene.bg[1]} />
-          </linearGradient>
-          <linearGradient id={`${id}o`} x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="transparent" />
-            <stop offset="60%" stopColor="rgba(0,0,0,0.5)" />
-            <stop offset="100%" stopColor="rgba(0,0,0,0.95)" />
-          </linearGradient>
-          {/* Torn edge texture */}
-          <clipPath id={`${id}c`}>
-            <path d="M0 0 L300 0 L300 270 Q285 265 270 272 Q255 279 240 268 Q225 257 210 264 Q195 271 180 266 Q165 261 150 270 Q135 279 120 272 Q105 265 90 270 Q75 275 60 268 Q45 261 30 268 Q15 275 0 270 Z" />
-          </clipPath>
-        </defs>
-        {/* Background */}
-        <rect width="300" height="300" fill={`url(#${id})`} />
-        {/* Grid lines - subtle gym floor */}
-        {[0, 1, 2, 3, 4, 5].map((i) =>
-        <line key={i} x1={i * 60} y1="0" x2={i * 60} y2="300" stroke="rgba(255,255,255,0.025)" strokeWidth="1" />
-        )}
-        {[0, 1, 2, 3, 4, 5].map((i) =>
-        <line key={i} x1="0" y1={i * 60} x2="300" y2={i * 60} stroke="rgba(255,255,255,0.02)" strokeWidth="1" />
-        )}
-        {/* Figure */}
-        {scene.figure}
-        {/* Accent glow behind figure */}
-        <ellipse cx="150" cy="200" rx="80" ry="40" fill={`${accent}18`} />
-        {/* Dark gradient overlay */}
-        <rect width="300" height="300" fill={`url(#${id}o)`} />
-        {/* Accent torn edge strip */}
-        <g clipPath={`url(#${id}c)`}>
-          <rect x="0" y="248" width="300" height="6" fill={accent} opacity="0.9" />
-        </g>
-        {/* Headline text */}
-        <foreignObject x="16" y="210" width="268" height="80">
-          <div xmlns="http://www.w3.org/1999/xhtml" style={{ fontFamily: "'Instrument Serif',serif", fontSize: 17, fontWeight: 900, color: '#F5F5F0', lineHeight: 1.2, textShadow: '0 2px 8px rgba(0,0,0,0.8)' }}>
-            {headline}
-          </div>
-        </foreignObject>
-        {/* Accent tag top-right */}
-        <rect x="220" y="12" width="68" height="22" rx="2" fill={accent} />
-        <text x="254" y="27" textAnchor="middle" fill="#000" fontSize="9" fontFamily="Inter,sans-serif" fontWeight="700" letterSpacing="0.06em">INTRO OFFER</text>
-      </svg>
-
-      {/* Ad footer */}
-      <div style={{ background: '#111', padding: '12px 14px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid #1A1A1A' }}>
-        <div style={{ flex: 1 }}>
-          <div style={{ fontSize: 11, color: '#888', fontFamily: "'Manrope',sans-serif", lineHeight: 1.4, maxWidth: 180, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{sub}</div>
-        </div>
-        <button style={{ padding: '8px 16px', background: accent, color: '#000', border: 'none', borderRadius: 3, fontSize: 11, fontWeight: 700, fontFamily: "'Manrope',sans-serif", cursor: 'pointer', flexShrink: 0, letterSpacing: '0.04em' }}>
-          {cta}
-        </button>
-      </div>
-    </div>);
-
-}
-
-// ─── Modal ────────────────────────────────────────────────────────────────────
-function Modal({ project, onClose, accentColor }) {
-  useEffect(() => {
-    document.body.style.overflow = 'hidden';
-    const handler = (e) => {if (e.key === 'Escape') onClose();};
-    window.addEventListener('keydown', handler);
-    return () => {document.body.style.overflow = '';window.removeEventListener('keydown', handler);};
-  }, []);
-
-  const accent = accentColor;
-  const isEmail = project.type === 'Email' || project.type === 'Email + SMS';
-  const isSMS = project.type === 'SMS' || project.type === 'Email + SMS';
-
-  return (
-    <div onClick={onClose} style={{
-      position: 'fixed', inset: 0, background: 'rgba(14,13,10,0.42)', zIndex: 1000,
-      overflowY: 'auto', backdropFilter: 'blur(6px)'
-    }}>
-      <div onClick={(e) => e.stopPropagation()} style={{
-        maxWidth: 900, margin: '60px auto', background: 'var(--bg)',
-        border: '1px solid var(--hair)', borderRadius: 2,
-        overflow: 'hidden',
-        boxShadow: '0 30px 80px rgba(14,13,10,0.18), 0 4px 12px rgba(14,13,10,0.06)'
-      }}>
-        {/* Header */}
-        <div style={{ padding: '48px 56px 40px', borderBottom: '1px solid var(--hair)' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-            <div>
-              <div style={{ fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase', color: accent, marginBottom: 12, fontFamily: "'Manrope',sans-serif", fontWeight: 500 }}>
-                {project.tag}
-              </div>
-              <h2 style={{ fontFamily: "'Instrument Serif',serif", fontSize: 'clamp(28px,4vw,44px)', fontWeight: 700, color: 'var(--ink)', lineHeight: 1.1 }}>
-                {project.client}
-              </h2>
-            </div>
-            <button onClick={onClose} style={{ background: 'none', border: '1px solid var(--hair)', color: 'var(--ink-dim)', width: 40, height: 40, borderRadius: 2, cursor: 'pointer', fontSize: 18, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>×</button>
-          </div>
-        </div>
-
-        <div style={{ padding: '48px 56px' }}>
-          {/* Metrics */}
-          <div style={{ display: 'grid', gridTemplateColumns: `repeat(${project.results.length},1fr)`, gap: 2, marginBottom: 48 }}>
-            {project.results.map((r, i) =>
-            <div key={i} style={{ background: 'var(--bg2)', padding: '28px 24px', textAlign: 'center' }}>
-                <div style={{ fontFamily: "'Instrument Serif',serif", fontSize: 'clamp(28px,4vw,42px)', fontWeight: 900, color: accent, lineHeight: 1 }}>{r.val}</div>
-                <div style={{ fontSize: 11, color: 'var(--ink-dim)', marginTop: 8, letterSpacing: '0.06em', textTransform: 'uppercase', fontFamily: "'Manrope',sans-serif" }}>{r.label}</div>
-              </div>
-            )}
-          </div>
-
-          {/* Goal + Approach */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 32, marginBottom: 48 }}>
-            <div>
-              <div style={{ fontSize: 10, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--ink-dim)', marginBottom: 12, fontFamily: "'Manrope',sans-serif" }}>The Goal</div>
-              <p style={{ fontSize: 15, lineHeight: 1.7, color: 'var(--ink)', fontFamily: "'Manrope',sans-serif", fontWeight: 'var(--body-weight)' }}>{project.goal}</p>
-            </div>
-            <div>
-              <div style={{ fontSize: 10, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--ink-dim)', marginBottom: 12, fontFamily: "'Manrope',sans-serif" }}>The Approach</div>
-              <p style={{ fontSize: 15, lineHeight: 1.7, color: 'var(--ink)', fontFamily: "'Manrope',sans-serif", fontWeight: 'var(--body-weight)' }}>{project.approach}</p>
-            </div>
-          </div>
-
-          {/* Creatives */}
-          <div>
-            <div style={{ fontSize: 10, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--ink-dim)', marginBottom: 20, fontFamily: "'Manrope',sans-serif" }}>Creative Samples</div>
-            {project.type === 'Meta Ads' ?
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill,minmax(220px,1fr))', gap: 16 }}>
-                {project.creatives.map((c, i) =>
-              c.kind === 'photo' ?
-              <PhotoAdMockup
-                key={i}
-                offerLabel={c.offerLabel}
-                headline={c.headline}
-                sub={c.sub}
-                brand={project.client}
-                cta={c.cta}
-                photoIndex={c.photoIndex}
-                accent={accent} /> :
-
-
-              <CarouselInfoPost
-                key={i}
-                slideNum={c.slideNum}
-                totalSlides={c.totalSlides}
-                title={c.title}
-                items={c.items}
-                brand={project.client}
-                accent={accent} />
-
-
-              )}
-              </div> :
-
-            <div style={{ display: 'grid', gridTemplateColumns: isSMS ? '1fr 1fr' : 'repeat(auto-fill,minmax(200px,1fr))', gap: 12 }}>
-                {project.creatives.map((c, i) =>
-              isSMS ?
-              <div key={i} style={{ background: 'var(--bg2)', border: '1px solid var(--hair)', borderRadius: 2, padding: 20 }}>
-                    <div style={{ fontSize: 9, color: 'var(--ink-dim)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 10, fontFamily: "'Manrope',sans-serif" }}>{c.type}</div>
-                    <div style={{ background: 'var(--bg3)', borderRadius: '18px 18px 18px 4px', padding: '14px 16px', marginBottom: 6 }}>
-                      <p style={{ fontSize: 13, color: 'var(--ink)', lineHeight: 1.6, fontFamily: "'Manrope',sans-serif", fontWeight: 400 }}>{c.headline}</p>
-                    </div>
-                    <div style={{ fontSize: 10, color: 'var(--ink-dim)', marginTop: 8, fontFamily: "'Manrope',sans-serif" }}>{c.sub}</div>
-                  </div> :
-              isEmail ?
-              <div key={i} style={{ background: 'var(--bg2)', border: '1px solid var(--hair)', borderRadius: 2, padding: '20px' }}>
-                    <div style={{ fontSize: 9, color: 'var(--ink-dim)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 12, fontFamily: "'Manrope',sans-serif" }}>{c.type}</div>
-                    <div style={{ borderLeft: `2px solid ${accent}`, paddingLeft: 14 }}>
-                      <div style={{ fontSize: 10, color: 'var(--ink-dim)', marginBottom: 6, fontFamily: "'Manrope',sans-serif" }}>Subject line</div>
-                      <p style={{ fontSize: 13, color: 'var(--ink)', lineHeight: 1.5, fontFamily: "'Manrope',sans-serif", fontWeight: 500 }}>{c.headline}</p>
-                    </div>
-                    <p style={{ fontSize: 11, color: 'var(--ink-soft)', marginTop: 10, fontFamily: "'Manrope',sans-serif" }}>{c.sub}</p>
-                  </div> :
-              <div key={i} style={{ background: 'var(--bg2)', border: '1px solid var(--hair)', borderRadius: 2, overflow: 'hidden' }}>
-                    <div style={{ height: 120, background: `linear-gradient(160deg, var(--bg3) 0%, var(--bg2) 100%)`, display: 'flex', alignItems: 'flex-end', padding: '16px', borderBottom: `1px solid var(--hair)` }}>
-                      <p style={{ fontSize: 14, fontFamily: "'Instrument Serif',serif", fontWeight: 700, color: 'var(--ink)', lineHeight: 1.3 }}>{c.headline}</p>
-                    </div>
-                    <div style={{ padding: '12px 16px 14px' }}>
-                      <div style={{ fontSize: 9, color: accent, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 6, fontFamily: "'Manrope',sans-serif", fontWeight: 500 }}>{c.type}</div>
-                      <p style={{ fontSize: 11, color: 'var(--ink-soft)', lineHeight: 1.5, fontFamily: "'Manrope',sans-serif" }}>{c.sub}</p>
-                    </div>
-                  </div>
-              )}
-              </div>
-            }
-          </div>
-        </div>
-      </div>
-    </div>);
-
-}
-
-// ─── Tile Preview (mini ad creative shown in the work grid) ──────────────────
-function TilePreview({ project, accent, hovered, height }) {
-  const isMeta = project.type === 'Meta Ads';
-  const isEmail = project.type === 'Email';
-  const isSMS = project.type === 'SMS';
-  const isHybrid = project.type === 'Email + SMS';
-
-  // Meta: real gym photo + offer chip + headline overlay
-  if (isMeta) {
-    const photoCreative = project.creatives.find((c) => c.kind === 'photo') || project.creatives[0];
-    const photo = GYM_PHOTOS[(photoCreative.photoIndex || 0) % GYM_PHOTOS.length];
-    return (
-      <div style={{ position: 'absolute', inset: 0, background: '#0E0D0A' }}>
-        <img src={photo} alt="" style={{
-          width: '100%', height: '100%', objectFit: 'cover', display: 'block',
-          filter: hovered ? 'brightness(0.62) saturate(1.1)' : 'brightness(0.55) saturate(1)',
-          transform: hovered ? 'scale(1.04)' : 'scale(1)',
-          transition: 'transform 0.6s ease, filter 0.4s'
-        }} />
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(14,13,10,0.15) 0%, rgba(14,13,10,0.05) 40%, rgba(14,13,10,0.85) 100%)' }} />
-        {/* Offer chip top-left */}
-        <div style={{ position: 'absolute', top: 16, left: 16, background: accent, color: '#fff', fontSize: 9, letterSpacing: '0.12em', textTransform: 'uppercase', fontFamily: "'Manrope',sans-serif", fontWeight: 700, padding: '6px 10px', borderRadius: 2 }}>
-          {photoCreative.offerLabel || 'Sponsored'}
-        </div>
-        {/* Headline bottom */}
-        <div style={{ position: 'absolute', bottom: 16, left: 18, right: 18 }}>
-          <div style={{ fontSize: 10, letterSpacing: '0.14em', textTransform: 'uppercase', color: accent, fontFamily: "'Manrope',sans-serif", fontWeight: 600, marginBottom: 6 }}>
-            {project.tag}
-          </div>
-          <p style={{ fontFamily: "'Instrument Serif',serif", fontSize: height >= 200 ? 22 : 16, fontWeight: 700, color: '#FAF7EE', lineHeight: 1.2, letterSpacing: '-0.01em', textShadow: '0 1px 12px rgba(0,0,0,0.4)' }}>
-            {photoCreative.headline}
-          </p>
-        </div>
-      </div>);
-
-  }
-
-  // Email: stack of subject lines (inbox preview)
-  if (isEmail) {
-    const items = project.creatives.slice(0, height >= 200 ? 4 : 3);
-    return (
-      <div style={{ position: 'absolute', inset: 0, background: 'var(--bg2)', padding: '18px 20px', display: 'flex', flexDirection: 'column', gap: 10, justifyContent: 'center' }}>
-        <div style={{ fontSize: 10, letterSpacing: '0.14em', textTransform: 'uppercase', color: accent, fontFamily: "'Manrope',sans-serif", fontWeight: 600, marginBottom: 4 }}>
-          {project.tag}
-        </div>
-        {items.map((c, i) =>
-        <div key={i} style={{
-          display: 'flex', alignItems: 'center', gap: 10,
-          padding: '8px 10px',
-          background: i === 0 ? 'var(--bg)' : 'transparent',
-          borderLeft: i === 0 ? `2px solid ${accent}` : '2px solid transparent',
-          borderRadius: 2,
-          transition: 'background 0.3s'
-        }}>
-            <div style={{ width: 6, height: 6, borderRadius: '50%', background: i === 0 ? accent : 'var(--ink-dim)', flexShrink: 0 }} />
-            <p style={{
-            fontSize: 12, color: 'var(--ink)',
-            fontFamily: "'Manrope',sans-serif", fontWeight: i === 0 ? 600 : 400,
-            lineHeight: 1.3,
-            whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',
-            flex: 1
-          }}>
-              {c.headline}
-            </p>
-            <span style={{ fontSize: 9, color: 'var(--ink-dim)', fontFamily: "'Manrope',sans-serif", letterSpacing: '0.06em', flexShrink: 0 }}>
-              {c.type.replace('Email', 'E').replace(/[^A-Z0-9]/gi, '').slice(0, 3) || (i + 1)}
-            </span>
-          </div>
-        )}
-      </div>);
-
-  }
-
-  // SMS: chat bubble preview
-  if (isSMS) {
-    const msg = project.creatives[1] || project.creatives[0];
-    return (
-      <div style={{ position: 'absolute', inset: 0, background: 'var(--bg2)', padding: '20px 22px', display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 8 }}>
-        <div style={{ fontSize: 10, letterSpacing: '0.14em', textTransform: 'uppercase', color: accent, fontFamily: "'Manrope',sans-serif", fontWeight: 600, marginBottom: 4 }}>
-          {project.tag}
-        </div>
-        <div style={{ display: 'flex', alignItems: 'flex-end', gap: 8 }}>
-          <div style={{ width: 24, height: 24, borderRadius: '50%', background: accent + '22', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 10, color: accent, fontFamily: "'Manrope',sans-serif", fontWeight: 700 }}>
-            {project.client[0]}
-          </div>
-          <div style={{ background: 'var(--bg)', border: '1px solid var(--hair)', borderRadius: '14px 14px 14px 4px', padding: '10px 14px', maxWidth: '85%' }}>
-            <p style={{ fontSize: 12.5, color: 'var(--ink)', lineHeight: 1.45, fontFamily: "'Manrope',sans-serif", fontWeight: 400 }}>
-              {msg.headline}
-            </p>
-          </div>
-        </div>
-        {height >= 200 &&
-        <div style={{ display: 'flex', alignItems: 'flex-end', gap: 8, justifyContent: 'flex-end' }}>
-            <div style={{ background: accent, color: '#fff', borderRadius: '14px 14px 4px 14px', padding: '8px 12px', maxWidth: '70%' }}>
-              <p style={{ fontSize: 12, lineHeight: 1.4, fontFamily: "'Manrope',sans-serif", fontWeight: 500 }}>Yes — I'd love to come back.</p>
-            </div>
-          </div>
-        }
-        <div style={{ fontSize: 9, color: 'var(--ink-dim)', fontFamily: "'Manrope',sans-serif", letterSpacing: '0.06em', marginTop: 2 }}>iMessage · {msg.type}</div>
-      </div>);
-
-  }
-
-  // Hybrid (Email + SMS): split panel — email subject + SMS bubble
-  if (isHybrid) {
-    const emailMsg = project.creatives.find((c) => c.type && c.type.startsWith('Email')) || project.creatives[0];
-    const smsMsg = project.creatives.find((c) => c.type && c.type.startsWith('SMS')) || project.creatives[project.creatives.length - 1];
-    return (
-      <div style={{ position: 'absolute', inset: 0, background: 'var(--bg2)', display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
-        {/* Email side */}
-        <div style={{ padding: '18px 18px', borderRight: '1px solid var(--hair)', display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 6 }}>
-          <div style={{ fontSize: 9, color: 'var(--ink-dim)', letterSpacing: '0.14em', textTransform: 'uppercase', fontFamily: "'Manrope',sans-serif" }}>Email</div>
-          <div style={{ borderLeft: `2px solid ${accent}`, paddingLeft: 10 }}>
-            <p style={{ fontSize: 12, color: 'var(--ink)', fontFamily: "'Manrope',sans-serif", fontWeight: 600, lineHeight: 1.35 }}>
-              {emailMsg.headline}
-            </p>
-          </div>
-        </div>
-        {/* SMS side */}
-        <div style={{ padding: '18px 18px', display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 6 }}>
-          <div style={{ fontSize: 9, color: 'var(--ink-dim)', letterSpacing: '0.14em', textTransform: 'uppercase', fontFamily: "'Manrope',sans-serif" }}>SMS</div>
-          <div style={{ background: 'var(--bg)', border: '1px solid var(--hair)', borderRadius: '12px 12px 12px 3px', padding: '8px 12px' }}>
-            <p style={{ fontSize: 11.5, color: 'var(--ink)', lineHeight: 1.4, fontFamily: "'Manrope',sans-serif" }}>
-              {smsMsg.headline}
-            </p>
-          </div>
-        </div>
-        <div style={{ position: 'absolute', top: 14, left: 18, fontSize: 10, letterSpacing: '0.14em', textTransform: 'uppercase', color: accent, fontFamily: "'Manrope',sans-serif", fontWeight: 600 }}>
-          {project.tag}
-        </div>
-      </div>);
-
-  }
-
-  return null;
-}
-
-// ─── Project Tile ─────────────────────────────────────────────────────────────
-function ProjectTile({ project, onClick, accentColor, compact }) {
-  const [hovered, setHovered] = useState(false);
-  const [ref, visible] = useReveal(0.1);
-  const accent = accentColor;
-
-  const tileStyle = {
-    background: hovered ? 'var(--bg3)' : 'var(--bg2)',
-    border: `1px solid ${hovered ? 'var(--hair-strong)' : 'var(--hair)'}`,
-    borderRadius: 2,
-    cursor: 'pointer',
-    overflow: 'hidden',
-    transition: 'background 0.3s, border-color 0.3s, transform 0.3s, opacity 0.6s',
-    transform: visible ? hovered ? 'translateY(-3px)' : 'translateY(0)' : 'translateY(24px)',
-    opacity: visible ? 1 : 0,
-    gridColumn: project.size === 'large' ? 'span 2' : 'span 1'
-  };
-
-  return (
-    <div ref={ref} style={tileStyle} onClick={() => onClick(project)}
-    onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
-      {/* Image area — real ad creative preview */}
-      <div style={{ height: compact ? 140 : project.size === 'large' ? 260 : 190, background: 'var(--bg3)', position: 'relative', overflow: 'hidden', borderBottom: '1px solid var(--hair)' }}>
-        <TilePreview project={project} accent={accent} hovered={hovered} height={compact ? 140 : project.size === 'large' ? 260 : 190} />
-        {/* Hover accent wash */}
-        <div style={{ position: 'absolute', inset: 0, background: `${accent}10`, opacity: hovered ? 1 : 0, transition: 'opacity 0.3s', pointerEvents: 'none' }} />
-      </div>
-
-      {/* Content */}
-      <div style={{ padding: '24px 24px 28px' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 16 }}>
-          <div style={{ flex: 1 }}>
-            <h3 style={{ fontFamily: "'Instrument Serif',serif", fontSize: 'clamp(16px,2vw,20px)', fontWeight: 700, color: 'var(--ink)', lineHeight: 1.2, marginBottom: 8 }}>
-              {project.client}
-            </h3>
-            <p style={{ fontSize: 12, color: 'var(--ink-dim)', fontFamily: "'Manrope',sans-serif", letterSpacing: '0.04em' }}>
-              {project.goal.split('.')[0]}.
-            </p>
-          </div>
-          <div style={{ textAlign: 'right', flexShrink: 0 }}>
-            <div style={{ fontFamily: "'Instrument Serif',serif", fontSize: compact ? 28 : 36, fontWeight: 900, color: accent, lineHeight: 1 }}>
-              {project.metric}
-            </div>
-            <div style={{ fontSize: 10, color: 'var(--ink-dim)', marginTop: 4, fontFamily: "'Manrope',sans-serif", letterSpacing: '0.06em', textTransform: 'uppercase' }}>
-              {project.metricLabel}
-            </div>
-          </div>
-        </div>
-        <div style={{ marginTop: 20, display: 'flex', alignItems: 'center', gap: 6, color: hovered ? accent : 'var(--ink-dim)', fontSize: 11, fontFamily: "'Manrope',sans-serif", letterSpacing: '0.08em', textTransform: 'uppercase', transition: 'color 0.2s' }}>
-          View case study <span style={{ fontSize: 14 }}>→</span>
-        </div>
-      </div>
-    </div>);
 
 }
 
@@ -2121,7 +1625,7 @@ function InstagramPost({ creative, brand, accent }) {
             </div>
             <h4 style={{
               fontSize: 22, fontWeight: 800, lineHeight: 1.2,
-              fontFamily: "'Instrument Serif',serif",
+              fontFamily: "'Google Sans',sans-serif",
               marginBottom: 24, letterSpacing: '-0.01em'
             }}>{creative.title}</h4>
             <ol style={{ listStyle: 'none', padding: 0, margin: 0, counterReset: 'item' }}>
@@ -2149,7 +1653,7 @@ function InstagramPost({ creative, brand, accent }) {
             </div>
             <div style={{ position: 'absolute', bottom: 18, left: 20, right: 20 }}>
               <p style={{
-                fontFamily: "'Instrument Serif',serif",
+                fontFamily: "'Google Sans',sans-serif",
                 fontSize: 22, fontWeight: 700,
                 color: '#FAF7EE', lineHeight: 1.2,
                 textShadow: '0 1px 12px rgba(0,0,0,0.4)'
@@ -2460,7 +1964,7 @@ function MockupFeed({ items, renderItem, accent }) {
       <div style={{
         display: 'flex', justifyContent: 'center', alignItems: 'center',
         gap: 8, marginTop: 18,
-        fontFamily: "'Manrope',sans-serif"
+        fontFamily: "'Google Sans',sans-serif"
       }}>
         <button onClick={() => goto(Math.max(0, activeIdx - 1))} disabled={activeIdx === 0} style={{
           background: 'none', border: '1px solid var(--hair)', borderRadius: 999,
@@ -2489,7 +1993,7 @@ function MockupFeed({ items, renderItem, accent }) {
           fontSize: 14,
           opacity: activeIdx === items.length - 1 ? 0.4 : 1
         }}>›</button>
-        <div style={{ marginLeft: 8, fontSize: 11, color: 'var(--ink-dim)', letterSpacing: '0.08em', fontFamily: "'Manrope',sans-serif" }}>
+        <div style={{ marginLeft: 8, fontSize: 11, color: 'var(--ink-dim)', letterSpacing: '0.08em', fontFamily: "'Google Sans',sans-serif" }}>
           {String(activeIdx + 1).padStart(2, '0')} / {String(items.length).padStart(2, '0')}
         </div>
       </div>
@@ -2499,30 +2003,74 @@ function MockupFeed({ items, renderItem, accent }) {
 
 // ─── Case Study Panel (long-scroll format) ────────────────────────────────────
 function CaseStudyPanel({ project, accent, index = 0, side = 'image-left' }) {
-  const [ref, visible] = useReveal(0.12);
+  const sectionRef = useRef(null);
+  const [visible, setVisible] = useState(false);
+  const [progress, setProgress] = useState(0);
   const isImageLeft = side === 'image-left';
   const sectionBg = index % 2 === 0 ? 'var(--bg)' : 'var(--bg2)';
   const headlineMetric = project.metricLabel.split(',')[0];
 
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) { setVisible(true); obs.disconnect(); }
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    obs.observe(el);
+
+    if (prefersReducedMotion()) return () => obs.disconnect();
+
+    let raf = null;
+    const update = () => {
+      const rect = el.getBoundingClientRect();
+      const vh = window.innerHeight || 1;
+      // 0 when section's top hits viewport bottom, 1 when section's bottom passes viewport top.
+      const total = rect.height + vh;
+      const seen = vh - rect.top;
+      setProgress(Math.max(0, Math.min(1, seen / total)));
+    };
+    const onScroll = () => {
+      if (raf) return;
+      raf = requestAnimationFrame(() => { update(); raf = null; });
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    update();
+    return () => {
+      obs.disconnect();
+      window.removeEventListener('scroll', onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, []);
+
+  // Subtle scrub: image breathes in slightly as the section passes through view.
+  const scrubScale = 1 + progress * 0.04;
+  const scrubLift = -progress * 12;
+
   return (
-    <section ref={ref} style={{
+    <section ref={sectionRef} style={{
       padding: '120px 8vw',
       background: sectionBg,
       borderTop: '1px solid var(--hair)',
-      transition: 'opacity 0.9s, transform 0.9s',
-      opacity: visible ? 1 : 0,
-      transform: visible ? 'translateY(0)' : 'translateY(32px)'
+      transition: 'opacity 0.9s',
+      opacity: visible ? 1 : 0
     }}>
       <div style={{
         display: 'grid',
         gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
         gap: 80,
-        alignItems: 'center',
+        alignItems: 'start',
         maxWidth: 1280,
         margin: '0 auto'
       }} className="case-panel-grid">
-        {/* Hero creative — swipeable mockup feed */}
+        {/* Hero creative — sticky-pinned while the copy column scrolls past */}
         <div style={{ order: isImageLeft ? 1 : 2 }} className="case-panel-image">
+          <div className="case-panel-sticky" style={{
+            position: 'sticky',
+            top: 'clamp(88px, 12vh, 140px)',
+            transform: `scale(${scrubScale}) translateY(${scrubLift}px)`,
+            transformOrigin: 'center center',
+            willChange: 'transform'
+          }}>
           <MockupFeed
             items={project.creatives}
             accent={accent}
@@ -2537,21 +2085,22 @@ function CaseStudyPanel({ project, accent, index = 0, side = 'image-left' }) {
               return <EmailPost key={i} creative={c} brand={project.client} accent={accent} index={i} total={total} dayLabel={dayLabel} />;
             }}
           />
+          </div>
         </div>
 
         {/* Copy */}
         <div style={{ order: isImageLeft ? 2 : 1 }} className="case-panel-copy">
-          <div style={{ fontSize: 11, letterSpacing: '0.18em', textTransform: 'uppercase', color: accent, marginBottom: 24, fontFamily: "'Manrope',sans-serif", fontWeight: 500 }}>
+          <div style={{ fontSize: 11, letterSpacing: '0.18em', textTransform: 'uppercase', color: accent, marginBottom: 24, fontFamily: "'Google Sans',sans-serif", fontWeight: 500 }}>
             Case {String(index + 1).padStart(2, '0')} · {project.type}
           </div>
 
           <h3 style={{
-            fontFamily: "'Instrument Serif',serif",
+            fontFamily: 'var(--display)',
             fontSize: 'clamp(48px,6vw,84px)',
-            fontWeight: 900,
+            fontWeight: 400,
             color: 'var(--ink)',
             lineHeight: 1,
-            letterSpacing: '-0.03em',
+            letterSpacing: '-0.02em',
             marginBottom: 16
           }}>
             {project.metric}<br />
@@ -2561,7 +2110,7 @@ function CaseStudyPanel({ project, accent, index = 0, side = 'image-left' }) {
           </h3>
 
           <div style={{
-            fontFamily: "'Instrument Serif',serif",
+            fontFamily: "'Google Sans',sans-serif",
             fontSize: 22,
             color: 'var(--ink-soft)',
             marginBottom: 36,
@@ -2571,15 +2120,15 @@ function CaseStudyPanel({ project, accent, index = 0, side = 'image-left' }) {
           </div>
 
           <div style={{ marginBottom: 28 }}>
-            <div style={{ fontSize: 10, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--ink-dim)', marginBottom: 10, fontFamily: "'Manrope',sans-serif" }}>The Goal</div>
-            <p style={{ fontSize: 16, lineHeight: 1.65, color: 'var(--ink)', fontFamily: "'Manrope',sans-serif", fontWeight: 'var(--body-weight)' }}>
+            <div style={{ fontSize: 10, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--ink-dim)', marginBottom: 10, fontFamily: "'Google Sans',sans-serif" }}>The Goal</div>
+            <p style={{ fontSize: 16, lineHeight: 1.65, color: 'var(--ink)', fontFamily: "'Google Sans',sans-serif", fontWeight: 'var(--body-weight)' }}>
               {project.goal}
             </p>
           </div>
 
           <div style={{ marginBottom: 36 }}>
-            <div style={{ fontSize: 10, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--ink-dim)', marginBottom: 10, fontFamily: "'Manrope',sans-serif" }}>The Approach</div>
-            <p style={{ fontSize: 16, lineHeight: 1.65, color: 'var(--ink)', fontFamily: "'Manrope',sans-serif", fontWeight: 'var(--body-weight)' }}>
+            <div style={{ fontSize: 10, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--ink-dim)', marginBottom: 10, fontFamily: "'Google Sans',sans-serif" }}>The Approach</div>
+            <p style={{ fontSize: 16, lineHeight: 1.65, color: 'var(--ink)', fontFamily: "'Google Sans',sans-serif", fontWeight: 'var(--body-weight)' }}>
               {project.approach}
             </p>
           </div>
@@ -2595,8 +2144,8 @@ function CaseStudyPanel({ project, accent, index = 0, side = 'image-left' }) {
           }}>
             {project.results.map((r, i) =>
               <div key={i}>
-                <div style={{ fontFamily: "'Instrument Serif',serif", fontSize: 28, fontWeight: 900, color: accent, lineHeight: 1 }}>{r.val}</div>
-                <div style={{ fontSize: 10, color: 'var(--ink-dim)', marginTop: 8, letterSpacing: '0.06em', textTransform: 'uppercase', fontFamily: "'Manrope',sans-serif", lineHeight: 1.4 }}>{r.label}</div>
+                <div style={{ fontFamily: "'Google Sans',sans-serif", fontSize: 28, fontWeight: 900, color: accent, lineHeight: 1 }}>{r.val}</div>
+                <div style={{ fontSize: 10, color: 'var(--ink-dim)', marginTop: 8, letterSpacing: '0.06em', textTransform: 'uppercase', fontFamily: "'Google Sans',sans-serif", lineHeight: 1.4 }}>{r.label}</div>
               </div>
             )}
           </div>
@@ -2610,7 +2159,7 @@ function CaseStudyPanel({ project, accent, index = 0, side = 'image-left' }) {
             textTransform: 'uppercase',
             color: accent,
             textDecoration: 'none',
-            fontFamily: "'Manrope',sans-serif",
+            fontFamily: "'Google Sans',sans-serif",
             fontWeight: 600,
             borderBottom: `1px solid ${accent}`,
             paddingBottom: 4
@@ -2641,17 +2190,20 @@ function Nav({ accent }) {
       transition: 'background 0.4s, border-color 0.4s, backdrop-filter 0.4s',
       display: 'flex', justifyContent: 'space-between', alignItems: 'center'
     }}>
-      <div style={{ fontFamily: "'Instrument Serif',serif", fontSize: 18, fontWeight: 700, color: 'var(--ink)', letterSpacing: '-0.01em' }}>Nick Glenny
+      <div style={{ fontFamily: "'Google Sans',sans-serif", fontSize: 18, fontWeight: 700, color: scrolled ? 'var(--ink)' : '#FBF6E8', letterSpacing: '-0.01em', transition: 'color 0.4s' }}>Nick Glenny
 
       </div>
       <div className="site-nav-links" style={{ display: 'flex', gap: 32, alignItems: 'center' }}>
-        {['Work', 'Services', 'About', 'Contact'].map((item) =>
-        <a key={item} href={`#${item.toLowerCase()}`} style={{ fontSize: 12, color: 'var(--ink-dim)', textDecoration: 'none', letterSpacing: '0.08em', textTransform: 'uppercase', fontFamily: "'Manrope',sans-serif", transition: 'color 0.2s' }}
-        onMouseEnter={(e) => e.target.style.color = accent}
-        onMouseLeave={(e) => e.target.style.color = 'var(--ink-dim)'}>
-            {item}
-          </a>
-        )}
+        {['Work', 'Services', 'About', 'Contact'].map((item) => {
+          const restColor = scrolled ? 'var(--ink-dim)' : 'rgba(251,246,232,0.82)';
+          return (
+            <a key={item} href={`#${item.toLowerCase()}`} style={{ fontSize: 12, color: restColor, textDecoration: 'none', letterSpacing: '0.08em', textTransform: 'uppercase', fontFamily: "'Google Sans',sans-serif", transition: 'color 0.2s' }}
+              onMouseEnter={(e) => e.target.style.color = accent}
+              onMouseLeave={(e) => e.target.style.color = restColor}>
+              {item}
+            </a>
+          );
+        })}
       </div>
     </nav>);
 
@@ -2666,7 +2218,6 @@ const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
 } /*EDITMODE-END*/;
 
 function App() {
-  const [modal, setModal] = useState(null);
   const [accent, setAccent] = useState('#C2410C');
   const [smokeEnabled, setSmokeEnabled] = useState(true);
   const [compact, setCompact] = useState(false);
@@ -2675,6 +2226,9 @@ function App() {
   const [openFaq, setOpenFaq] = useState(null);
 
   const [heroRef, heroVisible] = useReveal(0, true);
+  const [workRef, workVisible] = useReveal(0.25);
+  const [servicesRef, servicesVisible] = useReveal(0.25);
+  const [faqRef, faqVisible] = useReveal(0.25);
   const [aboutRef, aboutVisible] = useReveal(0.1);
   const [contactRef, contactVisible] = useReveal(0.1);
 
@@ -2821,32 +2375,36 @@ function App() {
   return (
     <>
       <Nav accent={accent} />
-      {modal && <Modal project={modal} onClose={() => setModal(null)} accentColor={accent} />}
 
       {/* ── HERO (editorial redesign) ── */}
-      <header id="top" className="hero-edit">
+      <header id="top" className="hero-edit has-video">
+        {/* Background video. Swap the src URL with any direct .mp4 from Pexels/Coverr/Mixkit. */}
+        <video className="hero-video" autoPlay loop muted playsInline preload="metadata">
+          <source src="assets/0513-hero.mp4" type="video/mp4" />
+        </video>
+        <div className="hero-scrim" />
         <div className="hero-grain" />
         <div ref={heroRef} className="hero-content" style={{
           transition: 'opacity 1.2s, transform 1.2s',
           opacity: heroVisible ? 1 : 0,
           transform: heroVisible ? 'translateY(0)' : 'translateY(40px)'
         }}>
-          <div className="eyebrow-line">Fitness Marketing — Studio &amp; Boutique</div>
+          <div className="eyebrow-line">Fitness Marketing / Studio &amp; Boutique</div>
           <h1>
-            Fill your studio's classes <em>without dropping your intro price.</em>
+            Two things I'd test on your studio's funnel. <em>Before your next campaign goes live.</em>
           </h1>
           <p className="lede">
-            I run the ads, the SMS follow-up, and the after-hours AI phone agent that turn inquiries into booked classes, so you don't have to.
+            Send me your studio's site. I'll reply with two specific changes I'd make, based on what I've seen work inside studios. No fluff.
           </p>
           <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
-            <a href="#work" className="btn-pill">See the work <span className="arrow">↓</span></a>
-            <a href="#contact" className="btn-pill btn-ghost">Book a call <span className="arrow">→</span></a>
+            <MagneticButton href="#contact" className="btn-pill">Get my 2 ideas <span className="arrow">→</span></MagneticButton>
+            <MagneticButton href="#work" className="btn-pill btn-ghost">See the work <span className="arrow">↓</span></MagneticButton>
           </div>
           <div className="hero-meta">
             <div className="stat"><b>3</b><span>Years inside fitness studios</span></div>
           </div>
         </div>
-        <div style={{
+        <div className="hero-badge-wrap" style={{
           transition: 'opacity 1.4s ease 0.2s, transform 1.4s ease 0.2s',
           opacity: heroVisible ? 1 : 0,
           transform: heroVisible ? 'scale(1)' : 'scale(0.92)'
@@ -2859,12 +2417,13 @@ function App() {
       <Marquee items={MARQUEE_ITEMS} />
 
       {/* ── WORK ── */}
-      <section id="work" style={{ padding: '100px 8vw', background: 'var(--bg)' }}>
-        <div style={{ marginBottom: 64 }}>
-          <div style={{ fontSize: 10, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--ink-dim)', marginBottom: 16, fontFamily: "'Manrope',sans-serif" }}>Selected Work</div>
-          <h2 style={{ fontFamily: "'Instrument Serif',serif", fontSize: 'clamp(28px,4vw,52px)', fontWeight: 700, color: 'var(--ink)', letterSpacing: '-0.02em' }}>Content that drives results.
-</h2>
-          <p style={{ fontSize: 13, color: "var(--ink-dim)", marginTop: 12, fontFamily: "'Manrope',sans-serif", fontStyle: "italic" }}>Spec campaigns — built to demonstrate the system end-to-end.</p>
+      <section id="work" ref={workRef} style={{ padding: '80px 8vw 24px', background: 'var(--bg)' }}>
+        <div>
+          <div style={{ fontSize: 10, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--ink-dim)', marginBottom: 16, fontFamily: "'Google Sans',sans-serif" }}>Selected Work</div>
+          <h2 style={{ fontFamily: 'var(--display)', fontSize: 'clamp(28px,4vw,52px)', fontWeight: 400, color: 'var(--ink)', letterSpacing: '-0.02em' }}>
+            <Words text="Content that drives results." visible={workVisible} />
+          </h2>
+          <p style={{ fontSize: 13, color: "var(--ink-dim)", marginTop: 12, fontFamily: "'Google Sans',sans-serif", fontStyle: "italic" }}>Spec campaigns. I built each one to show the whole system in motion, cold ad through booked member.</p>
         </div>
       </section>
 
@@ -2876,11 +2435,17 @@ function App() {
       <Marquee items={MARQUEE_SECONDARY} italic={false} slow reverse />
 
       {/* ── SERVICES ── */}
-      <section id="services" style={{ padding: '100px 8vw', background: 'var(--bg2)', borderTop: '1px solid var(--hair)' }}>
+      <section id="services" ref={servicesRef} style={{ padding: '100px 8vw', background: 'var(--bg2)', borderTop: '1px solid var(--hair)' }}>
         <div style={{ marginBottom: 72, maxWidth: 760 }}>
-          <div style={{ fontSize: 10, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--ink-dim)', marginBottom: 16, fontFamily: "'Manrope',sans-serif" }}>Services</div>
-          <h2 style={{ fontFamily: "'Instrument Serif',serif", fontSize: 'clamp(28px,4vw,52px)', fontWeight: 700, color: 'var(--ink)', letterSpacing: '-0.02em', lineHeight: 1.1 }}>Three steps from cold scroll<br/><em style={{ color: accent }}>to booked class.</em></h2>
-          <p style={{ fontSize: 15, color: 'var(--ink-soft)', marginTop: 20, fontFamily: "'Manrope',sans-serif", lineHeight: 1.65, fontWeight: 'var(--body-weight)' }}>Same operator runs all three. No handoffs, no agency middle-layer.</p>
+          <div style={{ fontSize: 10, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--ink-dim)', marginBottom: 16, fontFamily: "'Google Sans',sans-serif" }}>Services</div>
+          <h2 style={{ fontFamily: 'var(--display)', fontSize: 'clamp(28px,4vw,52px)', fontWeight: 400, color: 'var(--ink)', letterSpacing: '-0.02em', lineHeight: 1.1 }}>
+            <Words text="Three steps from cold scroll" visible={servicesVisible} />
+            <br/>
+            <em style={{ color: accent }}>
+              <Words text="to booked class." visible={servicesVisible} base={360} />
+            </em>
+          </h2>
+          <p style={{ fontSize: 15, color: 'var(--ink-soft)', marginTop: 20, fontFamily: "'Google Sans',sans-serif", lineHeight: 1.65, fontWeight: 'var(--body-weight)' }}>Same operator runs all three, with no agency middle layer in the way.</p>
         </div>
 
         <div style={{ position: 'relative', maxWidth: 1100 }}>
@@ -2911,25 +2476,29 @@ function App() {
                       background: 'var(--bg2)',
                       border: `1px solid ${accent}55`,
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      fontFamily: "'Instrument Serif',serif",
+                      fontFamily: "'Google Sans',sans-serif",
                       fontSize: 18, fontWeight: 700, color: accent,
-                      letterSpacing: '0.02em'
+                      letterSpacing: '0.02em',
+                      transform: vis ? 'scale(1) rotate(0deg)' : 'scale(0.35) rotate(-15deg)',
+                      transition: 'transform 0.85s cubic-bezier(0.34, 1.56, 0.64, 1)',
+                      transitionDelay: `${i * 90 + 220}ms`,
+                      willChange: 'transform'
                     }}>{s.step}</div>
                   </div>
 
                   {/* Copy column */}
                   <div>
-                    <div style={{ fontSize: 10, letterSpacing: '0.22em', textTransform: 'uppercase', color: accent, marginBottom: 8, fontFamily: "'Manrope',sans-serif", fontWeight: 600 }}>{s.kicker}</div>
-                    <h3 style={{ fontFamily: "'Instrument Serif',serif", fontSize: 28, fontWeight: 700, color: 'var(--ink)', marginBottom: 16, letterSpacing: '-0.01em', lineHeight: 1.15 }}>{s.title}</h3>
-                    <p style={{ fontSize: 15, color: 'var(--ink-soft)', lineHeight: 1.75, fontFamily: "'Manrope',sans-serif", fontWeight: 'var(--body-weight)', maxWidth: 560 }}>{s.body}</p>
+                    <div style={{ fontSize: 10, letterSpacing: '0.22em', textTransform: 'uppercase', color: accent, marginBottom: 8, fontFamily: "'Google Sans',sans-serif", fontWeight: 600 }}>{s.kicker}</div>
+                    <h3 style={{ fontFamily: "'Google Sans',sans-serif", fontSize: 28, fontWeight: 700, color: 'var(--ink)', marginBottom: 16, letterSpacing: '-0.01em', lineHeight: 1.15 }}>{s.title}</h3>
+                    <p style={{ fontSize: 15, color: 'var(--ink-soft)', lineHeight: 1.75, fontFamily: "'Google Sans',sans-serif", fontWeight: 'var(--body-weight)', maxWidth: 560 }}>{s.body}</p>
                   </div>
 
                   {/* Included column */}
                   <div style={{ paddingTop: 4 }}>
-                    <div style={{ fontSize: 9, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--ink-dim)', marginBottom: 14, fontFamily: "'Manrope',sans-serif", fontWeight: 600 }}>Included</div>
+                    <div style={{ fontSize: 9, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--ink-dim)', marginBottom: 14, fontFamily: "'Google Sans',sans-serif", fontWeight: 600 }}>Included</div>
                     <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
                       {s.included.map((item, j) =>
-                        <li key={j} style={{ fontSize: 13, color: 'var(--ink-soft)', lineHeight: 1.6, fontFamily: "'Manrope',sans-serif", fontWeight: 'var(--body-weight)', paddingLeft: 14, position: 'relative', marginBottom: 6 }}>
+                        <li key={j} style={{ fontSize: 13, color: 'var(--ink-soft)', lineHeight: 1.6, fontFamily: "'Google Sans',sans-serif", fontWeight: 'var(--body-weight)', paddingLeft: 14, position: 'relative', marginBottom: 6 }}>
                           <span style={{ position: 'absolute', left: 0, top: 0, color: accent }}>+</span>
                           {item}
                         </li>
@@ -2953,17 +2522,23 @@ function App() {
 
         {/* Closing line that points to the next step (contact) */}
         <div style={{ marginTop: 64, paddingTop: 32, borderTop: '1px solid var(--hair)', maxWidth: 760 }}>
-          <p style={{ fontSize: 14, color: 'var(--ink-dim)', fontFamily: "'Manrope',sans-serif", lineHeight: 1.7, fontStyle: 'italic' }}>
+          <p style={{ fontSize: 14, color: 'var(--ink-dim)', fontFamily: "'Google Sans',sans-serif", lineHeight: 1.7, fontStyle: 'italic' }}>
             Each piece works alone. Together they cover the funnel from the first scroll on Instagram to the booked trial confirmation. <a href="#contact" style={{ color: accent, textDecoration: 'none', borderBottom: `1px solid ${accent}55`, fontStyle: 'normal' }}>See if it fits your studio →</a>
           </p>
         </div>
       </section>
 
       {/* ── FAQ ── */}
-      <section id="faq" style={{ padding: '100px 8vw', background: 'var(--bg2)', borderTop: '1px solid var(--hair)' }}>
+      <section id="faq" ref={faqRef} style={{ padding: '100px 8vw', background: 'var(--bg2)', borderTop: '1px solid var(--hair)' }}>
         <div style={{ marginBottom: 56, maxWidth: 760 }}>
-          <div style={{ fontSize: 10, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--ink-dim)', marginBottom: 16, fontFamily: "'Manrope',sans-serif" }}>FAQ</div>
-          <h2 style={{ fontFamily: "'Instrument Serif',serif", fontSize: 'clamp(28px,4vw,52px)', fontWeight: 700, color: 'var(--ink)', letterSpacing: '-0.02em', lineHeight: 1.1 }}>Before you book<br/><em style={{ color: accent }}>the call.</em></h2>
+          <div style={{ fontSize: 10, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--ink-dim)', marginBottom: 16, fontFamily: "'Google Sans',sans-serif" }}>FAQ</div>
+          <h2 style={{ fontFamily: 'var(--display)', fontSize: 'clamp(28px,4vw,52px)', fontWeight: 400, color: 'var(--ink)', letterSpacing: '-0.02em', lineHeight: 1.1 }}>
+            <Words text="Before you book" visible={faqVisible} />
+            <br/>
+            <em style={{ color: accent }}>
+              <Words text="the call." visible={faqVisible} base={300} />
+            </em>
+          </h2>
         </div>
 
         <div style={{ maxWidth: 820 }}>
@@ -2992,7 +2567,7 @@ function App() {
                     border: 'none',
                     cursor: 'pointer',
                     textAlign: 'left',
-                    fontFamily: "'Manrope',sans-serif",
+                    fontFamily: "'Google Sans',sans-serif",
                     color: 'var(--ink)'
                   }}>
                   <span style={{
@@ -3029,7 +2604,7 @@ function App() {
                     fontSize: 15,
                     color: 'var(--ink-soft)',
                     lineHeight: 1.75,
-                    fontFamily: "'Manrope',sans-serif",
+                    fontFamily: "'Google Sans',sans-serif",
                     fontWeight: 'var(--body-weight)',
                     padding: '0 0 32px 0',
                     maxWidth: 680,
@@ -3050,11 +2625,23 @@ function App() {
           transform: aboutVisible ? 'translateY(0)' : 'translateY(32px)'
         }}>
           <div>
-            <div style={{ fontSize: 10, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--ink-dim)', marginBottom: 20, fontFamily: "'Manrope',sans-serif" }}>About</div>
-            <h2 style={{ fontFamily: "'Instrument Serif',serif", fontSize: 'clamp(24px,3vw,42px)', fontWeight: 700, color: 'var(--ink)', lineHeight: 1.15, marginBottom: 28, letterSpacing: '-0.02em' }}>
-              I sold the memberships. I ran the floor.<br /><em style={{ color: accent }}>Now I run the marketing.</em>
+            <div style={{ fontSize: 10, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--ink-dim)', marginBottom: 20, fontFamily: "'Google Sans',sans-serif" }}>About</div>
+            <h2 style={{ fontFamily: 'var(--display)', fontSize: 'clamp(24px,3vw,42px)', fontWeight: 400, color: 'var(--ink)', lineHeight: 1.15, marginBottom: 28, letterSpacing: '-0.02em' }}>
+              <ScrollFillWords
+                text="I sold the memberships. I ran the floor."
+                dimColor="var(--ink-dim)"
+                fullColor="var(--ink)"
+              />
+              <br />
+              <em>
+                <ScrollFillWords
+                  text="Now I run the marketing."
+                  dimColor="var(--ink-dim)"
+                  fullColor={accent}
+                />
+              </em>
             </h2>
-            <div style={{ fontSize: 16, color: 'var(--ink-soft)', lineHeight: 1.85, fontFamily: "'Manrope',sans-serif", fontWeight: 'var(--body-weight)', maxWidth: 520 }}>
+            <div style={{ fontSize: 16, color: 'var(--ink-soft)', lineHeight: 1.85, fontFamily: "'Google Sans',sans-serif", fontWeight: 'var(--body-weight)', maxWidth: 520 }}>
               <p style={{ marginBottom: 20 }}>
                 I'm from Orange County, California, born and raised. My relationship with fitness started in high school as an athlete and shifted when I joined a gym for the first time. I came in to train and stayed for the way it made me feel and the community inside it. That's the part of fitness that has shaped every decision since. Over the years I worked inside Pilates studios, strength gyms, and boutique fitness spaces, doing every job that kept the doors open: selling memberships, cleaning equipment, running the floor, sitting across from members and listening to what they actually wanted. Six years of training, three years of working inside the studios that train other people.
               </p>
@@ -3062,7 +2649,7 @@ function App() {
                 Marketing was the next thing to click, but it started with psychology. What pulled me in was the question underneath the buying decision: why someone walks into a class on a Tuesday and signs up, what shifts in them between the first email and the third, what makes a person finally do the thing they've been putting off for two years. I studied computer science for a year, then finished an associate's in business administration. Most of what I know about buyer behavior came from watching it happen on the studio floor, not from a textbook. The decisions people make about their bodies are personal. Understanding why they make them is what I find genuinely interesting.
               </p>
               <p>
-                Starting this business was the moment those two threads pulled into one. Fitness changed how I think about my body, my discipline, and my time. The point of the work I do now is to bring more people inside that change, by helping the studios that create it stay open, fill their classes, and reach the members who would join if they only knew they existed. I work with fitness studios first, but the framework applies anywhere a service business is trying to move someone from interested to committed. If I can help a studio fill its classes, that studio changes more lives. That's the part of this that feels worth doing.
+                Starting this business was the moment those two threads pulled into one. Fitness changed how I think about my body and my time. The point of the work I do now is to bring more people inside that change, by helping the studios that create it stay open and full. I work with fitness studios first, but the framework applies anywhere a service business is trying to move someone from interested to committed. If I can help a studio fill its classes, that studio changes more lives. That's the part of this that feels worth doing.
               </p>
             </div>
           </div>
@@ -3086,15 +2673,21 @@ function App() {
           transform: contactVisible ? 'translateY(0)' : 'translateY(32px)'
         }}>
           <div className="eyebrow-line">04 — Contact</div>
-          <h2>Ready to fill<br /><em>your classes?</em></h2>
+          <h2>
+            <Words text="Ready to fill" visible={contactVisible} />
+            <br />
+            <em>
+              <Words text="your classes?" visible={contactVisible} base={280} />
+            </em>
+          </h2>
           <p className="lede">
-            Drop your email. I'll come back inside 24 hours with two specific things I'd test on your studio's funnel. No pitch deck, no "discovery call" runaround.
+            Drop your email. I'll come back this week with two specific things I'd test on your studio's funnel, not a pitch deck.
           </p>
 
           {submitted ?
           <div className="contact-confirm">
             <b>Got it.</b>
-            <p>I'll be in touch within 24 hours.</p>
+            <p>I'll be in touch this week.</p>
           </div> :
           <div className="contact-row">
             <input
@@ -3112,19 +2705,19 @@ function App() {
           <div className="contact-meta">
             <div className="col"><span>Email</span><p>nickglenny@gmail.com</p></div>
             <div className="col"><span>Based</span><p>Available worldwide</p></div>
-            <div className="col"><span>Response</span><p>Within 24 hours</p></div>
+            <div className="col"><span>Response</span><p>Same week</p></div>
           </div>
         </div>
       </section>
 
       {/* Footer */}
       <footer style={{ padding: '32px 8vw', borderTop: '1px solid var(--hair)', background: 'var(--bg)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 24, flexWrap: 'wrap' }}>
-        <div style={{ fontFamily: "'Instrument Serif',serif", fontSize: 15, color: 'var(--ink-dim)' }}>Nick Glenny</div>
-        <div style={{ display: 'flex', gap: 28, alignItems: 'center', fontSize: 12, fontFamily: "'Manrope',sans-serif" }}>
+        <div style={{ fontFamily: "'Google Sans',sans-serif", fontSize: 15, color: 'var(--ink-dim)' }}>Nick Glenny</div>
+        <div style={{ display: 'flex', gap: 28, alignItems: 'center', fontSize: 12, fontFamily: "'Google Sans',sans-serif" }}>
           <a href="#contact" style={{ color: 'var(--ink-soft)', textDecoration: 'none', borderBottom: `1px solid ${accent}55`, paddingBottom: 2 }}>Still on the fence? Book a call →</a>
           <a href="mailto:nickglenny@gmail.com" style={{ color: 'var(--ink-dim)', textDecoration: 'none' }}>nickglenny@gmail.com</a>
         </div>
-        <div style={{ fontSize: 11, color: 'var(--ink-dim)', fontFamily: "'Manrope',sans-serif", letterSpacing: '0.08em' }}>© 2026</div>
+        <div style={{ fontSize: 11, color: 'var(--ink-dim)', fontFamily: "'Google Sans',sans-serif", letterSpacing: '0.08em' }}>© 2026</div>
       </footer>
 
       <style>{`
@@ -3144,6 +2737,7 @@ function App() {
           .case-panel-grid { grid-template-columns: 1fr !important; gap: 48px !important; }
           .case-panel-image { order: 1 !important; width: 100%; min-width: 0; max-width: 100%; }
           .case-panel-image > div { max-width: 100%; }
+          .case-panel-sticky { position: static !important; transform: none !important; }
           .case-panel-copy { order: 2 !important; min-width: 0; }
           .service-row { grid-template-columns: 48px 1fr !important; gap: 24px !important; padding: 28px 0 !important; }
           .service-row > div:last-child { grid-column: 2 / 3; margin-top: 8px; }
