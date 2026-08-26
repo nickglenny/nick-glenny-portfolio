@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SimpleShots Rebrand — Nick Glenny</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;800;900&family=Outfit:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+  :root { --ink:#211C1C; --cream:#EFF3EB; --whip:#FDFFFB; --rose:#C3455E; --butter:#EED972; --sage:#D4DA88; --muted:#9C978F; }
+  html, body { margin:0; height:100%; background:#141111; color:var(--whip); font-family: Inter, "Helvetica Neue", Arial, sans-serif; -webkit-font-smoothing:antialiased; overflow:hidden; }
+  a { color:var(--rose); } a:hover { color:#881729; }
+  .h { font-family: Archivo, "Arial Black", Arial, sans-serif; font-weight:800; letter-spacing:-0.03em; line-height:0.95; margin:0; }
+  .mono { font-family:"JetBrains Mono", Menlo, monospace; font-weight:500; font-size:13px; letter-spacing:0.12em; text-transform:uppercase; }
+  .body { font-size:19px; line-height:1.5; margin:0; text-wrap:pretty; }
+  .body b { font-weight:600; }
+  .eyebrow { font-family: Outfit, "Product Sans", "Google Sans", "Helvetica Neue", Arial, sans-serif; font-weight: 600; font-size: 30px; letter-spacing: 0.01em; line-height: 1.1; }
+  .goal { font-family: Outfit, "Product Sans", "Google Sans", "Helvetica Neue", Arial, sans-serif; font-weight: 700; font-size: 22px; letter-spacing: 0.02em; text-transform: uppercase; }
+  .why { font-size: 20px; line-height: 1.45; }
+  .why b { display: block; font-family: Outfit, "Product Sans", "Google Sans", "Helvetica Neue", Arial, sans-serif; font-weight: 700; font-size: 24px; color: #C3455E; margin-bottom: 6px; }
+  .num { font-family:"JetBrains Mono", Menlo, monospace; font-size:13px; letter-spacing:0.12em; }
+  .stage { position:fixed; inset:0 0 56px 0; display:flex; align-items:center; justify-content:center; }
+  .frame { position:absolute; width:1920px; height:1080px; transform-origin:center center; display:none; box-shadow:0 30px 80px rgba(0,0,0,0.5); }
+  .frame.on { display:block; }
+  .slide { width:1920px; height:1080px; position:relative; overflow:hidden; box-sizing:border-box; color:var(--ink); }
+  .bar { position:fixed; left:0; right:0; bottom:0; height:56px; display:flex; align-items:center; justify-content:center; gap:20px; font-family:"JetBrains Mono", Menlo, monospace; font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); background:#141111; }
+  .bar button { background:transparent; border:1px solid #3a3434; color:var(--whip); font:inherit; letter-spacing:inherit; text-transform:inherit; padding:8px 16px; border-radius:999px; cursor:pointer; min-height:36px; }
+  .bar button:hover { border-color:var(--butter); color:var(--butter); }
+  .bar button:focus-visible { outline:2px solid var(--butter); outline-offset:2px; }
+  @media (max-width: 700px) { .bar-hint { display:none; } .bar { gap:12px; } }
+  .dots { display:flex; gap:8px; }
+  .dots i { width:8px; height:8px; border-radius:50%; background:#3a3434; display:block; }
+  .dots i.on { background:var(--butter); }
+  @media (prefers-reduced-motion:no-preference) { .frame.on { animation: in 420ms cubic-bezier(.22,1,.36,1); } @keyframes in { from { opacity:0; transform: var(--t) translateY(12px);} to { opacity:1; transform: var(--t);} } }
+</style>
+</head>
+<body>
+<div class="stage" id="stage">
+<section class="frame" data-i="0"><div class="slide" style="background: #211C1C; color: #FDFFFB; padding: 64px 80px; display: flex; flex-direction: column; gap: 36px;">
+  <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+    <div style="display: flex; flex-direction: column; gap: 14px;">
+      <div class="eyebrow" style="color: #EED972;">Slide 01 · Before and after</div>
+      <h1 class="h" style="font-size: 96px;">Before <span style="color: #DD4577;">&amp;</span> after</h1>
+    </div>
+    <p class="body" style="max-width: 560px; color: #D9D6CF;">Same product, same founders, a completely different first impression. The old store put the theme first. The new one puts the <b>brand</b> first: its palette, its claims, its photography.</p>
+  </div>
+  <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px; flex-grow: 1; min-height: 0;">
+    <div style="display: flex; flex-direction: column; gap: 16px; min-height: 0;">
+      <div class="mono" style="color: #9C978F;">Before · stock Dawn theme, untouched defaults</div>
+      <div style="flex-grow: 1; border-radius: 8px; overflow: hidden; background: #2B2626; min-height: 0;">
+        <img src="img/shot-old-tall.jpg" style="display: block; width: 100%; height: 100%; object-fit: cover; object-position: top;">
+      </div>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 16px; min-height: 0;">
+      <div class="mono" style="color: #D4DA88;">After · new Shopify theme, home (Hero A + Promise C)</div>
+      <div style="flex-grow: 1; border-radius: 8px; overflow: hidden; background: #2B2626;">
+        <img src="img/shot-home-tall.jpg" style="display: block; width: 100%; height: 100%; object-fit: cover; object-position: top;">
+      </div>
+    </div>
+  </div>
+  <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px;">
+    <div style="display: flex; flex-direction: column; gap: 6px;"><div class="mono" style="color: #EED972;">Claims up front</div><p class="body" style="color: #D9D6CF; font-size: 17px;">No added sugar, no artificial anything, 100% real fruit juice sit in the hero as stickers, not buried in a product page.</p></div>
+    <div style="display: flex; flex-direction: column; gap: 6px;"><div class="mono" style="color: #DD4577;">Brand color, not theme color</div><p class="body" style="color: #D9D6CF; font-size: 17px;">Ink, Cream, Rose, Butter and Olive from the brand book replace generic theme defaults on every section.</p></div>
+    <div style="display: flex; flex-direction: column; gap: 6px;"><div class="mono" style="color: #D4DA88;">Photography leads</div><p class="body" style="color: #D9D6CF; font-size: 17px;">Full-bleed lifestyle shots and big product photos do the selling. The layout gets out of their way.</p></div>
+  </div>
+</div></section>
+<section class="frame" data-i="1"><div class="slide" style="background: #EFF3EB; display: grid; grid-template-columns: 820px minmax(0, 1fr);">
+  <div style="position: relative; overflow: hidden;">
+    <img src="img/photo-0402.jpg" style="display: block; width: 100%; height: 100%; object-fit: cover;">
+    <div style="position: absolute; left: 48px; bottom: 48px; background: #EED972; color: #211C1C; padding: 14px 22px; border-radius: 999px; font-family: Archivo, Arial, sans-serif; font-weight: 800; font-size: 22px; box-shadow: 0 10px 30px rgba(0,0,0,0.25);">Have a juice shot… but make it spiked!</div>
+  </div>
+  <div style="padding: 72px 88px; display: flex; flex-direction: column; gap: 40px; justify-content: center;">
+    <div style="display: flex; flex-direction: column; gap: 14px;">
+      <div class="eyebrow" style="color: #C3455E;">Slide 02 · The brief and brand goals</div>
+      <h1 class="h" style="font-size: 88px;">Real juice.<br>Real spirits.<br>Nothing fake.</h1>
+    </div>
+    <p class="body" style="max-width: 760px; font-size: 21px;">SimpleShots is a spiked juice shot: organic fruit juice plus a premium spirit, founded by two best friends in Southern California. The brand book calls for something <b>flavor-first, transparent and playful</b>, made for people who actually drink today. The site had to carry that in the first scroll.</p>
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px;">
+      <div style="background: #211C1C; color: #FDFFFB; border-radius: 12px; padding: 26px; display: flex; flex-direction: column; gap: 10px;">
+        <div class="goal" style="color: #EED972;">Goal 01</div>
+        <div class="h" style="font-size: 32px; letter-spacing: -0.02em;">Lead with the claims</div>
+        <p class="body" style="font-size: 18px; color: #D9D6CF;">The nutrition label is the reason the brand exists. Every page states it in three lines.</p>
+      </div>
+      <div style="background: #C3455E; color: #FDFFFB; border-radius: 12px; padding: 26px; display: flex; flex-direction: column; gap: 10px;">
+        <div class="goal" style="color: #FFD8E5;">Goal 02</div>
+        <div class="h" style="font-size: 32px; letter-spacing: -0.02em;">Feel like the brand book</div>
+        <p class="body" style="font-size: 18px; color: #FFD8E5;">Palette, type, hand icons and packaging cues carried from print to screen without a generic theme in between.</p>
+      </div>
+      <div style="background: #D4DA88; color: #211C1C; border-radius: 12px; padding: 26px; display: flex; flex-direction: column; gap: 10px;">
+        <div class="goal" style="color: #211C1C;">Goal 03</div>
+        <div class="h" style="font-size: 32px; letter-spacing: -0.02em;">Sell where people buy</div>
+        <p class="body" style="font-size: 18px;">One primary action, Shop on Instacart, repeated down the page, with Find near you as the backup.</p>
+      </div>
+    </div>
+  </div>
+</div></section>
+<section class="frame" data-i="2"><div class="slide" style="background: #FDFFFB; padding: 64px 80px; display: flex; flex-direction: column; gap: 40px;">
+  <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+    <div style="display: flex; flex-direction: column; gap: 14px;">
+      <div class="eyebrow" style="color: #C3455E;">Slide 03 · Color and type</div>
+      <h1 class="h" style="font-size: 88px;">Fruit-first palette,<br>bold grotesk type.</h1>
+    </div>
+    <p class="body" style="max-width: 560px;">The colors come straight from the fruit in the bottle. Each site section gets one dominant block so the page reads as a stack of confident color, never a gradient wash.</p>
+  </div>
+  <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 56px; flex-grow: 1; min-height: 0;">
+    <div style="display: flex; flex-direction: column; gap: 20px;">
+      <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px;">
+        <div style="background: #211C1C; color: #FDFFFB; border-radius: 10px; height: 150px; padding: 16px; display: flex; flex-direction: column; justify-content: flex-end; gap: 4px;"><div style="font-family: Archivo, Arial, sans-serif; font-weight: 800; font-size: 18px;">Ink</div><div class="num">#211C1C</div></div>
+        <div style="background: #EFF3EB; color: #211C1C; border-radius: 10px; height: 150px; padding: 16px; display: flex; flex-direction: column; justify-content: flex-end; gap: 4px;"><div style="font-family: Archivo, Arial, sans-serif; font-weight: 800; font-size: 18px;">Cream</div><div class="num">#EFF3EB</div></div>
+        <div style="background: #C3455E; color: #FDFFFB; border-radius: 10px; height: 150px; padding: 16px; display: flex; flex-direction: column; justify-content: flex-end; gap: 4px;"><div style="font-family: Archivo, Arial, sans-serif; font-weight: 800; font-size: 18px;">Rose</div><div class="num">#C3455E</div></div>
+        <div style="background: #881729; color: #FDFFFB; border-radius: 10px; height: 150px; padding: 16px; display: flex; flex-direction: column; justify-content: flex-end; gap: 4px;"><div style="font-family: Archivo, Arial, sans-serif; font-weight: 800; font-size: 18px;">Berry</div><div class="num">#881729</div></div>
+        <div style="background: #EED972; color: #211C1C; border-radius: 10px; height: 150px; padding: 16px; display: flex; flex-direction: column; justify-content: flex-end; gap: 4px;"><div style="font-family: Archivo, Arial, sans-serif; font-weight: 800; font-size: 18px;">Butter</div><div class="num">#EED972</div></div>
+        <div style="background: #D4DA88; color: #211C1C; border-radius: 10px; height: 150px; padding: 16px; display: flex; flex-direction: column; justify-content: flex-end; gap: 4px;"><div style="font-family: Archivo, Arial, sans-serif; font-weight: 800; font-size: 18px;">Sage</div><div class="num">#D4DA88</div></div>
+        <div style="background: #C7BC56; color: #211C1C; border-radius: 10px; height: 150px; padding: 16px; display: flex; flex-direction: column; justify-content: flex-end; gap: 4px;"><div style="font-family: Archivo, Arial, sans-serif; font-weight: 800; font-size: 18px;">Olive</div><div class="num">#C7BC56</div></div>
+        <div style="background: #DD4577; color: #FDFFFB; border-radius: 10px; height: 150px; padding: 16px; display: flex; flex-direction: column; justify-content: flex-end; gap: 4px;"><div style="font-family: Archivo, Arial, sans-serif; font-weight: 800; font-size: 18px;">Pink</div><div class="num">#DD4577</div></div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px;">
+        <div style="background: #FFD8E5; color: #881729; border-radius: 10px; height: 70px; padding: 14px 16px; display: flex; align-items: center; justify-content: space-between;"><div style="font-family: Archivo, Arial, sans-serif; font-weight: 800; font-size: 16px;">Blush</div><div class="num">#FFD8E5</div></div>
+        <div style="background: #FFF4BC; color: #211C1C; border-radius: 10px; height: 70px; padding: 14px 16px; display: flex; align-items: center; justify-content: space-between;"><div style="font-family: Archivo, Arial, sans-serif; font-weight: 800; font-size: 16px;">Light Butter</div><div class="num">#FFF4BC</div></div>
+        <div style="background: #FDFFFB; color: #211C1C; border: 1px solid #DDE0D8; border-radius: 10px; height: 70px; padding: 14px 16px; display: flex; align-items: center; justify-content: space-between;"><div style="font-family: Archivo, Arial, sans-serif; font-weight: 800; font-size: 16px;">Whip</div><div class="num">#FDFFFB</div></div>
+      </div>
+      <p class="body why"><b>Why it works</b> Rose and Butter are the two flavors on shelf (Cranberry Crisp, Pineapple Gingerita), so each product card wears its own color and the Instacart button inverts to match. Ink grounds the darker sections so the fruit tones stay bright instead of pastel.</p>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 22px; justify-content: space-between;">
+      <div style="background: #211C1C; color: #FDFFFB; border-radius: 14px; padding: 36px 40px; display: flex; flex-direction: column; gap: 18px;">
+        <div class="mono" style="color: #EED972;">Display · Archivo 800</div>
+        <div class="h" style="font-size: 64px;">No added sugar.<br><span style="color: #DD4577;">No artificial</span> anything.</div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px;">
+        <div style="background: #EFF3EB; border-radius: 14px; padding: 28px 30px; display: flex; flex-direction: column; gap: 12px;">
+          <div class="mono" style="color: #C3455E;">Body · Inter 400 / 600</div>
+          <p class="body" style="font-size: 18px;">Ready to pour, easy to love. Enjoy straight over ice or top with sparkling water.</p>
+        </div>
+        <div style="background: #EFF3EB; border-radius: 14px; padding: 28px 30px; display: flex; flex-direction: column; gap: 12px;">
+          <div class="mono" style="color: #C3455E;">Labels · JetBrains Mono</div>
+          <div class="mono" style="font-size: 15px; line-height: 1.8;">18% ABV · Ready to pour<br>Founded in SoCal<br>Shop now on Instacart</div>
+        </div>
+      </div>
+      <p class="body why"><b>Why it works</b> the brand book specifies Fig Grotesk and Roc Grotesk. Neither is web-licensed, so the site maps them to Archivo (same heavy grotesk attitude) and Inter (same clean readability), with a mono for the ingredient-label voice the packaging already uses. Tight tracking and 0.95 line-height keep headlines feeling like stickers, not paragraphs.</p>
+    </div>
+  </div>
+</div></section>
+<section class="frame" data-i="3"><div class="slide" style="background: #C3455E; color: #FDFFFB; padding: 64px 80px; display: grid; grid-template-columns: 720px minmax(0, 1fr); grid-template-rows: minmax(0, 1fr); gap: 72px;">
+  <div style="display: flex; flex-direction: column; gap: 36px; justify-content: space-between;">
+    <div style="display: flex; flex-direction: column; gap: 14px;">
+      <div class="eyebrow" style="color: #FFD8E5;">Slide 04 · Logo, icons and voice</div>
+      <h1 class="h" style="font-size: 84px;">The hand does<br>the talking.</h1>
+    </div>
+    <p class="body" style="font-size: 20px; color: #FFD8E5;">The brand book's logo system is a wordmark plus a hand-drawn "hand holding a shot" icon, with cheers, lemon and lime variants. On the site they replace every generic UI icon: the claims stickers, the age gate, the promise list. Nothing off-the-shelf sits next to the brand.</p>
+    <div style="display: flex; flex-direction: column; gap: 18px;">
+      <div style="background: #FDFFFB; border-radius: 14px; padding: 30px 34px; display: flex; flex-direction: column; gap: 14px; color: #211C1C;">
+        <div class="mono" style="color: #C3455E;">Wordmark and icon, recolored per section</div>
+        <div style="display: flex; align-items: center; gap: 36px;">
+          <img src="img/ss-logo-word-ink.svg" style="height: 44px; width: auto;">
+          <img src="img/ss-mark-ink.svg" style="height: 72px; width: auto;">
+          <img src="img/ss-mark-rose.svg" style="height: 72px; width: auto;">
+        </div>
+      </div>
+      <div style="background: #881729; border-radius: 14px; padding: 30px 34px; display: flex; flex-direction: column; gap: 14px;">
+        <div class="mono" style="color: #FFD8E5;">24 hand icons · 4 shapes × 6 brand colors</div>
+        <div style="display: flex; align-items: center; gap: 28px; background: #FDFFFB; border-radius: 10px; padding: 18px 24px;">
+          <img src="img/ss-icon-bottle-ink.svg" style="height: 64px; width: auto;">
+          <img src="img/ss-icon-cheers-ink.svg" style="height: 64px; width: auto;">
+          <img src="img/ss-icon-lemon-ink.svg" style="height: 64px; width: auto;">
+          <img src="img/ss-icon-lime-ink.svg" style="height: 64px; width: auto;">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="display: flex; flex-direction: column; gap: 28px; justify-content: space-between; min-height: 0;">
+    <div style="border-radius: 12px; overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,0.3); flex-grow: 1; min-height: 0; background: #211C1C;">
+      <img src="img/shot-heroB-tall.jpg" style="display: block; width: 100%; height: 100%; object-fit: cover; object-position: top;">
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px;">
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <div style="display: inline-flex; align-self: flex-start; background: #EED972; color: #211C1C; border-radius: 8px; padding: 10px 16px; font-family: Archivo, Arial, sans-serif; font-weight: 800; font-size: 17px; text-transform: uppercase; box-shadow: 4px 4px 0 #211C1C;">No added sugar</div>
+        <p class="body" style="font-size: 16px; color: #FFD8E5;">Claims are styled as stickers: offset shadow, tilted slightly, one brand color each. They read as packaging, which is where customers first meet the claims.</p>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <div style="display: inline-flex; align-self: flex-start; background: #211C1C; color: #FDFFFB; border-radius: 999px; padding: 10px 18px; font-family: Archivo, Arial, sans-serif; font-weight: 800; font-size: 17px;">Have a juice shot… but make it spiked!</div>
+        <p class="body" style="font-size: 16px; color: #FFD8E5;">One tagline, everywhere: hero, footer, meta description. Playful, claim-led, and it explains the product in eight words.</p>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <div class="mono" style="color: #FDFFFB; font-size: 15px;">Organic juice + premium spirits</div>
+        <p class="body" style="font-size: 16px; color: #FFD8E5;">Mono uppercase labels carry the factual voice (ABV, calories, ingredients) so the display type can stay loud without the page feeling like an ad.</p>
+      </div>
+    </div>
+  </div>
+</div></section>
+<section class="frame" data-i="4"><div class="slide" style="background: #EED972; color: #211C1C; padding: 64px 80px; display: flex; flex-direction: column; gap: 36px;">
+  <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+    <div style="display: flex; flex-direction: column; gap: 14px;">
+      <div class="eyebrow" style="color: #881729;">Slide 05 · Photography and layout</div>
+      <h1 class="h" style="font-size: 80px;">Big photos. Blocks of color.<br>Not much else.</h1>
+    </div>
+    <p class="body" style="max-width: 560px;">137 shots from the brand session: pool days, flat-lays, the founders, the bottle in hand. The layout is built to show them large and let each section change color underneath.</p>
+  </div>
+  <div style="display: grid; grid-template-columns: 300px 380px 380px minmax(0, 1fr); grid-template-rows: minmax(0, 1fr); gap: 24px; flex-grow: 1; min-height: 0;">
+    <div style="border-radius: 12px; overflow: hidden; min-height: 0; box-shadow: 0 20px 50px rgba(33,28,28,0.25);"><img src="img/shot-mobile.jpg" style="display: block; width: 100%; height: 100%; object-fit: cover; object-position: top;"></div>
+    <div style="display: grid; grid-template-rows: repeat(2, minmax(0, 1fr)); gap: 24px; min-height: 0;">
+      <div style="border-radius: 12px; overflow: hidden; min-height: 0;"><img src="img/photo-0662.jpg" style="display: block; width: 100%; height: 100%; object-fit: cover;"></div>
+      <div style="border-radius: 12px; overflow: hidden; min-height: 0;"><img src="img/photo-0716.jpg" style="display: block; width: 100%; height: 100%; object-fit: cover;"></div>
+    </div>
+    <div style="display: grid; grid-template-rows: repeat(2, minmax(0, 1fr)); gap: 24px; min-height: 0;">
+      <div style="border-radius: 12px; overflow: hidden; min-height: 0;"><img src="img/photo-0870.jpg" style="display: block; width: 100%; height: 100%; object-fit: cover;"></div>
+      <div style="border-radius: 12px; overflow: hidden; min-height: 0;"><img src="img/photo-0089.jpg" style="display: block; width: 100%; height: 100%; object-fit: cover;"></div>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 20px; justify-content: space-between; min-height: 0;">
+      <div style="border-radius: 12px; overflow: hidden; flex-shrink: 1; min-height: 0; box-shadow: 0 20px 50px rgba(33,28,28,0.25); background: #211C1C;"><img src="img/shot-products.jpg" style="display: block; width: 100%; height: 100%; object-fit: cover; object-position: top;"></div>
+      <div style="display: flex; flex-direction: column; gap: 14px;">
+        <p class="body" style="font-size: 18px;"><b>Product cards wear their flavor.</b> Cranberry Crisp on Berry, Pineapple Gingerita on Olive, each with a 400px photo gallery. The Instacart button fills with the card's accent so the primary action never gets lost.</p>
+        <p class="body" style="font-size: 18px;"><b>Split sections alternate photo and color.</b> Promise, lifestyle and founders blocks each pair one big image with one block of Ink, Rose or Cream, so scrolling feels like flipping through the brand book.</p>
+        <p class="body" style="font-size: 18px;"><b>Mobile keeps the stickers.</b> Claims stack under the headline, product cards go full-width, photos stay tall. No decorative rules or eyebrow dashes anywhere; the photos are the decoration.</p>
+      </div>
+    </div>
+  </div>
+</div></section>
+<section class="frame" data-i="5"><div class="slide" style="background: #211C1C; color: #FDFFFB; padding: 64px 80px; display: flex; flex-direction: column; gap: 32px;">
+  <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+    <div style="display: flex; flex-direction: column; gap: 14px;">
+      <div class="eyebrow" style="color: #EED972;">Slide 06 · Alternatives and the system</div>
+      <h1 class="h" style="font-size: 84px;">We never hand over<br>one option.</h1>
+    </div>
+    <p class="body" style="max-width: 600px; color: #D9D6CF;">Every decision shipped with alternatives the client can switch on in the Shopify editor: three heroes, three promise sections, five style packs. They pick what suits them, and nothing they did not pick is thrown away.</p>
+  </div>
+  <div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 20px;">
+    <div style="display: flex; flex-direction: column; gap: 10px;"><div style="border-radius: 8px; overflow: hidden; aspect-ratio: 16 / 10;"><img src="img/shot-home.jpg" style="display: block; width: 100%; height: 100%; object-fit: cover; object-position: top;"></div><div class="mono" style="color: #EED972;">Hero A · Stickers (chosen)</div><p class="body" style="font-size: 15px; color: #9C978F;">Full-bleed photo, claims as stickers.</p></div>
+    <div style="display: flex; flex-direction: column; gap: 10px;"><div style="border-radius: 8px; overflow: hidden; aspect-ratio: 16 / 10;"><img src="img/shot-heroB.jpg" style="display: block; width: 100%; height: 100%; object-fit: cover; object-position: top;"></div><div class="mono" style="color: #D9D6CF;">Hero B · Claims headline</div><p class="body" style="font-size: 15px; color: #9C978F;">Claims become the headline, spinning badge.</p></div>
+    <div style="display: flex; flex-direction: column; gap: 10px;"><div style="border-radius: 8px; overflow: hidden; aspect-ratio: 16 / 10;"><img src="img/shot-heroC.jpg" style="display: block; width: 100%; height: 100%; object-fit: cover; object-position: top;"></div><div class="mono" style="color: #D9D6CF;">Hero C · Berry block</div><p class="body" style="font-size: 15px; color: #9C978F;">Berry field, claim tiles, two huge photos.</p></div>
+    <div style="display: flex; flex-direction: column; gap: 10px;"><div style="border-radius: 8px; overflow: hidden; aspect-ratio: 16 / 10;"><img src="img/shot-pop.jpg" style="display: block; width: 100%; height: 100%; object-fit: cover; object-position: top;"></div><div class="mono" style="color: #D9D6CF;">Style pack · Pop</div><p class="body" style="font-size: 15px; color: #9C978F;">Louder color, wide uppercase display.</p></div>
+    <div style="display: flex; flex-direction: column; gap: 10px;"><div style="border-radius: 8px; overflow: hidden; aspect-ratio: 16 / 10;"><img src="img/shot-editorial.jpg" style="display: block; width: 100%; height: 100%; object-fit: cover; object-position: top;"></div><div class="mono" style="color: #D9D6CF;">Style pack · Editorial</div><p class="body" style="font-size: 15px; color: #9C978F;">Serif italic headline, quieter chrome.</p></div>
+  </div>
+  <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px;">
+    <div style="background: #2B2626; border-radius: 12px; padding: 24px 26px; display: flex; flex-direction: column; gap: 8px;"><div class="mono" style="color: #EED972;">Motion</div><p class="body" style="font-size: 15px; color: #D9D6CF;">Word-by-word headline reveals (55ms stagger), scroll reveals on blocks and photos, subtle magnetic buttons. 700ms ease-out curve. Everything off under reduced-motion.</p></div>
+    <div style="background: #2B2626; border-radius: 12px; padding: 24px 26px; display: flex; flex-direction: column; gap: 8px;"><div class="mono" style="color: #DD4577;">Build</div><p class="body" style="font-size: 15px; color: #D9D6CF;">Shopify Dawn 16 with 20+ custom sections, all editable in the theme customizer. A schema lint catches the Shopify limits that silently break sections before every upload.</p></div>
+    <div style="background: #2B2626; border-radius: 12px; padding: 24px 26px; display: flex; flex-direction: column; gap: 8px;"><div class="mono" style="color: #D4DA88;">Style packs</div><p class="body" style="font-size: 15px; color: #D9D6CF;">Brand, Editorial, Pop, Night and Coastal: one theme setting swaps fonts and tokens across the whole store, so the client can test a direction without a rebuild.</p></div>
+    <div style="background: #EED972; color: #211C1C; border-radius: 12px; padding: 24px 26px; display: flex; flex-direction: column; gap: 8px;"><div class="mono">Next</div><p class="body" style="font-size: 15px;">Lock copy and claims wording with a legal check, shoot fruit flat-lays for the brand hero, publish to simpleshots.com. [ADD LAUNCH DATE]</p></div>
+  </div>
+</div></section>
+</div>
+<div class="bar">
+  <button id="prev" aria-label="Previous slide">Prev</button>
+  <div class="dots" id="dots"></div>
+  <span id="count">1 / 6</span>
+  <button id="next" aria-label="Next slide">Next</button>
+  <span class="bar-hint">Arrow keys work</span>
+</div>
+<script>
+(function(){
+  var frames=[].slice.call(document.querySelectorAll('.frame')), i=0, n=frames.length;
+  var dots=document.getElementById('dots'); frames.forEach(function(){ dots.appendChild(document.createElement('i')); });
+  function fit(){ var st=document.getElementById('stage'); var s=Math.min(st.clientWidth/1920, st.clientHeight/1080)*0.96; frames.forEach(function(f){ f.style.setProperty('--t','scale('+s+')'); f.style.transform='scale('+s+')'; }); }
+  function show(k){ i=(k+n)%n; frames.forEach(function(f,j){ f.classList.toggle('on',j===i); }); [].forEach.call(dots.children,function(d,j){ d.classList.toggle('on',j===i); }); document.getElementById('count').textContent=(i+1)+' / '+n; }
+  document.getElementById('prev').onclick=function(){show(i-1)}; document.getElementById('next').onclick=function(){show(i+1)};
+  document.addEventListener('keydown',function(e){ if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){show(i+1);e.preventDefault();} if(e.key==='ArrowLeft'||e.key==='PageUp'){show(i-1);e.preventDefault();} });
+  window.addEventListener('resize',fit); fit(); show(0);
+})();
+</script>
+</body>
+</html>

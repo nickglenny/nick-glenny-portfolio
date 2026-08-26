@@ -2,7 +2,7 @@
 <html lang="en"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nick Glenny — Marketing for fitness studio owners</title>
+<title>Nick Glenny — Content + marketing for fitness and lifestyle brands</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -992,6 +992,65 @@
   </div>
 </div>
 
+<style id="work-grid-css">
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  .skills { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin: 40px 0 8px; }
+  .skill { display: grid; grid-template-columns: 1fr auto; gap: 4px 14px; align-items: start; padding: 22px 22px 20px; border: 1px solid var(--hair-strong); border-radius: 14px; background: var(--bg2); color: var(--ink); text-decoration: none; transition: background .3s, border-color .3s, transform .5s cubic-bezier(.22,1,.36,1); min-height: 44px; }
+  .skill:hover { background: var(--ink); color: var(--bg); border-color: var(--ink); transform: translateY(-3px); }
+  .skill:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .skill-label { font-family: var(--display); font-size: clamp(20px, 1.7vw, 26px); letter-spacing: -0.01em; line-height: 1.1; }
+  .skill-sub { grid-column: 1; font-family: 'Google Sans', system-ui, sans-serif; font-size: 12px; color: var(--ink-dim); line-height: 1.4; }
+  .skill:hover .skill-sub { color: var(--ink-faint); }
+  .skill-arrow { grid-column: 2; grid-row: 1 / span 2; font-size: 18px; color: var(--accent); transition: transform .4s; }
+  .skill:hover .skill-arrow { transform: translateY(4px); }
+  .phones { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(16px, 2.5vw, 40px); margin: 0 auto 64px; max-width: 1080px; }
+  .phone-wrap { display: flex; flex-direction: column; }
+  .phone { display: block; width: 100%; padding: 0; border: 0; background: transparent; cursor: pointer; text-align: left; }
+  .phone:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 40px; }
+  .phone-screen { position: relative; aspect-ratio: 9 / 19.5; border-radius: clamp(22px, 3.2vw, 40px); overflow: hidden; background: #0c0b0a; border: 9px solid #15120f; box-shadow: 0 0 0 1.5px #3a332b, 0 24px 60px rgba(26,22,18,0.35), inset 0 0 0 1px rgba(255,255,255,0.05); transition: transform .6s cubic-bezier(.22,1,.36,1); }
+  .phone:hover .phone-screen { transform: translateY(-4px); }
+  .phone-screen video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .phone-notch { position: absolute; top: 8px; left: 50%; width: 32%; height: 18px; margin-left: -16%; background: #0c0b0a; border-radius: 999px; }
+  .phone-sound { position: absolute; right: 10px; bottom: 10px; width: 32px; height: 32px; border-radius: 50%; background: rgba(12,11,10,0.7); color: #fff; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(6px); }
+  .phone-sound.is-on { background: var(--accent); }
+  .laptops { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(20px, 3vw, 48px); }
+  .laptop { display: flex; flex-direction: column; align-items: center; }
+  .laptop-screen { width: 88%; aspect-ratio: 16 / 10; border-radius: 14px 14px 4px 4px; overflow: hidden; background: #0c0b0a; border: 10px solid #15120f; border-bottom-width: 14px; box-shadow: 0 0 0 1.5px #3a332b, 0 24px 60px rgba(26,22,18,0.3); }
+  .laptop-screen img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; }
+  .laptop-base { width: 100%; height: 14px; background: linear-gradient(#d9d3c4, #b9b2a2); border-radius: 0 0 14px 14px; box-shadow: 0 14px 30px rgba(26,22,18,0.25); position: relative; }
+  .laptop-base::after { content: ''; position: absolute; left: 50%; top: 0; width: 14%; height: 5px; margin-left: -7%; background: #a39c8c; border-radius: 0 0 6px 6px; }
+  .laptop-cap { display: flex; gap: 10px; align-items: baseline; padding-top: 16px; font-family: 'Google Sans', system-ui, sans-serif; }
+  .wg-photos, .wg-designs { column-count: 4; }
+  .wg-filters { display: flex; gap: 8px; flex-wrap: wrap; margin: 0 0 28px; }
+  .wg-filter { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-dim); background: transparent; border: 1px solid var(--hair-strong); border-radius: 999px; padding: 10px 16px; min-height: 40px; cursor: pointer; transition: color .25s, border-color .25s, background .25s; }
+  .wg-filter:hover { color: var(--ink); border-color: var(--ink); }
+  .wg-filter.is-on { color: var(--bg); background: var(--ink); border-color: var(--ink); }
+  .wg-filter:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .wg { column-count: 4; column-gap: 18px; }
+  .wt { display: block; break-inside: avoid; margin: 0 0 18px; color: inherit; text-decoration: none; }
+  .wt-frame { position: relative; overflow: hidden; border-radius: 6px; background: var(--bg3); }
+  .wt-media { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .7s cubic-bezier(.22,1,.36,1); }
+  .wt:hover .wt-media { transform: scale(1.025); }
+  .wt-video video[controls] { object-fit: contain; background: #000; }
+  .wt-play { position: absolute; left: 50%; top: 50%; width: 56px; height: 56px; margin: -28px 0 0 -28px; border-radius: 50%; border: 0; background: rgba(239,234,216,0.92); color: var(--ink); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: transform .3s, background .3s; }
+  .wt-play svg { margin-left: 3px; }
+  .wt-play:hover { transform: scale(1.06); background: var(--accent); color: #fff; }
+  .wt-play:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .wt-case-tag { position: absolute; left: 12px; bottom: 12px; font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; background: var(--ink); color: var(--bg); padding: 8px 12px; border-radius: 999px; }
+  .wt-case-tag span { display: inline-block; transition: transform .3s; }
+  .wt:hover .wt-case-tag span { transform: translateX(3px); }
+  .wt-cap { display: grid; grid-template-columns: 1fr auto; gap: 2px 12px; padding: 10px 2px 0; font-family: 'Google Sans', system-ui, sans-serif; }
+  .wt-client { font-size: 12px; font-weight: 600; color: var(--ink); }
+  .wt-title { grid-column: 1; font-size: 12px; color: var(--ink-dim); }
+  .wt-kind { grid-column: 2; grid-row: 1 / span 2; align-self: start; font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); padding-top: 2px; }
+  .deck-wrap { position: relative; width: 100%; aspect-ratio: 16 / 9.5; border-radius: 8px; overflow: hidden; background: #141111; box-shadow: 0 30px 80px rgba(26,22,18,0.25); }
+  .deck-frame { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; }
+  @media (max-width: 1100px) { .wg { column-count: 3; } .skills { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 760px) { .wg { column-count: 2; column-gap: 12px; } .wt { margin-bottom: 12px; } .deck-wrap { aspect-ratio: 16 / 11; } .phones { grid-template-columns: repeat(2, minmax(0, 1fr)); } .laptops { grid-template-columns: 1fr; } }
+  @media (max-width: 460px) { .skills { grid-template-columns: 1fr; } .skill { padding: 16px 18px; } }
+  @media (prefers-reduced-motion: reduce) { .wt-media, .wt-play, .wt-case-tag span { transition: none; } .wt:hover .wt-media { transform: none; } }
+</style>
 <script type="text/babel">
 
 
@@ -1423,8 +1482,8 @@ function MagneticButton({ href, className, children, strength = 0.28, radius = 1
 }
 
 // ─── Marquee + Rotating badge (editorial redesign) ──────────────────────────
-const MARQUEE_ITEMS = ['Pilates', 'HIIT', 'Boutique Studios', 'Strength', 'Yoga', 'Cycling', 'Bootcamps', 'Recovery', 'Functional', 'Reformer'];
-const MARQUEE_SECONDARY = ['Meta Ads', 'AI Phone Agents', 'Email Nurture', 'SMS Flows', 'Creative Strategy', 'Lead Gen', 'Retargeting'];
+const MARQUEE_ITEMS = ['Pickleball Clubs', 'Pilates', 'Boutique Studios', 'Strength', 'Beverage', 'Grand Openings', 'Rec Clubs', 'Yoga', 'Events', 'Lifestyle'];
+const MARQUEE_SECONDARY = ['Photo + Video', 'Social Content', 'Meta Ads', 'Brand + Web', 'Email Nurture', 'SMS Flows', 'Event Coverage', 'Creative Strategy'];
 
 function Marquee({ items, italic = true, slow = false, reverse = false }) {
   const doubled = [...items, ...items, ...items, ...items];
@@ -2217,6 +2276,187 @@ const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
   "accent": "burntorange"
 } /*EDITMODE-END*/;
 
+
+/* ── Real client work: media-first grid ── */
+const WORK = [
+  { kind: 'photo', client: 'The Picklr RSM', title: 'Grand opening, court one', src: 'assets/work/picklr-go-dive.jpg', ratio: '2 / 3' },
+  { kind: 'video', client: 'The Picklr RSM', title: "Mic'd up with Coach Dylan", src: 'assets/work/picklr-coach-dylan.mp4', poster: 'assets/work/picklr-coach-dylan-poster.jpg', ratio: '9 / 16' },
+  { kind: 'design', client: 'The Picklr RSM', title: 'Courtside Bash post', src: 'assets/work/picklr-courtside-bash.jpg', ratio: '4 / 5' },
+  { kind: 'photo', client: 'SimpleShots', title: 'Brand shoot, flat-lay', src: 'assets/work/simpleshots-0402.jpg', ratio: '2 / 3' },
+  { kind: 'design', client: 'The Picklr FV', title: 'Grand opening carousel', src: 'assets/work/picklr-fv-go-cover.jpg', ratio: '4 / 5' },
+  { kind: 'photo', client: 'The Picklr RSM', title: 'Exhibition match', src: 'assets/work/picklr-exhibition-wide.jpg', ratio: '3 / 2' },
+  { kind: 'video', client: 'The Picklr FV', title: 'How players describe Picklr', src: 'assets/work/picklr-how-players-describe.mp4', poster: 'assets/work/picklr-how-players-describe-poster.jpg', ratio: '9 / 16' },
+  { kind: 'photo', client: 'The Picklr RSM', title: 'Kids night', src: 'assets/work/picklr-kids-rally.jpg', ratio: '4 / 5' },
+  { kind: 'design', client: 'The Picklr FV', title: 'Connor Garnett clinic', src: 'assets/work/picklr-cg-stats.jpg', ratio: '4 / 5' },
+  { kind: 'photo', client: 'SimpleShots', title: 'Brand shoot, poolside', src: 'assets/work/simpleshots-0870.jpg', ratio: '2 / 3' },
+  { kind: 'design', client: 'The Picklr FV', title: 'Five reasons to come inside', src: 'assets/work/picklr-fv-indoors-5.jpg', ratio: '1 / 1' },
+  { kind: 'video', client: 'The Picklr FV', title: 'What members would tell you', src: 'assets/work/picklr-what-members-say.mp4', poster: 'assets/work/picklr-what-members-say-poster.jpg', ratio: '9 / 16' },
+  { kind: 'photo', client: 'The Picklr RSM', title: 'Grand opening crowd', src: 'assets/work/picklr-go-crowd.jpg', ratio: '2 / 3' },
+  { kind: 'design', client: 'The Picklr RSM', title: 'Opening day throwback', src: 'assets/work/picklr-throwback-cover.jpg', ratio: '4 / 5' },
+  { kind: 'photo', client: 'SimpleShots', title: 'Brand shoot, founders', src: 'assets/work/simpleshots-0716.jpg', ratio: '3 / 4' },
+  { kind: 'video', client: 'The Picklr FV', title: 'What players are working on', src: 'assets/work/picklr-what-players-work-on.mp4', poster: 'assets/work/picklr-what-players-work-on-poster.jpg', ratio: '9 / 16' },
+  { kind: 'design', client: 'The Picklr RSM', title: 'Courtside Bash membership sale', src: 'assets/work/picklr-courtside-sale.jpg', ratio: '4 / 5' },
+  { kind: 'photo', client: 'The Picklr RSM', title: 'Friends and family night', src: 'assets/work/picklr-dramatic.jpg', ratio: '2 / 3' },
+  { kind: 'photo', client: 'SimpleShots', title: 'Brand shoot, beach', src: 'assets/work/simpleshots-0511.jpg', ratio: '3 / 2' }
+];
+const KIND_LABEL = { video: 'Reel', photo: 'Photo', design: 'Social graphic', case: 'Case study' };
+const SKILLS = [
+  { id: 'photo-video', label: 'Photo + Video', sub: 'Reels, event coverage, brand shoots' },
+  { id: 'social', label: 'Social Content', sub: 'Posts, carousels, stories, flyers' },
+  { id: 'brand-web', label: 'Brand + Web Design', sub: 'Identity systems, Shopify, landing pages' },
+  { id: 'services', label: 'Marketing Systems', sub: 'Meta ads, email + SMS, follow-up' }
+];
+
+function SkillNav() {
+  return (
+    <nav className="skills" aria-label="Jump to a skill">
+      {SKILLS.map((k) => (
+        <a key={k.id} className="skill" href={'#' + k.id}>
+          <span className="skill-label">{k.label}</span>
+          <span className="skill-sub">{k.sub}</span>
+          <span className="skill-arrow" aria-hidden="true">↓</span>
+        </a>
+      ))}
+    </nav>
+  );
+}
+
+function SectionHead({ id, eyebrow, title, blurb, visible }) {
+  return (
+    <div style={{ marginBottom: 40, maxWidth: 760 }}>
+      <div style={{ fontSize: 10, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--ink-dim)', marginBottom: 16, fontFamily: "'Google Sans',sans-serif" }}>{eyebrow}</div>
+      <h2 style={{ fontFamily: 'var(--display)', fontSize: 'clamp(28px,4vw,52px)', fontWeight: 400, color: 'var(--ink)', letterSpacing: '-0.02em', lineHeight: 1.1 }}>
+        <Words text={title} visible={visible} />
+      </h2>
+      {blurb && <p style={{ fontSize: 15, color: 'var(--ink-soft)', marginTop: 16, lineHeight: 1.6, fontFamily: "'Google Sans',sans-serif", maxWidth: 620 }}>{blurb}</p>}
+    </div>
+  );
+}
+
+/* Phone mockup with a reel inside. Autoplays muted when on screen; tap toggles sound. */
+function PhoneReel({ item }) {
+  const vidRef = useRef(null);
+  const [sound, setSound] = useState(false);
+  useEffect(() => {
+    const v = vidRef.current;
+    if (!v) return;
+    v.muted = true;
+    const obs = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) { const p = v.play(); if (p && p.catch) p.catch(() => {}); }
+      else { v.pause(); }
+    }, { threshold: 0.35 });
+    obs.observe(v);
+    return () => obs.disconnect();
+  }, []);
+  const toggle = () => {
+    const v = vidRef.current; if (!v) return;
+    const next = !sound; v.muted = !next; setSound(next);
+    if (v.paused) { const p = v.play(); if (p && p.catch) p.catch(() => {}); }
+  };
+  return (
+    <div className="phone-wrap">
+      <button type="button" className="phone" onClick={toggle} aria-label={(sound ? 'Mute ' : 'Unmute ') + item.title}>
+        <div className="phone-screen">
+          <video ref={vidRef} src={item.src} poster={item.poster} preload="metadata" loop playsInline />
+          <div className="phone-notch" aria-hidden="true"></div>
+          <div className={'phone-sound' + (sound ? ' is-on' : '')} aria-hidden="true">
+            {sound
+              ? <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>
+              : <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="m22 9-6 6"/><path d="m16 9 6 6"/></svg>}
+          </div>
+        </div>
+      </button>
+      <div className="wt-cap">
+        <span className="wt-client">{item.client}</span>
+        <span className="wt-title">{item.title}</span>
+        <span className="wt-kind">Reel</span>
+      </div>
+    </div>
+  );
+}
+
+function MediaTile({ item }) {
+  const inner = (
+    <>
+      <div className="wt-frame" style={{ aspectRatio: item.ratio }}>
+        <img className="wt-media" src={item.src} alt={item.client + ' — ' + item.title} loading="lazy" />
+        {item.kind === 'case' && <div className="wt-case-tag">View case study <span>→</span></div>}
+      </div>
+      <div className="wt-cap">
+        <span className="wt-client">{item.client}</span>
+        <span className="wt-title">{item.title}</span>
+        <span className="wt-kind">{KIND_LABEL[item.kind]}</span>
+      </div>
+    </>
+  );
+  return item.href ? <a className={'wt wt-' + item.kind} href={item.href}>{inner}</a> : <div className={'wt wt-' + item.kind}>{inner}</div>;
+}
+
+function PhotoVideo() {
+  const [ref, visible] = useReveal(0.12);
+  const reels = WORK.filter((w) => w.kind === 'video');
+  const photos = WORK.filter((w) => w.kind === 'photo');
+  return (
+    <section id="photo-video" ref={ref} style={{ padding: '100px 8vw', background: 'var(--bg)', borderTop: '1px solid var(--hair)' }}>
+      <SectionHead eyebrow="01 · Photo + Video" title="Shot, cut, and posted the same week." visible={visible}
+        blurb="Event coverage, member interviews and coaching reels for The Picklr, plus the brand shoot behind the SimpleShots relaunch. Tap a phone for sound." />
+      <div className="phones">
+        {reels.map((r) => <PhoneReel key={r.src} item={r} />)}
+      </div>
+      <div className="wg wg-photos">
+        {photos.map((item) => <MediaTile key={item.src} item={item} />)}
+      </div>
+    </section>
+  );
+}
+
+function SocialContent() {
+  const [ref, visible] = useReveal(0.12);
+  const designs = WORK.filter((w) => w.kind === 'design');
+  return (
+    <section id="social" ref={ref} style={{ padding: '100px 8vw', background: 'var(--bg2)', borderTop: '1px solid var(--hair)' }}>
+      <SectionHead eyebrow="02 · Social Content" title="Posts, carousels and flyers that match the club." visible={visible}
+        blurb="Grand opening carousels, clinic promos, membership sales and throwbacks for two Picklr locations, built inside the franchise brand system." />
+      <div className="wg wg-designs">
+        {designs.map((item) => <MediaTile key={item.src} item={item} />)}
+      </div>
+    </section>
+  );
+}
+
+/* Laptop mockup + the embedded case-study deck */
+function BrandWeb() {
+  const [ref, visible] = useReveal(0.12);
+  return (
+    <section id="brand-web" ref={ref} style={{ padding: '100px 8vw', background: 'var(--bg)', borderTop: '1px solid var(--hair)' }}>
+      <SectionHead eyebrow="03 · Brand + Web Design" title="A spiked juice shot gets a brand-first Shopify store." visible={visible}
+        blurb="SimpleShots came with a brand book and a stock theme. The rebuild carries the palette, type, hand icons and photography into a Shopify Dawn theme with custom sections, and every decision shipped with alternatives the client could switch on." />
+      <div className="laptops">
+        <div className="laptop">
+          <div className="laptop-screen"><img src="assets/work/simpleshots-site-old.jpg" alt="SimpleShots site before the redesign" loading="lazy" /></div>
+          <div className="laptop-base"></div>
+          <div className="laptop-cap"><span className="wt-client">Before</span><span className="wt-title">Stock Dawn theme, untouched defaults</span></div>
+        </div>
+        <div className="laptop">
+          <div className="laptop-screen"><img src="assets/work/simpleshots-site-home.jpg" alt="SimpleShots site after the redesign" loading="lazy" /></div>
+          <div className="laptop-base"></div>
+          <div className="laptop-cap"><span className="wt-client">After</span><span className="wt-title">Brand-led theme, claims in the hero</span></div>
+        </div>
+      </div>
+      <div id="simpleshots" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', gap: 24, flexWrap: 'wrap', margin: '72px 0 24px' }}>
+        <div>
+          <div style={{ fontSize: 10, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--ink-dim)', marginBottom: 10, fontFamily: "'Google Sans',sans-serif" }}>Case study deck</div>
+          <p style={{ fontSize: 15, color: 'var(--ink-soft)', lineHeight: 1.6, fontFamily: "'Google Sans',sans-serif", maxWidth: 620 }}>Six slides on the before and after, the brief, color and type, the logo system, photography, and the alternatives. Use the arrows inside the deck.</p>
+        </div>
+        <MagneticButton href="simpleshots-rebrand/index.html" className="btn-pill btn-ghost">Open full screen <span className="arrow">↗</span></MagneticButton>
+      </div>
+      <div className="deck-wrap">
+        <iframe className="deck-frame" src="simpleshots-rebrand/index.html" title="SimpleShots rebrand case study" loading="lazy" allowFullScreen></iframe>
+      </div>
+    </section>
+  );
+}
+
 function App() {
   const [accent, setAccent] = useState('#C2410C');
   const [smokeEnabled, setSmokeEnabled] = useState(true);
@@ -2389,7 +2629,7 @@ function App() {
           opacity: heroVisible ? 1 : 0,
           transform: heroVisible ? 'translateY(0)' : 'translateY(40px)'
         }}>
-          <div className="eyebrow-line">Fitness Marketing / Studio &amp; Boutique</div>
+          <div className="eyebrow-line">Content + Marketing / Fitness &amp; Lifestyle Brands</div>
           <h1>
             Two things I'd test on your studio's funnel. <em>Before your next campaign goes live.</em>
           </h1>
@@ -2421,15 +2661,17 @@ function App() {
         <div>
           <div style={{ fontSize: 10, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--ink-dim)', marginBottom: 16, fontFamily: "'Google Sans',sans-serif" }}>Selected Work</div>
           <h2 style={{ fontFamily: 'var(--display)', fontSize: 'clamp(28px,4vw,52px)', fontWeight: 400, color: 'var(--ink)', letterSpacing: '-0.02em' }}>
-            <Words text="Content that drives results." visible={workVisible} />
+            <Words text="Real clients. Real content." visible={workVisible} />
           </h2>
-          <p style={{ fontSize: 13, color: "var(--ink-dim)", marginTop: 12, fontFamily: "'Google Sans',sans-serif", fontStyle: "italic" }}>Spec campaigns. I built each one to show the whole system in motion, cold ad through booked member.</p>
+          <p style={{ fontSize: 13, color: "var(--ink-dim)", marginTop: 12, fontFamily: "'Google Sans',sans-serif", fontStyle: "italic" }}>Photo, video, social and brand work for fitness and lifestyle clients in Orange County. Pick a skill to jump to it.</p>
         </div>
+        <SkillNav />
       </section>
 
       {/* ── Case study panels (long-scroll) ── */}
-      <CaseStudyPanel project={PROJECTS[0]} accent={accent} index={0} side="image-left" />
-      <CaseStudyPanel project={PROJECTS[2]} accent={accent} index={1} side="image-right" />
+      <PhotoVideo />
+      <SocialContent />
+      <BrandWeb />
 
       {/* Secondary marquee — service tags (mono, slow, reverse) */}
       <Marquee items={MARQUEE_SECONDARY} italic={false} slow reverse />
@@ -2437,7 +2679,7 @@ function App() {
       {/* ── SERVICES ── */}
       <section id="services" ref={servicesRef} style={{ padding: '100px 8vw', background: 'var(--bg2)', borderTop: '1px solid var(--hair)' }}>
         <div style={{ marginBottom: 72, maxWidth: 760 }}>
-          <div style={{ fontSize: 10, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--ink-dim)', marginBottom: 16, fontFamily: "'Google Sans',sans-serif" }}>Services</div>
+          <div style={{ fontSize: 10, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--ink-dim)', marginBottom: 16, fontFamily: "'Google Sans',sans-serif" }}>04 · Marketing Systems</div>
           <h2 style={{ fontFamily: 'var(--display)', fontSize: 'clamp(28px,4vw,52px)', fontWeight: 400, color: 'var(--ink)', letterSpacing: '-0.02em', lineHeight: 1.1 }}>
             <Words text="Three steps from cold scroll" visible={servicesVisible} />
             <br/>
