@@ -697,6 +697,17 @@
     background: var(--bg);
   }
   .hero-edit .badge { margin: 0 0 0 auto; }
+  /* Centered hero variant */
+  .hero-edit.hero-center { grid-template-columns: 1fr; justify-items: center; text-align: center; padding-top: 140px; }
+  .hero-edit.hero-center .hero-content { max-width: 1040px; display: flex; flex-direction: column; align-items: center; }
+  .hero-edit.hero-center h1 { font-size: clamp(44px, 5.6vw, 80px); letter-spacing: -0.02em; text-wrap: balance; }
+  .hero-edit.hero-center h1 em { display: block; }
+  .hero-edit.hero-center .lede { max-width: 52ch; margin-left: auto; margin-right: auto; }
+  .hero-edit.hero-center .hero-ctas { justify-content: center; }
+  .hero-edit.hero-center .hero-meta { display: none; }
+  .hero-edit.hero-center .eyebrow-line::after { content: ''; display: inline-block; width: 24px; height: 1px; background: var(--accent); }
+  .hero-edit.hero-center .hero-badge-wrap { position: absolute; right: clamp(20px, 5vw, 56px); bottom: 40px; transform: scale(0.72); transform-origin: bottom right; }
+  @media (max-width: 900px) { .hero-edit.hero-center .hero-badge-wrap { display: none; } }
   .hero-edit .hero-grain {
     position: absolute; inset: 0;
     background-image:
@@ -2625,7 +2636,7 @@ function App() {
       <Nav accent={accent} />
 
       {/* ── HERO (editorial redesign) ── */}
-      <header id="top" className="hero-edit has-video">
+      <header id="top" className="hero-edit has-video hero-center">
         {/* Background video. Swap the src URL with any direct .mp4 from Pexels/Coverr/Mixkit. */}
         <video className="hero-video" autoPlay loop muted playsInline preload="metadata">
           <source src="assets/0513-hero.mp4" type="video/mp4" />
@@ -2639,14 +2650,14 @@ function App() {
         }}>
           <div className="eyebrow-line">Content + Marketing / Fitness &amp; Lifestyle Brands</div>
           <h1>
-            Two things I'd test on your studio's funnel. <em>Before your next campaign goes live.</em>
+            The content, the campaigns, and the follow-up. <em>One person, start to finish.</em>
           </h1>
           <p className="lede">
-            Send me your studio's site. I'll reply with two specific changes I'd make, based on what I've seen work inside studios. No fluff.
+            I shoot, edit, design, build and run the marketing for fitness and lifestyle brands in Orange County. No handoffs, no agency layer.
           </p>
-          <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
-            <MagneticButton href="#contact" className="btn-pill">Get my 2 ideas <span className="arrow">→</span></MagneticButton>
-            <MagneticButton href="#work" className="btn-pill btn-ghost">See the work <span className="arrow">↓</span></MagneticButton>
+          <div className="hero-ctas" style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
+            <MagneticButton href="#work" className="btn-pill">See the work <span className="arrow">↓</span></MagneticButton>
+            <MagneticButton href="#contact" className="btn-pill btn-ghost">Book a call <span className="arrow">→</span></MagneticButton>
           </div>
           <div className="hero-meta">
             <div className="stat"><b>3</b><span>Years inside fitness studios</span></div>
