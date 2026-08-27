@@ -2420,7 +2420,7 @@ function PhotoVideo() {
   return (
     <section id="photo-video" ref={ref} style={{ padding: '100px 8vw', background: 'var(--bg)', borderTop: '1px solid var(--hair)' }}>
       <SectionHead eyebrow="01 · Photo + Video" title="Shot, cut, and posted the same week." visible={visible}
-        blurb="Event coverage, member interviews and coaching reels for The Picklr, plus the brand shoot behind the SimpleShots relaunch. Tap a phone for sound." />
+        blurb="I capture content on-site with my phone for organic posts and my DSLR for the polished shots. These are event coverage, member interviews & coaching reels from The Picklr, plus the brand shoot behind the SimpleShots relaunch. Tap a phone for sound." />
       <div className="phones">
         {reels.map((r) => <PhoneReel key={r.src} item={r} />)}
       </div>
@@ -2437,7 +2437,7 @@ function SocialContent() {
   return (
     <section id="social" ref={ref} style={{ padding: '100px 8vw', background: 'var(--bg2)', borderTop: '1px solid var(--hair)' }}>
       <SectionHead eyebrow="02 · Social Content" title="Posts, carousels and flyers that match the club." visible={visible}
-        blurb="Grand opening carousels, clinic promos, membership sales and throwbacks for two Picklr locations, built inside the franchise brand system." />
+        blurb="Grand opening carousels, clinic promos, membership sales & throwback posts for both Picklr clubs. Everything is built inside the franchise brand system so it posts alongside corporate content without looking out of place." />
       <div className="wg wg-designs">
         {designs.map((item) => <MediaTile key={item.src} item={item} />)}
       </div>
@@ -2451,7 +2451,7 @@ function BrandWeb() {
   return (
     <section id="brand-web" ref={ref} style={{ padding: '100px 8vw', background: 'var(--bg)', borderTop: '1px solid var(--hair)' }}>
       <SectionHead eyebrow="03 · Brand + Web Design" title="A spiked juice shot gets a brand-first Shopify store." visible={visible}
-        blurb="SimpleShots came with a brand book and a stock theme. The rebuild carries the palette, type, hand icons and photography into a Shopify Dawn theme with custom sections, and every decision shipped with alternatives the client could switch on." />
+        blurb="SimpleShots had a brand book and a stock Shopify theme that didn't use any of it. I rebuilt the store so the palette, type, hand icons & photography carry through every page, and gave the client three heroes and five style packs to choose from in the theme editor instead of one take-it-or-leave-it design." />
       <div className="laptops">
         <div className="laptop">
           <div className="laptop-screen"><img src="assets/work/simpleshots-site-old.jpg" alt="SimpleShots site before the redesign" loading="lazy" /></div>
@@ -2467,7 +2467,7 @@ function BrandWeb() {
       <div id="simpleshots" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', gap: 24, flexWrap: 'wrap', margin: '72px 0 24px' }}>
         <div>
           <div style={{ fontSize: 10, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--ink-dim)', marginBottom: 10, fontFamily: "'Google Sans',sans-serif" }}>Case study deck</div>
-          <p style={{ fontSize: 15, color: 'var(--ink-soft)', lineHeight: 1.6, fontFamily: "'Google Sans',sans-serif", maxWidth: 620 }}>Six slides on the before and after, the brief, color and type, the logo system, photography, and the alternatives. Use the arrows inside the deck.</p>
+          <p style={{ fontSize: 15, color: 'var(--ink-soft)', lineHeight: 1.6, fontFamily: "'Google Sans',sans-serif", maxWidth: 620 }}>Six slides covering the before &amp; after, the brief, color and type, the logo system, photography, and the alternatives the client got to pick from. Use the arrows in the deck.</p>
         </div>
         <MagneticButton href="simpleshots-rebrand/index.html" className="btn-pill btn-ghost">Open full screen <span className="arrow">↗</span></MagneticButton>
       </div>
@@ -2655,7 +2655,7 @@ function App() {
             The content, the campaigns, and the follow-up. <em>One person, start to finish.</em>
           </h1>
           <p className="lede">
-            I shoot, edit, design, build and run the marketing for fitness and lifestyle brands in Orange County. No handoffs, no agency layer.
+            I shoot the content, design the posts, build the site &amp; run the ads and follow-up for fitness and lifestyle brands in Orange County. One person handles all of it, so nothing gets lost between a photographer, a designer and an agency.
           </p>
           <div className="hero-ctas" style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
             <MagneticButton href="#work" className="btn-pill">See the work <span className="arrow">↓</span></MagneticButton>
@@ -2684,7 +2684,7 @@ function App() {
           <h2 style={{ fontFamily: 'var(--display)', fontSize: 'clamp(28px,4vw,52px)', fontWeight: 400, color: 'var(--ink)', letterSpacing: '-0.02em' }}>
             <Words text="Real clients. Real content." visible={workVisible} />
           </h2>
-          <p style={{ fontSize: 13, color: "var(--ink-dim)", marginTop: 12, fontFamily: "'Google Sans',sans-serif", fontStyle: "italic" }}>Photo, video, social and brand work for fitness and lifestyle clients in Orange County. Pick a skill to jump to it.</p>
+          <p style={{ fontSize: 13, color: "var(--ink-dim)", marginTop: 12, fontFamily: "'Google Sans',sans-serif", fontStyle: "italic" }}>Real work for real clients: The Picklr, Carrie's Pilates &amp; SimpleShots. Pick a skill below to jump to it.</p>
         </div>
         <SkillNav />
       </section>
