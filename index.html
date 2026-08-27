@@ -1307,36 +1307,36 @@ const SERVICES = [
   step: '01',
   kicker: 'Attract',
   title: 'Meta Ads',
-  body: 'Hooks built around the things that stop a sign-up: price, time, and "I\'ll start Monday." New creative every week so ads don\'t fatigue and cost-per-lead doesn\'t drift up as the audience saturates.',
+  body: 'The ads are written around the three things that stop people from signing up: price, time & "I\'ll start Monday." I put out new creative every week so the ads don\'t wear out and the cost per lead stays flat.',
   included: ['Daily ad management', 'Weekly creative drop', 'Monthly performance readout']
 },
 {
   step: '02',
   kicker: 'Nurture',
   title: 'Email + SMS',
-  body: 'A multi touch sequence across two channels. Email handles the long objection answers. SMS handles the time-sensitive nudges that get opened in the moment. Each message handles one objection at a time.',
+  body: 'Follow-up runs on both email and text. Email carries the longer answers about pricing and what to expect, and SMS carries the short reminders people open right away. Each message covers one objection.',
   included: ['Full sequence build', 'Copywriting', 'Deliverability setup', 'Ongoing testing']
 },
 {
   step: '03',
   kicker: 'Capture',
   title: 'AI Phone Agent',
-  body: 'Calls don\'t stop when the front desk goes home. The agent picks up after hours, books the trial, sends a confirmation text, and follows up if the caller drops. Trained on your intro offer, pricing, and class schedule, so callers don\'t bail the second they hit a robot.',
+  body: 'The agent picks up the calls the front desk can\'t get to, books the trial, sends a confirmation text & follows up if the caller drops. It\'s trained on your intro offer, pricing and schedule so it answers like someone who works there.',
   included: ['Voice agent setup', 'Knowledge base build', 'Booking-system integration']
 }];
 
 const FAQS = [
 {
   q: "How do I get more members for my fitness studio?",
-  a: "Owner operated studios grow by running three levers in parallel: paid acquisition that targets buyers (not curiosity), follow up that handles real objections instead of repeating the same generic email, and a way to capture inquiries that come in after hours. The mistake most studios make is running one of those three in isolation and blaming the channel when conversion stays flat."
+  a: "Studios that grow run three things at once: ads that target people ready to buy, follow-up that answers real objections instead of sending the same email again, and a way to catch the calls and messages that come in after hours. Most studios run one of the three, then blame the channel when sign-ups stay flat."
 },
 {
   q: "Won't my members hate dealing with an AI phone agent?",
-  a: "The agent only picks up calls your front desk can't get to: after hours, when you're teaching, when the line is busy. Existing members never know it exists unless they call at 9pm. If anyone asks for a human, the agent can hand off or send a callback message. It's a safety net, not a replacement."
+  a: "It only picks up the calls your front desk can't get to: after hours, while you're teaching, or when the line is busy. Members won't run into it unless they call at 9pm, and anyone who asks for a person gets handed off or gets a callback text."
 },
 {
   q: "What's the best follow-up sequence for new fitness leads?",
-  a: "A multi touch sequence that handles one objection per message and uses two channels: email for the long answers (pricing, member experience, what to expect on a first visit) and SMS for the time-sensitive nudges (trial confirmations, \"we held your spot\" reminders). The mistake is cramming everything into one giant email. The sequence has to feel like a person, not a CRM blast."
+  a: "One objection per message, on two channels. Email for the longer answers (pricing, what a first visit is like) and text for the reminders that need to be read right away, like trial confirmations. Cramming all of that into one long email is the usual mistake."
 },
 {
   q: "What's the minimum ad budget I need for this to be worth it?",
@@ -2419,7 +2419,7 @@ function PhotoVideo() {
   const photos = WORK.filter((w) => w.kind === 'photo');
   return (
     <section id="photo-video" ref={ref} style={{ padding: '100px 8vw', background: 'var(--bg)', borderTop: '1px solid var(--hair)' }}>
-      <SectionHead eyebrow="01 · Photo + Video" title="Shot, cut, and posted the same week." visible={visible}
+      <SectionHead eyebrow="01 · Photo + Video" title="Photo & video, shot on-site at the club." visible={visible}
         blurb="I capture content on-site with my phone for organic posts and my DSLR for the polished shots. These are event coverage, member interviews & coaching reels from The Picklr, plus the brand shoot behind the SimpleShots relaunch. Tap a phone for sound." />
       <div className="phones">
         {reels.map((r) => <PhoneReel key={r.src} item={r} />)}
@@ -2437,7 +2437,7 @@ function SocialContent() {
   return (
     <section id="social" ref={ref} style={{ padding: '100px 8vw', background: 'var(--bg2)', borderTop: '1px solid var(--hair)' }}>
       <SectionHead eyebrow="02 · Social Content" title="Posts, carousels and flyers that match the club." visible={visible}
-        blurb="Grand opening carousels, clinic promos, membership sales & throwback posts for both Picklr clubs. Everything is built inside the franchise brand system so it posts alongside corporate content without looking out of place." />
+        blurb="Grand opening carousels, clinic promos, membership sales & throwback posts for both Picklr clubs. All of it is built inside the franchise brand system, so it sits next to the corporate posts on the same feed." />
       <div className="wg wg-designs">
         {designs.map((item) => <MediaTile key={item.src} item={item} />)}
       </div>
@@ -2450,18 +2450,18 @@ function BrandWeb() {
   const [ref, visible] = useReveal(0.12);
   return (
     <section id="brand-web" ref={ref} style={{ padding: '100px 8vw', background: 'var(--bg)', borderTop: '1px solid var(--hair)' }}>
-      <SectionHead eyebrow="03 · Brand + Web Design" title="A spiked juice shot gets a brand-first Shopify store." visible={visible}
-        blurb="SimpleShots had a brand book and a stock Shopify theme that didn't use any of it. I rebuilt the store so the palette, type, hand icons & photography carry through every page, and gave the client three heroes and five style packs to choose from in the theme editor instead of one take-it-or-leave-it design." />
+      <SectionHead eyebrow="03 · Brand + Web Design" title="A new Shopify store for a spiked juice shot." visible={visible}
+        blurb="SimpleShots had a brand book and a stock Shopify theme that didn't use any of it. I rebuilt the store so the palette, type, hand icons & photography carry through every page, and set up three hero layouts and five style packs the client can switch between in the theme editor." />
       <div className="laptops">
         <div className="laptop">
           <div className="laptop-screen"><img src="assets/work/simpleshots-site-old.jpg" alt="SimpleShots site before the redesign" loading="lazy" /></div>
           <div className="laptop-base"></div>
-          <div className="laptop-cap"><span className="wt-client">Before</span><span className="wt-title">Stock Dawn theme, untouched defaults</span></div>
+          <div className="laptop-cap"><span className="wt-client">Before</span><span className="wt-title">Stock Shopify theme</span></div>
         </div>
         <div className="laptop">
           <div className="laptop-screen"><img src="assets/work/simpleshots-site-home.jpg" alt="SimpleShots site after the redesign" loading="lazy" /></div>
           <div className="laptop-base"></div>
-          <div className="laptop-cap"><span className="wt-client">After</span><span className="wt-title">Brand-led theme, claims in the hero</span></div>
+          <div className="laptop-cap"><span className="wt-client">After</span><span className="wt-title">Rebuilt around the brand book</span></div>
         </div>
       </div>
       <div id="simpleshots" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', gap: 24, flexWrap: 'wrap', margin: '72px 0 24px' }}>
@@ -2655,7 +2655,7 @@ function App() {
             The content, the campaigns, and the follow-up. <em>One person, start to finish.</em>
           </h1>
           <p className="lede">
-            I shoot the content, design the posts, build the site &amp; run the ads and follow-up for fitness and lifestyle brands in Orange County. One person handles all of it, so nothing gets lost between a photographer, a designer and an agency.
+            I shoot the content, design the posts, build the site &amp; run the ads and follow-up for fitness and lifestyle brands in Orange County. Everything comes from one person, so the ads match the photos and the follow-up matches the offer.
           </p>
           <div className="hero-ctas" style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
             <MagneticButton href="#work" className="btn-pill">See the work <span className="arrow">↓</span></MagneticButton>
@@ -2682,9 +2682,9 @@ function App() {
         <div>
           <div style={{ fontSize: 10, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--ink-dim)', marginBottom: 16, fontFamily: "'Google Sans',sans-serif" }}>Selected Work</div>
           <h2 style={{ fontFamily: 'var(--display)', fontSize: 'clamp(28px,4vw,52px)', fontWeight: 400, color: 'var(--ink)', letterSpacing: '-0.02em' }}>
-            <Words text="Real clients. Real content." visible={workVisible} />
+            <Words text="The work." visible={workVisible} />
           </h2>
-          <p style={{ fontSize: 13, color: "var(--ink-dim)", marginTop: 12, fontFamily: "'Google Sans',sans-serif", fontStyle: "italic" }}>Real work for real clients: The Picklr, Carrie's Pilates &amp; SimpleShots. Pick a skill below to jump to it.</p>
+          <p style={{ fontSize: 13, color: "var(--ink-dim)", marginTop: 12, fontFamily: "'Google Sans',sans-serif", fontStyle: "italic" }}>The Picklr, Carrie's Pilates &amp; SimpleShots. Pick a skill below to jump to it.</p>
         </div>
         <SkillNav />
       </section>
@@ -2702,13 +2702,13 @@ function App() {
         <div style={{ marginBottom: 72, maxWidth: 760 }}>
           <div style={{ fontSize: 10, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--ink-dim)', marginBottom: 16, fontFamily: "'Google Sans',sans-serif" }}>04 · Marketing Systems</div>
           <h2 style={{ fontFamily: 'var(--display)', fontSize: 'clamp(28px,4vw,52px)', fontWeight: 400, color: 'var(--ink)', letterSpacing: '-0.02em', lineHeight: 1.1 }}>
-            <Words text="Three steps from cold scroll" visible={servicesVisible} />
+            <Words text="Ads, follow-up & a phone agent." visible={servicesVisible} />
             <br/>
             <em style={{ color: accent }}>
-              <Words text="to booked class." visible={servicesVisible} base={360} />
+              <Words text="Same person runs all three." visible={servicesVisible} base={360} />
             </em>
           </h2>
-          <p style={{ fontSize: 15, color: 'var(--ink-soft)', marginTop: 20, fontFamily: "'Google Sans',sans-serif", lineHeight: 1.65, fontWeight: 'var(--body-weight)' }}>Same operator runs all three, with no agency middle layer in the way.</p>
+          <p style={{ fontSize: 15, color: 'var(--ink-soft)', marginTop: 20, fontFamily: "'Google Sans',sans-serif", lineHeight: 1.65, fontWeight: 'var(--body-weight)' }}></p>
         </div>
 
         <div style={{ position: 'relative', maxWidth: 1100 }}>
@@ -2786,7 +2786,7 @@ function App() {
         {/* Closing line that points to the next step (contact) */}
         <div style={{ marginTop: 64, paddingTop: 32, borderTop: '1px solid var(--hair)', maxWidth: 760 }}>
           <p style={{ fontSize: 14, color: 'var(--ink-dim)', fontFamily: "'Google Sans',sans-serif", lineHeight: 1.7, fontStyle: 'italic' }}>
-            Each piece works alone. Together they cover the funnel from the first scroll on Instagram to the booked trial confirmation. <a href="#contact" style={{ color: accent, textDecoration: 'none', borderBottom: `1px solid ${accent}55`, fontStyle: 'normal' }}>See if it fits your studio →</a>
+            You can start with one piece or run all three. Together they cover everything from the first ad to the booked appointment. <a href="#contact" style={{ color: accent, textDecoration: 'none', borderBottom: `1px solid ${accent}55`, fontStyle: 'normal' }}>See if it fits your business →</a>
           </p>
         </div>
       </section>
@@ -2906,13 +2906,13 @@ function App() {
             </h2>
             <div style={{ fontSize: 16, color: 'var(--ink-soft)', lineHeight: 1.85, fontFamily: "'Google Sans',sans-serif", fontWeight: 'var(--body-weight)', maxWidth: 520 }}>
               <p style={{ marginBottom: 20 }}>
-                I'm from Orange County, California, born and raised. My relationship with fitness started in high school as an athlete and shifted when I joined a gym for the first time. I came in to train and stayed for the way it made me feel and the community inside it. That's the part of fitness that has shaped every decision since. Over the years I worked inside Pilates studios, strength gyms, and boutique fitness spaces, doing every job that kept the doors open: selling memberships, cleaning equipment, running the floor, sitting across from members and listening to what they actually wanted. Six years of training, three years of working inside the studios that train other people.
+                I'm from Orange County, California, born and raised. My relationship with fitness started in high school as an athlete and shifted when I joined a gym for the first time. I came in to train and stayed for the way it made me feel and the community inside it. Over the years I worked inside Pilates studios, strength gyms, and boutique fitness spaces, doing every job that kept the doors open: selling memberships, cleaning equipment, running the floor, sitting across from members and listening to what they actually wanted. Six years of training, three years of working inside the studios that train other people.
               </p>
               <p style={{ marginBottom: 20 }}>
-                Marketing was the next thing to click, but it started with psychology. What pulled me in was the question underneath the buying decision: why someone walks into a class on a Tuesday and signs up, what shifts in them between the first email and the third, what makes a person finally do the thing they've been putting off for two years. I studied computer science for a year, then finished an associate's in business administration. Most of what I know about buyer behavior came from watching it happen on the studio floor, not from a textbook. The decisions people make about their bodies are personal. Understanding why they make them is what I find genuinely interesting.
+                Marketing was the next thing to click, but it started with psychology. What pulled me in was the question underneath the buying decision: why someone walks into a class on a Tuesday and signs up, what shifts in them between the first email and the third, what makes a person finally do the thing they've been putting off for two years. I studied computer science for a year, then finished an associate's in business administration. Most of what I know about buyer behavior came from watching it happen on the studio floor, not from a textbook. People's decisions about their bodies are personal, and figuring out why they make them is the part I like.
               </p>
               <p>
-                Starting this business was the moment those two threads pulled into one. Fitness changed how I think about my body and my time. The point of the work I do now is to bring more people inside that change, by helping the studios that create it stay open and full. I work with fitness studios first, but the framework applies anywhere a service business is trying to move someone from interested to committed. If I can help a studio fill its classes, that studio changes more lives. That's the part of this that feels worth doing.
+                This business is where those two things meet. I started with fitness studios and I still work with them first, but the same approach works for any service business trying to get someone from interested to signed up. If the studio stays full, more people get what I got out of it.
               </p>
             </div>
           </div>
@@ -2937,14 +2937,14 @@ function App() {
         }}>
           <div className="eyebrow-line">04 — Contact</div>
           <h2>
-            <Words text="Ready to fill" visible={contactVisible} />
+            <Words text="Ready to" visible={contactVisible} />
             <br />
             <em>
-              <Words text="your classes?" visible={contactVisible} base={280} />
+              <Words text="get started?" visible={contactVisible} base={280} />
             </em>
           </h2>
           <p className="lede">
-            Drop your email. I'll come back this week with two specific things I'd test on your studio's funnel, not a pitch deck.
+            Drop your email and I'll get back to you this week with two specific things I'd change about your marketing, and we can go from there.
           </p>
 
           {submitted ?
@@ -2967,7 +2967,7 @@ function App() {
 
           <div className="contact-meta">
             <div className="col"><span>Email</span><p>nickglenny@gmail.com</p></div>
-            <div className="col"><span>Based</span><p>Available worldwide</p></div>
+            <div className="col"><span>Based</span><p>Orange County, CA</p></div>
             <div className="col"><span>Response</span><p>Same week</p></div>
           </div>
         </div>
@@ -2977,7 +2977,7 @@ function App() {
       <footer style={{ padding: '32px 8vw', borderTop: '1px solid var(--hair)', background: 'var(--bg)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 24, flexWrap: 'wrap' }}>
         <div style={{ fontFamily: "'Google Sans',sans-serif", fontSize: 15, color: 'var(--ink-dim)' }}>Nick Glenny</div>
         <div style={{ display: 'flex', gap: 28, alignItems: 'center', fontSize: 12, fontFamily: "'Google Sans',sans-serif" }}>
-          <a href="#contact" style={{ color: 'var(--ink-soft)', textDecoration: 'none', borderBottom: `1px solid ${accent}55`, paddingBottom: 2 }}>Still on the fence? Book a call →</a>
+          <a href="#contact" style={{ color: 'var(--ink-soft)', textDecoration: 'none', borderBottom: `1px solid ${accent}55`, paddingBottom: 2 }}>Questions? Book a call →</a>
           <a href="mailto:nickglenny@gmail.com" style={{ color: 'var(--ink-dim)', textDecoration: 'none' }}>nickglenny@gmail.com</a>
         </div>
         <div style={{ fontSize: 11, color: 'var(--ink-dim)', fontFamily: "'Google Sans',sans-serif", letterSpacing: '0.08em' }}>© 2026</div>
