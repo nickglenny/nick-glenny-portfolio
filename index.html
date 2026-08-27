@@ -2639,9 +2639,9 @@ function App() {
 
       {/* ── HERO (editorial redesign) ── */}
       <header id="top" className="hero-edit has-video hero-center">
-        {/* Background video. Swap the src URL with any direct .mp4 from Pexels/Coverr/Mixkit. */}
-        <video className="hero-video" autoPlay loop muted playsInline preload="metadata">
-          <source src="assets/0513-hero.mp4" type="video/mp4" />
+        {/* Background video: three-lane cut of Picklr pros + Carrie's footage (assets/hero-triptych.mp4). */}
+        <video className="hero-video" autoPlay loop muted playsInline preload="metadata" poster="assets/hero-triptych-poster.jpg">
+          <source src="assets/hero-triptych.mp4" type="video/mp4" />
         </video>
         <div className="hero-scrim" />
         <div className="hero-grain" />
