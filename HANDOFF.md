@@ -22,7 +22,9 @@ Hero (centered, Decalotype display font, Google Sans eyebrow, three-lane video `
 ## Media
 `assets/work/` photos, graphics, reels (720p mp4 + poster jpg). `assets/fonts/` Decalotype.
 Reels: picklr-coach-dylan, picklr-how-players-describe, picklr-fv-grand-opening (15s trim),
-picklr-what-players-work-on. Sources: ~/Desktop/Agency/Clients/Picklr/01-footage.
+audiotoyz-lot (24s montage of 7 raw car clips, no audio; source ~/Desktop/AudioToyz + VNTR, C6230-C6241 are cars, C6242-45 are the VNTR gym).
+Removed reel picklr-what-players-work-on is restorable from git history.
+Sources: ~/Desktop/Agency/Clients/Picklr/01-footage.
 
 ## Removed / restorable
 - Marketing Systems (Services) section: `archive/services-section.jsx` + tag `pre-remove-services-2026-08-26`.

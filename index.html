@@ -2293,7 +2293,7 @@ const WORK = [
   { kind: 'photo', client: 'The Picklr RSM', title: 'Grand opening crowd', src: 'assets/work/picklr-go-crowd.jpg', ratio: '2 / 3' },
   { kind: 'design', client: 'The Picklr RSM', title: 'Opening day throwback', src: 'assets/work/picklr-throwback-cover.jpg', ratio: '4 / 5' },
   { kind: 'photo', client: 'SimpleShots', title: 'Brand shoot, founders', src: 'assets/work/simpleshots-0716.jpg', ratio: '3 / 4' },
-  { kind: 'video', client: 'The Picklr FV', title: 'What players are working on', src: 'assets/work/picklr-what-players-work-on.mp4', poster: 'assets/work/picklr-what-players-work-on-poster.jpg', ratio: '9 / 16' },
+  { kind: 'video', client: 'AudioToyz', title: 'The lot on a Wednesday', src: 'assets/work/audiotoyz-lot.mp4', poster: 'assets/work/audiotoyz-lot-poster.jpg', ratio: '9 / 16' },
   { kind: 'design', client: 'The Picklr RSM', title: 'Courtside Bash membership sale', src: 'assets/work/picklr-courtside-sale.jpg', ratio: '4 / 5' },
   { kind: 'photo', client: 'The Picklr RSM', title: 'Friends and family night', src: 'assets/work/picklr-dramatic.jpg', ratio: '2 / 3' },
   { kind: 'photo', client: 'SimpleShots', title: 'Brand shoot, beach', src: 'assets/work/simpleshots-0511.jpg', ratio: '3 / 2' }
@@ -2397,7 +2397,7 @@ function PhotoVideo() {
   return (
     <section id="photo-video" ref={ref} style={{ padding: '100px 8vw', background: 'var(--bg)', borderTop: '1px solid var(--hair)' }}>
       <SectionHead eyebrow="01 · Photo + Video" title="Photo & video, shot on-site at the club." visible={visible}
-        blurb="I capture content on-site with my phone for organic posts and my DSLR for the polished shots. These are event coverage, member interviews & coaching reels from The Picklr, plus the brand shoot behind the SimpleShots relaunch. Tap a phone for sound." />
+        blurb="I capture content on-site with my phone for organic posts and my DSLR for the polished shots. These are event coverage, member interviews & coaching reels from The Picklr, the brand shoot behind the SimpleShots relaunch, plus a walk through the lot at AudioToyz. Tap a phone for sound." />
       <div className="phones">
         {reels.map((r) => <PhoneReel key={r.src} item={r} />)}
       </div>
