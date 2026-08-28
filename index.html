@@ -572,6 +572,25 @@
   /* ─── Editorial redesign utilities ─── */
 
   /* Marquee */
+
+  /* Client logo strip (replaces the primary marquee) */
+  .logo-strip {
+    border-top: 1px solid var(--hair); border-bottom: 1px solid var(--hair);
+    background: var(--bg); padding: 34px 8vw;
+    display: flex; align-items: center; gap: 48px; flex-wrap: wrap;
+  }
+  .logo-strip .ls-label {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--ink-dim); white-space: nowrap; margin-right: 8px;
+  }
+  .logo-strip .ls-logos { display: flex; align-items: center; justify-content: space-between; gap: 40px 56px; flex: 1; flex-wrap: wrap; }
+  .logo-strip img { display: block; height: var(--h, 30px); width: auto; opacity: 0.8; transition: opacity .25s ease; filter: none; }
+  .logo-strip .ls-logos > span:hover img { opacity: 1; }
+  @media (max-width: 760px) {
+    .logo-strip { padding: 26px 6vw; gap: 18px; flex-direction: column; align-items: flex-start; }
+    .logo-strip .ls-logos { justify-content: flex-start; gap: 22px 32px; width: 100%; }
+    .logo-strip img { height: calc(var(--h, 30px) * 0.78); }
+  }
   @keyframes marquee-scroll {
     from { transform: translate3d(0,0,0); }
     to   { transform: translate3d(-50%,0,0); }
@@ -1483,6 +1502,28 @@ function MagneticButton({ href, className, children, strength = 0.28, radius = 1
 // ─── Marquee + Rotating badge (editorial redesign) ──────────────────────────
 const MARQUEE_ITEMS = ['Pickleball Clubs', 'Pilates', 'Boutique Studios', 'Strength', 'Beverage', 'Grand Openings', 'Rec Clubs', 'Yoga', 'Events', 'Lifestyle'];
 const MARQUEE_SECONDARY = ['Photo + Video', 'Social Content', 'Meta Ads', 'Brand + Web', 'Email Nurture', 'SMS Flows', 'Event Coverage', 'Creative Strategy'];
+
+const CLIENT_LOGOS = [
+  { name: 'The Picklr',        src: 'assets/logos/picklr.png',      h: 46 },
+  { name: "Carrie's Pilates",  src: 'assets/logos/carries.png',     h: 28 },
+  { name: 'UForce Fitness',    src: 'assets/logos/uforce.png',      h: 34 },
+  { name: 'AudioToyz',         src: 'assets/logos/audiotoyz.png',   h: 24 },
+  { name: 'SimpleShots',       src: 'assets/logos/simpleshots.svg', h: 17 },
+];
+function LogoStrip() {
+  return (
+    <div className="logo-strip" aria-label="Clients">
+      <span className="ls-label">Clients</span>
+      <div className="ls-logos">
+        {CLIENT_LOGOS.map((l) => (
+          <span key={l.name} title={l.name}>
+            <img src={l.src} alt={l.name} style={{ '--h': `${l.h}px` }} loading="lazy" />
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 function Marquee({ items, italic = true, slow = false, reverse = false }) {
   const doubled = [...items, ...items, ...items, ...items];
@@ -2650,8 +2691,8 @@ function App() {
         </div>
       </header>
 
-      {/* Primary marquee — client types */}
-      <Marquee items={MARQUEE_ITEMS} />
+      {/* Client logo strip (the old client-type marquee is still available as <Marquee items={MARQUEE_ITEMS} />) */}
+      <LogoStrip />
 
       {/* ── WORK ── */}
       <section id="work" ref={workRef} style={{ padding: '80px 8vw 24px', background: 'var(--bg)' }}>
