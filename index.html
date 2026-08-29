@@ -2404,27 +2404,46 @@ function SectionHead({ id, eyebrow, title, blurb, visible }) {
 /* Phone mockup with a reel inside. Autoplays muted when on screen; tap toggles sound. */
 const IS_TOUCH = () => window.matchMedia('(pointer: coarse)').matches;
 
+let OVERLAY_SEQ = 0;
+// Push a history entry so the phone's back gesture closes the overlay; returns {close, cleanup}.
+function useOverlayHistory(onClose) {
+  const id = useRef(null); if (id.current == null) id.current = ++OVERLAY_SEQ;
+  const closed = useRef(false);
+  useEffect(() => {
+    const mounted = performance.now();
+    history.pushState({ overlay: id.current }, '');
+    const onPop = () => {
+      // A history.back() from a previous overlay's close can land after this one mounted; ignore that stale pop.
+      if (closed.current || performance.now() - mounted < 600) return;
+      closed.current = true; onClose();
+    };
+    window.addEventListener('popstate', onPop);
+    return () => window.removeEventListener('popstate', onPop);
+  }, []);
+  return () => {
+    if (closed.current) return; closed.current = true;
+    onClose();
+    if (history.state && history.state.overlay === id.current) history.back();
+  };
+}
+
 function ReelOverlay({ item, onClose }) {
   const vidRef = useRef(null);
   const [paused, setPaused] = useState(false);
   const startY = useRef(null);
+  const close = useOverlayHistory(onClose);
   useEffect(() => {
     const v = vidRef.current;
     const prev = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
     if (v) { v.muted = false; v.currentTime = 0; const p = v.play(); if (p && p.catch) p.catch(() => { v.muted = true; v.play().catch(() => {}); }); }
-    const onKey = (e) => { if (e.key === 'Escape') onClose(); };
+    const onKey = (e) => { if (e.key === 'Escape') close(); };
     window.addEventListener('keydown', onKey);
-    history.pushState({ reel: true }, '');
-    const onPop = () => onClose(true);
-    window.addEventListener('popstate', onPop);
     return () => {
       document.body.style.overflow = prev;
       window.removeEventListener('keydown', onKey);
-      window.removeEventListener('popstate', onPop);
     };
   }, []);
-  const close = () => { if (history.state && history.state.reel) history.back(); else onClose(); };
   const togglePlay = () => { const v = vidRef.current; if (!v) return; if (v.paused) { v.play(); setPaused(false); } else { v.pause(); setPaused(true); } };
   return (
     <div className="reel-overlay" role="dialog" aria-label={item.title}
@@ -2494,17 +2513,14 @@ function ImageOverlay({ items, index, onClose }) {
   const total = carousel ? items[index].slides.length : items.length;
   const src = carousel ? items[index].slides[i] : item.src;
   const cap = carousel ? items[index] : item;
+  const close = useOverlayHistory(onClose);
   useEffect(() => {
     const prev = document.body.style.overflow; document.body.style.overflow = 'hidden';
     if (carousel) setI(0);
-    const onKey = (e) => { if (e.key === 'Escape') onClose(); if (e.key === 'ArrowRight') setI((n) => Math.min(n + 1, total - 1)); if (e.key === 'ArrowLeft') setI((n) => Math.max(n - 1, 0)); };
+    const onKey = (e) => { if (e.key === 'Escape') close(); if (e.key === 'ArrowRight') setI((n) => Math.min(n + 1, total - 1)); if (e.key === 'ArrowLeft') setI((n) => Math.max(n - 1, 0)); };
     window.addEventListener('keydown', onKey);
-    history.pushState({ lightbox: true }, '');
-    const onPop = () => onClose();
-    window.addEventListener('popstate', onPop);
-    return () => { document.body.style.overflow = prev; window.removeEventListener('keydown', onKey); window.removeEventListener('popstate', onPop); };
+    return () => { document.body.style.overflow = prev; window.removeEventListener('keydown', onKey); };
   }, []);
-  const close = () => { if (history.state && history.state.lightbox) history.back(); else onClose(); };
   return (
     <div className="img-overlay" role="dialog" aria-label={item.title}
       onTouchStart={(e) => { start.current = { x: e.touches[0].clientX, y: e.touches[0].clientY }; }}
