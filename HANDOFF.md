@@ -15,7 +15,7 @@ Preview: `python3 -m http.server 8942` in the repo root. Playwright checks must 
 `p.chromium.launch(channel='chrome')` (bundled Chromium has no H.264).
 
 ## Page structure
-Hero (centered, Decalotype display font, Google Sans eyebrow, three-lane video `assets/hero-triptych.mp4`: Picklr pros / Carrie reformers / AudioToyz lot, right lane = audiotoyz-lot.mp4 overlaid at x=1280)
+Hero (centered, Decalotype display font, Google Sans eyebrow, three-lane video `assets/hero-triptych.mp4`: Picklr pros / Carrie reformers / AudioToyz lot, right lane = audiotoyz-lot.mp4 overlaid at x=1280; mobile ≤900px uses assets/hero-mobile.mp4, a 24s cut of the three lanes back to back, 8s each)
 → client logo strip (`LogoStrip`, assets/logos/, single-ink PNG/SVG; old Marquee kept) → Work intro + 3 skill cards → 01 Photo + Video (4 phone mockups w/ reels + photo grid)
 → 02 Social Content (graphics grid) → 03 Brand + Web (laptop before/after + SimpleShots deck iframe
 `simpleshots-rebrand/index.html`) → marquee → FAQ (5) → About → Contact → footer.

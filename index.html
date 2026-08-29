@@ -920,16 +920,7 @@
       gap: 32px !important;
       min-height: auto !important;
     }
-    /* On mobile drop the video and the dark scrim — revert to the warm paper hero */
-    .hero-edit .hero-video,
-    .hero-edit .hero-scrim { display: none !important; }
-    .hero-edit.has-video { background: var(--bg); }
-    .hero-edit.has-video h1 { color: var(--ink); }
-    .hero-edit.has-video .lede { color: var(--ink-soft); }
-    .hero-edit.has-video .eyebrow-line { color: var(--ink-dim); }
-    .hero-edit.has-video .stat span { color: var(--ink-dim); }
-    .hero-edit.has-video .btn-ghost { color: var(--ink); border-color: var(--ink); }
-    .hero-edit.has-video .btn-ghost:hover { background: var(--ink); color: #FBF6E8; border-color: var(--ink); }
+    /* Mobile keeps the video: a single vertical cut of the three lanes (assets/hero-mobile.mp4), chosen in the <video> sources */
     .hero-edit h1 { font-size: clamp(40px, 9vw, 64px) !important; margin: 18px 0 22px !important; }
     .hero-edit .lede { font-size: 15px !important; margin-bottom: 28px !important; }
     .hero-edit .hero-meta { gap: 18px !important; margin-top: 32px !important; }
@@ -2669,7 +2660,8 @@ function App() {
       {/* ── HERO (editorial redesign) ── */}
       <header id="top" className="hero-edit has-video hero-center">
         {/* Background video: three-lane cut: Picklr pros, Carrie's reformers, AudioToyz lot (assets/hero-triptych.mp4). */}
-        <video className="hero-video" autoPlay loop muted playsInline preload="metadata" poster="assets/hero-triptych-poster.jpg">
+        <video className="hero-video" autoPlay loop muted playsInline preload="metadata" poster={window.matchMedia('(max-width: 900px)').matches ? 'assets/hero-mobile-poster.jpg' : 'assets/hero-triptych-poster.jpg'}>
+          <source src="assets/hero-mobile.mp4" type="video/mp4" media="(max-width: 900px)" />
           <source src="assets/hero-triptych.mp4" type="video/mp4" />
         </video>
         <div className="hero-scrim" />
