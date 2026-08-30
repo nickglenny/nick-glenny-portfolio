@@ -17,7 +17,7 @@ Preview: `python3 -m http.server 8942` in the repo root. Playwright checks must 
 ## Page structure
 Hero (centered, Decalotype display font, Google Sans eyebrow, three-lane video `assets/hero-triptych.mp4`: Picklr pros / Carrie reformers / AudioToyz lot, right lane = audiotoyz-lot.mp4 overlaid at x=1280; mobile ≤900px uses assets/hero-mobile.mp4, a 24s cut of the three lanes back to back, 8s each)
 → client logo strip (`LogoStrip`, assets/logos/, single-ink PNG/SVG; old Marquee kept) → Work intro + 3 skill cards → 01 Photo + Video (4 phone mockups w/ reels + photo grid)
-(On touch devices tapping a phone opens `ReelOverlay`, a full-screen IG-style player: sound on, tap to pause, X / swipe down / back to close. Desktop tap = mute toggle.)
+(On touch devices tapping a phone opens `ReelOverlay`, a full-screen IG-style player: sound on, tap to pause, X / swipe down / back to close. Desktop click opens the same overlay styled as a fitted 9:16 player over a blurred backdrop; the small speaker on the tile toggles sound inline without opening.)
 Photo + graphic tiles: tap on touch opens `ImageOverlay` (swipe left/right through the grid, swipe down/X/back closes). Tiles with a `slides` array (three Picklr carousels, slides in assets/work/carousels/) open as their own swipeable carousel with dots and a stack badge on the tile.
 → 02 Social Content (graphics grid) → 03 Brand + Web (laptop before/after + SimpleShots deck iframe
 `simpleshots-rebrand/index.html`) → marquee → FAQ (5) → About → Contact → footer.
