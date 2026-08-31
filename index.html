@@ -627,6 +627,13 @@
     .img-overlay .img-dots { bottom: calc(2vh + 44px); }
     .img-overlay .img-count { top: 32px; left: 26px; }
   }
+  .photo-tabs { display: flex; gap: 10px; margin: 8px 0 26px; }
+  .photo-tabs button { font-family: var(--mono); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; padding: 10px 20px; border-radius: 999px; border: 1px solid var(--hair-strong); background: transparent; color: var(--ink-dim); cursor: pointer; transition: all .25s ease; }
+  .photo-tabs button:hover { border-color: var(--ink); color: var(--ink); }
+  .photo-tabs button.on { background: var(--ink); border-color: var(--ink); color: #FBF6E8; }
+  .wg-photos { animation: tab-in .35s ease; }
+  @keyframes tab-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) { .wg-photos { animation: none; } }
   /* Client logo strip (replaces the primary marquee) */
   .logo-strip {
     border-top: 1px solid var(--hair); border-bottom: 1px solid var(--hair);
@@ -2373,6 +2380,11 @@ const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
 /* ── Real client work: media-first grid ── */
 const WORK = [
   { kind: 'photo', client: 'The Picklr RSM', title: 'Grand opening, court one', src: 'assets/work/picklr-go-dive.jpg', ratio: '2 / 3' },
+  { kind: 'photo', client: 'The Picklr RSM', title: 'Rally at the net', src: 'assets/work/picklr-rally-pair.jpg', ratio: '3 / 2' },
+  { kind: 'photo', client: 'The Picklr RSM', title: 'Overhead put-away', src: 'assets/work/picklr-overhead.jpg', ratio: '2 / 3' },
+  { kind: 'photo', client: 'The Picklr RSM', title: 'Court six, open play', src: 'assets/work/picklr-court6.jpg', ratio: '2 / 3' },
+  { kind: 'portrait', client: 'Portrait session', title: 'In the truck', src: 'assets/work/portraits/portrait-truck.jpg', ratio: '3 / 2' },
+  { kind: 'portrait', client: 'Portrait session', title: 'Golden hour field', src: 'assets/work/portraits/portrait-field.jpg', ratio: '3 / 2' },
   { kind: 'video', client: 'The Picklr RSM', title: "Mic'd up with Coach Dylan", src: 'assets/work/picklr-coach-dylan.mp4', poster: 'assets/work/picklr-coach-dylan-poster.jpg', ratio: '9 / 16' },
   { kind: 'design', client: 'The Picklr RSM', title: 'Courtside Bash post', src: 'assets/work/picklr-courtside-bash.jpg', ratio: '4 / 5' },
   { kind: 'photo', client: 'SimpleShots', title: 'Brand shoot, flat-lay', src: 'assets/work/simpleshots-0402.jpg', ratio: '2 / 3' },
@@ -2392,7 +2404,7 @@ const WORK = [
   { kind: 'photo', client: 'The Picklr RSM', title: 'Friends and family night', src: 'assets/work/picklr-dramatic.jpg', ratio: '2 / 3' },
   { kind: 'photo', client: 'SimpleShots', title: 'Brand shoot, beach', src: 'assets/work/simpleshots-0511.jpg', ratio: '3 / 2' }
 ];
-const KIND_LABEL = { video: 'Reel', photo: 'Photo', design: 'Social graphic', case: 'Case study' };
+const KIND_LABEL = { video: 'Reel', photo: 'Photo', design: 'Social graphic', case: 'Case study', portrait: 'Portrait' };
 const SKILLS = [
   { id: 'photo-video', label: 'Photo + Video', sub: 'Reels, event coverage, brand shoots' },
   { id: 'social', label: 'Social Content', sub: 'Posts, carousels, stories, flyers' },
@@ -2602,8 +2614,9 @@ function PhotoVideo() {
   const [ref, visible] = useReveal(0.12);
   const [openReel, setOpenReel] = useState(null);
   const [openPhoto, setOpenPhoto] = useState(null);
+  const [photoTab, setPhotoTab] = useState('client');
   const reels = WORK.filter((w) => w.kind === 'video');
-  const photos = WORK.filter((w) => w.kind === 'photo');
+  const photos = WORK.filter((w) => w.kind === (photoTab === 'client' ? 'photo' : 'portrait'));
   return (
     <section id="photo-video" ref={ref} style={{ padding: '100px 8vw', background: 'var(--bg)', borderTop: '1px solid var(--hair)' }}>
       <SectionHead eyebrow="01 · Photo + Video" title="Photo & video, shot on-site at the club." visible={visible}
@@ -2612,7 +2625,11 @@ function PhotoVideo() {
         {reels.map((r) => <PhoneReel key={r.src} item={r} onOpen={setOpenReel} />)}
       </div>
       {openReel && <ReelOverlay item={openReel} onClose={() => setOpenReel(null)} />}
-      <div className="wg wg-photos">
+      <div className="photo-tabs" role="tablist" aria-label="Photo categories">
+        <button type="button" role="tab" aria-selected={photoTab === 'client'} className={photoTab === 'client' ? 'on' : ''} onClick={() => { setPhotoTab('client'); setOpenPhoto(null); }}>Client work</button>
+        <button type="button" role="tab" aria-selected={photoTab === 'portrait'} className={photoTab === 'portrait' ? 'on' : ''} onClick={() => { setPhotoTab('portrait'); setOpenPhoto(null); }}>Portraits</button>
+      </div>
+      <div className="wg wg-photos" key={photoTab}>
         {photos.map((item) => <MediaTile key={item.src} item={item} onOpen={(it) => setOpenPhoto(photos.indexOf(it))} />)}
       </div>
       {openPhoto != null && <ImageOverlay items={photos} index={openPhoto} onClose={() => setOpenPhoto(null)} />}
