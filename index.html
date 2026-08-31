@@ -415,6 +415,7 @@
     --display: 'Decalotype', 'Instrument Serif', Georgia, serif;
     --sans: 'Google Sans', system-ui, sans-serif;
     --mono: 'JetBrains Mono', ui-monospace, monospace;
+    --btn-font: 'Product Sans', 'Google Sans', system-ui, sans-serif;  /* Product Sans isn't web-licensed; Google Sans is its successor */
     --serif: var(--display); /* legacy alias */
     --border: var(--hair);
 
@@ -627,8 +628,8 @@
     .img-overlay .img-dots { bottom: calc(2vh + 44px); }
     .img-overlay .img-count { top: 32px; left: 26px; }
   }
-  .photo-tabs { display: flex; gap: 10px; margin: 8px 0 26px; }
-  .photo-tabs button { font-family: var(--mono); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; padding: 10px 20px; border-radius: 999px; border: 1px solid var(--hair-strong); background: transparent; color: var(--ink-dim); cursor: pointer; transition: all .25s ease; }
+  .photo-tabs { display: flex; gap: 12px; margin: 8px 0 32px; justify-content: center; }
+  .photo-tabs button { font-family: var(--btn-font); font-size: 15px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; padding: 14px 32px; border-radius: 999px; border: 1px solid var(--hair-strong); background: transparent; color: var(--ink-dim); cursor: pointer; transition: all .25s ease; }
   .photo-tabs button:hover { border-color: var(--ink); color: var(--ink); }
   .photo-tabs button.on { background: var(--ink); border-color: var(--ink); color: #FBF6E8; }
   .wg-photos { animation: tab-in .35s ease; }
@@ -752,8 +753,8 @@
     padding: 16px 26px 16px 30px;
     border-radius: 999px;
     background: var(--ink); color: #FBF6E8;
-    font-family: var(--mono); font-size: 12px;
-    letter-spacing: 0.14em; text-transform: uppercase;
+    font-family: var(--btn-font); font-size: 14px; font-weight: 500;
+    letter-spacing: 0.05em; text-transform: uppercase;
     border: 1px solid var(--ink);
     text-decoration: none;
     transition: background 0.25s, color 0.25s, transform 0.25s, border-color 0.25s;
@@ -914,8 +915,8 @@
     border: none; background: var(--accent); color: #fff;
     padding: 14px 22px; margin: 4px;
     border-radius: 999px;
-    font-family: var(--mono); font-size: 11px;
-    letter-spacing: 0.14em; text-transform: uppercase;
+    font-family: var(--btn-font); font-size: 13px; font-weight: 500;
+    letter-spacing: 0.05em; text-transform: uppercase;
     transition: background 0.25s, transform 0.25s;
     display: inline-flex; align-items: center; gap: 8px;
     cursor: pointer;
@@ -1122,7 +1123,7 @@
   .laptop-cap { display: flex; gap: 10px; align-items: baseline; padding-top: 16px; font-family: 'Google Sans', system-ui, sans-serif; }
   .wg-photos, .wg-designs { column-count: 4; }
   .wg-filters { display: flex; gap: 8px; flex-wrap: wrap; margin: 0 0 28px; }
-  .wg-filter { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-dim); background: transparent; border: 1px solid var(--hair-strong); border-radius: 999px; padding: 10px 16px; min-height: 40px; cursor: pointer; transition: color .25s, border-color .25s, background .25s; }
+  .wg-filter { font-family: var(--btn-font); font-size: 12px; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-dim); background: transparent; border: 1px solid var(--hair-strong); border-radius: 999px; padding: 10px 16px; min-height: 40px; cursor: pointer; transition: color .25s, border-color .25s, background .25s; }
   .wg-filter:hover { color: var(--ink); border-color: var(--ink); }
   .wg-filter.is-on { color: var(--bg); background: var(--ink); border-color: var(--ink); }
   .wg-filter:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
@@ -2379,7 +2380,6 @@ const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
 
 /* ── Real client work: media-first grid ── */
 const WORK = [
-  { kind: 'photo', client: 'The Picklr RSM', title: 'Grand opening, court one', src: 'assets/work/picklr-go-dive.jpg', ratio: '2 / 3' },
   { kind: 'photo', client: 'The Picklr RSM', title: 'Rally at the net', src: 'assets/work/picklr-rally-pair.jpg', ratio: '3 / 2' },
   { kind: 'photo', client: 'The Picklr RSM', title: 'Overhead put-away', src: 'assets/work/picklr-overhead.jpg', ratio: '2 / 3' },
   { kind: 'photo', client: 'The Picklr RSM', title: 'Court six, open play', src: 'assets/work/picklr-court6.jpg', ratio: '2 / 3' },
@@ -2387,22 +2387,14 @@ const WORK = [
   { kind: 'portrait', client: 'Portrait session', title: 'Golden hour field', src: 'assets/work/portraits/portrait-field.jpg', ratio: '3 / 2' },
   { kind: 'video', client: 'The Picklr RSM', title: "Mic'd up with Coach Dylan", src: 'assets/work/picklr-coach-dylan.mp4', poster: 'assets/work/picklr-coach-dylan-poster.jpg', ratio: '9 / 16' },
   { kind: 'design', client: 'The Picklr RSM', title: 'Courtside Bash post', src: 'assets/work/picklr-courtside-bash.jpg', ratio: '4 / 5' },
-  { kind: 'photo', client: 'SimpleShots', title: 'Brand shoot, flat-lay', src: 'assets/work/simpleshots-0402.jpg', ratio: '2 / 3' },
   { kind: 'design', client: 'The Picklr FV', title: 'Grand opening carousel', src: 'assets/work/picklr-fv-go-cover.jpg', ratio: '4 / 5', slides: ['assets/work/carousels/fv-go-01.jpg', 'assets/work/carousels/fv-go-02.jpg', 'assets/work/carousels/fv-go-03.jpg', 'assets/work/carousels/fv-go-04.jpg', 'assets/work/carousels/fv-go-05.jpg', 'assets/work/carousels/fv-go-06.jpg', 'assets/work/carousels/fv-go-07.jpg'] },
-  { kind: 'photo', client: 'The Picklr RSM', title: 'Exhibition match', src: 'assets/work/picklr-exhibition-wide.jpg', ratio: '3 / 2' },
   { kind: 'video', client: 'The Picklr FV', title: 'How players describe Picklr', src: 'assets/work/picklr-how-players-describe.mp4', poster: 'assets/work/picklr-how-players-describe-poster.jpg', ratio: '9 / 16' },
-  { kind: 'photo', client: 'The Picklr RSM', title: 'Kids night', src: 'assets/work/picklr-kids-rally.jpg', ratio: '4 / 5' },
   { kind: 'design', client: 'The Picklr FV', title: 'Connor Garnett clinic', src: 'assets/work/picklr-cg-stats.jpg', ratio: '4 / 5' },
-  { kind: 'photo', client: 'SimpleShots', title: 'Brand shoot, poolside', src: 'assets/work/simpleshots-0870.jpg', ratio: '2 / 3' },
   { kind: 'design', client: 'The Picklr FV', title: 'Five reasons to come inside', src: 'assets/work/picklr-fv-indoors-5.jpg', ratio: '1 / 1', slides: ['assets/work/carousels/fv-indoors-01.jpg', 'assets/work/carousels/fv-indoors-02.jpg', 'assets/work/carousels/fv-indoors-03.jpg', 'assets/work/carousels/fv-indoors-04.jpg', 'assets/work/carousels/fv-indoors-05.jpg', 'assets/work/carousels/fv-indoors-06.jpg'] },
   { kind: 'video', client: 'The Picklr FV', title: 'Grand opening day', src: 'assets/work/picklr-fv-grand-opening.mp4', poster: 'assets/work/picklr-fv-grand-opening-poster.jpg', ratio: '9 / 16' },
-  { kind: 'photo', client: 'The Picklr RSM', title: 'Grand opening crowd', src: 'assets/work/picklr-go-crowd.jpg', ratio: '2 / 3' },
   { kind: 'design', client: 'The Picklr RSM', title: 'Opening day throwback', src: 'assets/work/picklr-throwback-cover.jpg', ratio: '4 / 5', slides: ['assets/work/carousels/rsm-throwback-01.jpg', 'assets/work/carousels/rsm-throwback-02.jpg', 'assets/work/carousels/rsm-throwback-03.jpg', 'assets/work/carousels/rsm-throwback-04.jpg', 'assets/work/carousels/rsm-throwback-05.jpg'] },
-  { kind: 'photo', client: 'SimpleShots', title: 'Brand shoot, founders', src: 'assets/work/simpleshots-0716.jpg', ratio: '3 / 4' },
   { kind: 'video', client: 'AudioToyz', title: 'The lot on a Wednesday', src: 'assets/work/audiotoyz-lot.mp4', poster: 'assets/work/audiotoyz-lot-poster.jpg', ratio: '9 / 16' },
   { kind: 'design', client: 'The Picklr RSM', title: 'Courtside Bash membership sale', src: 'assets/work/picklr-courtside-sale.jpg', ratio: '4 / 5' },
-  { kind: 'photo', client: 'The Picklr RSM', title: 'Friends and family night', src: 'assets/work/picklr-dramatic.jpg', ratio: '2 / 3' },
-  { kind: 'photo', client: 'SimpleShots', title: 'Brand shoot, beach', src: 'assets/work/simpleshots-0511.jpg', ratio: '3 / 2' }
 ];
 const KIND_LABEL = { video: 'Reel', photo: 'Photo', design: 'Social graphic', case: 'Case study', portrait: 'Portrait' };
 const SKILLS = [
