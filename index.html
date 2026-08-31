@@ -639,9 +639,7 @@
   .portrait-set .ps-head { max-width: 560px; margin: 0 0 22px; }
   .portrait-set .ps-head h3 { font-family: var(--display); font-weight: 400; font-size: clamp(22px, 2.4vw, 30px); letter-spacing: -0.01em; color: var(--ink); margin-bottom: 8px; }
   .portrait-set .ps-head p { font-size: 14px; line-height: 1.6; color: var(--ink-dim); font-family: var(--sans); }
-  .portrait-set .wt-client, .portrait-set .wt-kind { display: none; }
-  .portrait-set .wt-cap { grid-template-columns: 1fr; }
-  .portrait-set .wt-title { color: var(--ink); }
+  .portrait-set .wt-cap { display: none; }
   .ps-more { display: flex; justify-content: center; margin-top: 6px; }
   .ps-more button { font-family: var(--btn-font); font-size: 13px; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; padding: 12px 26px; border-radius: 999px; border: 1px solid var(--hair-strong); background: transparent; color: var(--ink); cursor: pointer; transition: all .25s ease; display: inline-flex; gap: 8px; align-items: center; }
   .ps-more button:hover { background: var(--ink); color: #FBF6E8; border-color: var(--ink); }
@@ -2588,7 +2586,7 @@ function ImageOverlay({ items, index, onClose }) {
       </button>
       <div className="reel-cap">
         <span className="reel-client">{cap.client}</span>
-        <span className="reel-title">{cap.title}</span>
+        {!(cap.title || '').startsWith(cap.client) && <span className="reel-title">{cap.title}</span>}
       </div>
       {total > 1 && <div className="img-count" aria-hidden="true">{i + 1} / {total}</div>}
       {carousel && <div className="img-dots" aria-hidden="true">{Array.from({ length: total }, (_, n) => <i key={n} className={n === i ? 'on' : ''} />)}</div>}
@@ -2622,13 +2620,17 @@ const PORTRAIT_SETS = [
     title: 'Senior portraits',
     desc: "Golden hour senior session in the foothills, shot with a film look. Booked as a one-hour shoot; edited gallery delivered the same week.",
     items: [
-      { client: 'Senior portraits', title: 'Blue sky', src: 'assets/work/portraits/sadie-sky.jpg', ratio: '2 / 3', featured: true },
-      { client: 'Senior portraits', title: 'Foothills', src: 'assets/work/portraits/sadie-tee.jpg', ratio: '3 / 2', featured: true },
-      { client: 'Senior portraits', title: 'Golden hour, seated', src: 'assets/work/portraits/sadie-seated.jpg', ratio: '3 / 2', featured: true },
-      { client: 'Senior portraits', title: 'Looking back', src: 'assets/work/portraits/sadie-lookback.jpg', ratio: '3 / 2' },
-      { client: 'Senior portraits', title: 'Hands on hips', src: 'assets/work/portraits/sadie-hands.jpg', ratio: '3 / 2' },
-      { client: 'Senior portraits', title: 'In the grass', src: 'assets/work/portraits/sadie-grass.jpg', ratio: '3 / 2' },
-      { client: 'Senior portraits', title: 'Golden hour', src: 'assets/work/portraits/sadie-dress.jpg', ratio: '3 / 2' },
+      { client: 'Senior portraits', title: 'Senior portraits 1', src: 'assets/work/portraits/sadie-0021.jpg', ratio: '2 / 3', featured: true },
+      { client: 'Senior portraits', title: 'Senior portraits 2', src: 'assets/work/portraits/sadie-0030.jpg', ratio: '3 / 2', featured: true },
+      { client: 'Senior portraits', title: 'Senior portraits 3', src: 'assets/work/portraits/sadie-0075.jpg', ratio: '2 / 3', featured: true },
+      { client: 'Senior portraits', title: 'Senior portraits 4', src: 'assets/work/portraits/sadie-0094.jpg', ratio: '3 / 2', featured: true },
+      { client: 'Senior portraits', title: 'Senior portraits 5', src: 'assets/work/portraits/sadie-0115.jpg', ratio: '2 / 3', featured: true },
+      { client: 'Senior portraits', title: 'Senior portraits 6', src: 'assets/work/portraits/sadie-0011.jpg', ratio: '2 / 3' },
+      { client: 'Senior portraits', title: 'Senior portraits 7', src: 'assets/work/portraits/sadie-0037.jpg', ratio: '3 / 2' },
+      { client: 'Senior portraits', title: 'Senior portraits 8', src: 'assets/work/portraits/sadie-0053.jpg', ratio: '3 / 2' },
+      { client: 'Senior portraits', title: 'Senior portraits 9', src: 'assets/work/portraits/sadie-0058.jpg', ratio: '2 / 3' },
+      { client: 'Senior portraits', title: 'Senior portraits 10', src: 'assets/work/portraits/sadie-0080.jpg', ratio: '3 / 2' },
+      { client: 'Senior portraits', title: 'Senior portraits 11', src: 'assets/work/portraits/sadie-0082.jpg', ratio: '3 / 2' },
     ],
   },
   {
@@ -2636,14 +2638,23 @@ const PORTRAIT_SETS = [
     title: 'Vintage truck shoot',
     desc: "A styled session built around a 1980s Ford. One truck, one afternoon, and a full set of looks from the tailgate to the cab.",
     items: [
-      { client: 'Vintage truck shoot', title: 'Tailgate', src: 'assets/work/portraits/geneva-tailgate.jpg', ratio: '2 / 3', featured: true },
-      { client: 'Vintage truck shoot', title: "Driver's window", src: 'assets/work/portraits/geneva-window.jpg', ratio: '2 / 3', featured: true },
-      { client: 'Vintage truck shoot', title: 'On the hood', src: 'assets/work/portraits/geneva-hood.jpg', ratio: '3 / 2', featured: true },
-      { client: 'Vintage truck shoot', title: 'Truck bed', src: 'assets/work/portraits/geneva-truckbed.jpg', ratio: '2 / 3' },
-      { client: 'Vintage truck shoot', title: 'Over the windshield', src: 'assets/work/portraits/geneva-windshield.jpg', ratio: '3 / 2' },
-      { client: 'Vintage truck shoot', title: 'From the bed', src: 'assets/work/portraits/geneva-wave.jpg', ratio: '3 / 2' },
-      { client: 'Vintage truck shoot', title: 'Behind the wheel', src: 'assets/work/portraits/geneva-interior.jpg', ratio: '3 / 2' },
-      { client: 'Vintage truck shoot', title: 'In the cab', src: 'assets/work/portraits/geneva-cab.jpg', ratio: '2 / 3' },
+      { client: 'Vintage truck shoot', title: 'Vintage truck shoot 1', src: 'assets/work/portraits/geneva-0051.jpg', ratio: '2 / 3', featured: true },
+      { client: 'Vintage truck shoot', title: 'Vintage truck shoot 2', src: 'assets/work/portraits/geneva-0178.jpg', ratio: '2 / 3', featured: true },
+      { client: 'Vintage truck shoot', title: 'Vintage truck shoot 3', src: 'assets/work/portraits/geneva-0254.jpg', ratio: '3 / 2', featured: true },
+      { client: 'Vintage truck shoot', title: 'Vintage truck shoot 4', src: 'assets/work/portraits/geneva-0125.jpg', ratio: '2 / 3', featured: true },
+      { client: 'Vintage truck shoot', title: 'Vintage truck shoot 5', src: 'assets/work/portraits/geneva-0115.jpg', ratio: '2 / 3', featured: true },
+      { client: 'Vintage truck shoot', title: 'Vintage truck shoot 6', src: 'assets/work/portraits/geneva-0062.jpg', ratio: '3 / 2' },
+      { client: 'Vintage truck shoot', title: 'Vintage truck shoot 7', src: 'assets/work/portraits/geneva-0089.jpg', ratio: '2 / 3' },
+      { client: 'Vintage truck shoot', title: 'Vintage truck shoot 8', src: 'assets/work/portraits/geneva-01141.jpg', ratio: '2 / 3' },
+      { client: 'Vintage truck shoot', title: 'Vintage truck shoot 9', src: 'assets/work/portraits/geneva-0165.jpg', ratio: '3 / 2' },
+      { client: 'Vintage truck shoot', title: 'Vintage truck shoot 10', src: 'assets/work/portraits/geneva-0193.jpg', ratio: '3 / 2' },
+      { client: 'Vintage truck shoot', title: 'Vintage truck shoot 11', src: 'assets/work/portraits/geneva-0221.jpg', ratio: '3 / 2' },
+      { client: 'Vintage truck shoot', title: 'Vintage truck shoot 12', src: 'assets/work/portraits/geneva-0228.jpg', ratio: '2 / 3' },
+      { client: 'Vintage truck shoot', title: 'Vintage truck shoot 13', src: 'assets/work/portraits/geneva-0231.jpg', ratio: '3 / 2' },
+      { client: 'Vintage truck shoot', title: 'Vintage truck shoot 14', src: 'assets/work/portraits/geneva-0241.jpg', ratio: '2 / 3' },
+      { client: 'Vintage truck shoot', title: 'Vintage truck shoot 15', src: 'assets/work/portraits/geneva-0244.jpg', ratio: '3 / 2' },
+      { client: 'Vintage truck shoot', title: 'Vintage truck shoot 16', src: 'assets/work/portraits/geneva-0253.jpg', ratio: '3 / 2' },
+      { client: 'Vintage truck shoot', title: 'Vintage truck shoot 17', src: 'assets/work/portraits/geneva-0258.jpg', ratio: '3 / 2' },
     ],
   },
 ];
