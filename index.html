@@ -635,6 +635,13 @@
   .wg-photos { animation: tab-in .35s ease; }
   @keyframes tab-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
   @media (prefers-reduced-motion: reduce) { .wg-photos { animation: none; } }
+  .portrait-set { margin-bottom: 56px; }
+  .portrait-set .ps-head { max-width: 560px; margin: 0 0 22px; }
+  .portrait-set .ps-head h3 { font-family: var(--display); font-weight: 400; font-size: clamp(22px, 2.4vw, 30px); letter-spacing: -0.01em; color: var(--ink); margin-bottom: 8px; }
+  .portrait-set .ps-head p { font-size: 14px; line-height: 1.6; color: var(--ink-dim); font-family: var(--sans); }
+  .ps-more { display: flex; justify-content: center; margin-top: 6px; }
+  .ps-more button { font-family: var(--btn-font); font-size: 13px; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; padding: 12px 26px; border-radius: 999px; border: 1px solid var(--hair-strong); background: transparent; color: var(--ink); cursor: pointer; transition: all .25s ease; display: inline-flex; gap: 8px; align-items: center; }
+  .ps-more button:hover { background: var(--ink); color: #FBF6E8; border-color: var(--ink); }
   /* Client logo strip (replaces the primary marquee) */
   .logo-strip {
     border-top: 1px solid var(--hair); border-bottom: 1px solid var(--hair);
@@ -2389,16 +2396,6 @@ const WORK = [
   { kind: 'photo', client: 'The Picklr RSM', title: 'Doubles, ready position', src: 'assets/work/picklr-doubles-ready.jpg', ratio: '3 / 2' },
   { kind: 'photo', client: 'The Picklr RSM', title: 'Overhead at open play', src: 'assets/work/picklr-overhead-smash.jpg', ratio: '3 / 2' },
   { kind: 'photo', client: 'The Picklr RSM', title: 'Coaching session', src: 'assets/work/picklr-coaching.jpg', ratio: '2 / 3' },
-  { kind: 'portrait', client: 'Portrait session', title: 'Tailgate', src: 'assets/work/portraits/geneva-tailgate.jpg', ratio: '2 / 3' },
-  { kind: 'portrait', client: 'Portrait session', title: 'Truck bed', src: 'assets/work/portraits/geneva-truckbed.jpg', ratio: '2 / 3' },
-  { kind: 'portrait', client: 'Portrait session', title: "Driver's window", src: 'assets/work/portraits/geneva-window.jpg', ratio: '2 / 3' },
-  { kind: 'portrait', client: 'Portrait session', title: 'Over the windshield', src: 'assets/work/portraits/geneva-windshield.jpg', ratio: '3 / 2' },
-  { kind: 'portrait', client: 'Portrait session', title: 'On the hood', src: 'assets/work/portraits/geneva-hood.jpg', ratio: '3 / 2' },
-  { kind: 'portrait', client: 'Portrait session', title: 'In the grass', src: 'assets/work/portraits/sadie-grass.jpg', ratio: '3 / 2' },
-  { kind: 'portrait', client: 'Portrait session', title: 'Foothills', src: 'assets/work/portraits/sadie-tee.jpg', ratio: '3 / 2' },
-  { kind: 'portrait', client: 'Portrait session', title: 'Blue sky', src: 'assets/work/portraits/sadie-sky.jpg', ratio: '2 / 3' },
-  { kind: 'portrait', client: 'Portrait session', title: 'Golden hour', src: 'assets/work/portraits/sadie-dress.jpg', ratio: '3 / 2' },
-  { kind: 'portrait', client: 'Portrait session', title: 'Golden hour, seated', src: 'assets/work/portraits/sadie-seated.jpg', ratio: '3 / 2' },
   { kind: 'video', client: 'The Picklr RSM', title: "Mic'd up with Coach Dylan", src: 'assets/work/picklr-coach-dylan.mp4', poster: 'assets/work/picklr-coach-dylan-poster.jpg', ratio: '9 / 16' },
   { kind: 'design', client: 'The Picklr RSM', title: 'Courtside Bash post', src: 'assets/work/picklr-courtside-bash.jpg', ratio: '4 / 5' },
   { kind: 'design', client: 'The Picklr FV', title: 'Grand opening carousel', src: 'assets/work/picklr-fv-go-cover.jpg', ratio: '4 / 5', slides: ['assets/work/carousels/fv-go-01.jpg', 'assets/work/carousels/fv-go-02.jpg', 'assets/work/carousels/fv-go-03.jpg', 'assets/work/carousels/fv-go-04.jpg', 'assets/work/carousels/fv-go-05.jpg', 'assets/work/carousels/fv-go-06.jpg', 'assets/work/carousels/fv-go-07.jpg'] },
@@ -2616,13 +2613,68 @@ function MediaTile({ item, onOpen }) {
   return <div className={'wt wt-' + item.kind} onClick={tap} role={onOpen ? 'button' : undefined} tabIndex={onOpen ? 0 : undefined} onKeyDown={onOpen ? (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onOpen(item); } } : undefined}>{inner}</div>;
 }
 
+const PORTRAIT_SETS = [
+  {
+    key: 'senior',
+    title: 'Senior portraits',
+    desc: "Golden hour senior session in the foothills, shot with a film look. Booked as a one-hour shoot; edited gallery delivered the same week.",
+    items: [
+      { client: 'Senior portraits', title: 'Blue sky', src: 'assets/work/portraits/sadie-sky.jpg', ratio: '2 / 3', featured: true },
+      { client: 'Senior portraits', title: 'Foothills', src: 'assets/work/portraits/sadie-tee.jpg', ratio: '3 / 2', featured: true },
+      { client: 'Senior portraits', title: 'Golden hour, seated', src: 'assets/work/portraits/sadie-seated.jpg', ratio: '3 / 2', featured: true },
+      { client: 'Senior portraits', title: 'Looking back', src: 'assets/work/portraits/sadie-lookback.jpg', ratio: '3 / 2' },
+      { client: 'Senior portraits', title: 'Hands on hips', src: 'assets/work/portraits/sadie-hands.jpg', ratio: '3 / 2' },
+      { client: 'Senior portraits', title: 'In the grass', src: 'assets/work/portraits/sadie-grass.jpg', ratio: '3 / 2' },
+      { client: 'Senior portraits', title: 'Golden hour', src: 'assets/work/portraits/sadie-dress.jpg', ratio: '3 / 2' },
+    ],
+  },
+  {
+    key: 'truck',
+    title: 'Vintage truck shoot',
+    desc: "A styled session built around a 1980s Ford. One truck, one afternoon, and a full set of looks from the tailgate to the cab.",
+    items: [
+      { client: 'Vintage truck shoot', title: 'Tailgate', src: 'assets/work/portraits/geneva-tailgate.jpg', ratio: '2 / 3', featured: true },
+      { client: 'Vintage truck shoot', title: "Driver's window", src: 'assets/work/portraits/geneva-window.jpg', ratio: '2 / 3', featured: true },
+      { client: 'Vintage truck shoot', title: 'On the hood', src: 'assets/work/portraits/geneva-hood.jpg', ratio: '3 / 2', featured: true },
+      { client: 'Vintage truck shoot', title: 'Truck bed', src: 'assets/work/portraits/geneva-truckbed.jpg', ratio: '2 / 3' },
+      { client: 'Vintage truck shoot', title: 'Over the windshield', src: 'assets/work/portraits/geneva-windshield.jpg', ratio: '3 / 2' },
+      { client: 'Vintage truck shoot', title: 'From the bed', src: 'assets/work/portraits/geneva-wave.jpg', ratio: '3 / 2' },
+      { client: 'Vintage truck shoot', title: 'Behind the wheel', src: 'assets/work/portraits/geneva-interior.jpg', ratio: '3 / 2' },
+      { client: 'Vintage truck shoot', title: 'In the cab', src: 'assets/work/portraits/geneva-cab.jpg', ratio: '2 / 3' },
+    ],
+  },
+];
+
+function PortraitSession({ set }) {
+  const [expanded, setExpanded] = useState(false);
+  const [open, setOpen] = useState(null);
+  const shown = expanded ? set.items : set.items.filter((i) => i.featured);
+  return (
+    <div className="portrait-set">
+      <div className="ps-head">
+        <h3>{set.title}</h3>
+        <p>{set.desc}</p>
+      </div>
+      <div className="wg wg-photos">
+        {shown.map((item) => <MediaTile key={item.src} item={item} onOpen={(it) => setOpen(shown.indexOf(it))} />)}
+      </div>
+      <div className="ps-more">
+        <button type="button" onClick={() => setExpanded(!expanded)}>
+          {expanded ? 'Show less' : `See all ${set.items.length} photos`} <span>{expanded ? '↑' : '↓'}</span>
+        </button>
+      </div>
+      {open != null && <ImageOverlay items={shown} index={open} onClose={() => setOpen(null)} />}
+    </div>
+  );
+}
+
 function PhotoVideo() {
   const [ref, visible] = useReveal(0.12);
   const [openReel, setOpenReel] = useState(null);
   const [openPhoto, setOpenPhoto] = useState(null);
   const [photoTab, setPhotoTab] = useState('client');
   const reels = WORK.filter((w) => w.kind === 'video');
-  const photos = WORK.filter((w) => w.kind === (photoTab === 'client' ? 'photo' : 'portrait'));
+  const photos = WORK.filter((w) => w.kind === 'photo');
   return (
     <section id="photo-video" ref={ref} style={{ padding: '100px 8vw', background: 'var(--bg)', borderTop: '1px solid var(--hair)' }}>
       <SectionHead eyebrow="01 · Photo + Video" title="Photo & video, shot on-site at the club." visible={visible}
@@ -2635,9 +2687,13 @@ function PhotoVideo() {
         <button type="button" role="tab" aria-selected={photoTab === 'client'} className={photoTab === 'client' ? 'on' : ''} onClick={() => { setPhotoTab('client'); setOpenPhoto(null); }}>Client work</button>
         <button type="button" role="tab" aria-selected={photoTab === 'portrait'} className={photoTab === 'portrait' ? 'on' : ''} onClick={() => { setPhotoTab('portrait'); setOpenPhoto(null); }}>Portraits</button>
       </div>
+      {photoTab === 'client' ?
       <div className="wg wg-photos" key={photoTab}>
         {photos.map((item) => <MediaTile key={item.src} item={item} onOpen={(it) => setOpenPhoto(photos.indexOf(it))} />)}
-      </div>
+      </div> :
+      <div key={photoTab}>
+        {PORTRAIT_SETS.map((set) => <PortraitSession key={set.key} set={set} />)}
+      </div>}
       {openPhoto != null && <ImageOverlay items={photos} index={openPhoto} onClose={() => setOpenPhoto(null)} />}
     </section>
   );
