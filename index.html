@@ -1132,7 +1132,7 @@
   .wg-photos { column-count: 4; }
   /* Social graphics: centered flex rows instead of masonry columns, so a short last row sits centered rather than leaving a hole on the right. */
   .wg-designs { column-count: auto; display: flex; flex-wrap: wrap; justify-content: center; gap: 18px; }
-  .wg-designs .wt { width: calc((100% - 3 * 18px) / 4); margin: 0; }
+  .wg-designs .wt { width: calc((100% - 2 * 18px) / 3); margin: 0; }
   @media (max-width: 1100px) { .wg-designs .wt { width: calc((100% - 2 * 18px) / 3); } }
   @media (max-width: 760px) { .wg-designs { gap: 12px; } .wg-designs .wt { width: calc((100% - 12px) / 2); } }
   .wg-filters { display: flex; gap: 8px; flex-wrap: wrap; margin: 0 0 28px; }
@@ -2413,6 +2413,9 @@ const WORK = [
   { kind: 'design', client: 'The Picklr RSM', title: 'Opening day throwback', src: 'assets/work/picklr-throwback-cover.jpg', ratio: '4 / 5', slides: ['assets/work/carousels/rsm-throwback-01.jpg', 'assets/work/carousels/rsm-throwback-02.jpg', 'assets/work/carousels/rsm-throwback-03.jpg', 'assets/work/carousels/rsm-throwback-04.jpg', 'assets/work/carousels/rsm-throwback-05.jpg'] },
   { kind: 'video', client: 'AudioToyz', title: 'The lot on a Wednesday', src: 'assets/work/audiotoyz-lot.mp4', poster: 'assets/work/audiotoyz-lot-poster.jpg', ratio: '9 / 16' },
   { kind: 'design', client: 'The Picklr RSM', title: 'Courtside Bash membership sale', src: 'assets/work/picklr-courtside-sale.jpg', ratio: '4 / 5' },
+  { kind: 'design', client: "Carrie's Pilates", title: "What pilates actually does, spec carousel", src: 'assets/work/carries-what-pilates-does-cover.jpg', ratio: '4 / 5', slides: ['assets/work/carousels/carries-what-pilates-does-01.jpg', 'assets/work/carousels/carries-what-pilates-does-02.jpg', 'assets/work/carousels/carries-what-pilates-does-03.jpg', 'assets/work/carousels/carries-what-pilates-does-04.jpg', 'assets/work/carousels/carries-what-pilates-does-05.jpg', 'assets/work/carousels/carries-what-pilates-does-06.jpg'] },
+  { kind: 'design', client: "Carrie's Pilates", title: "Why Carrie's? spec carousel", src: 'assets/work/carries-why-carries-cover.jpg', ratio: '4 / 5', slides: ['assets/work/carousels/carries-why-carries-01.jpg', 'assets/work/carousels/carries-why-carries-02.jpg', 'assets/work/carousels/carries-why-carries-03.jpg', 'assets/work/carousels/carries-why-carries-04.jpg', 'assets/work/carousels/carries-why-carries-05.jpg', 'assets/work/carousels/carries-why-carries-06.jpg'] },
+  { kind: 'design', client: "Carrie's Pilates", title: "First class at Carrie's, spec carousel", src: 'assets/work/carries-first-class-cover.jpg', ratio: '4 / 5', slides: ['assets/work/carousels/carries-first-class-01.jpg', 'assets/work/carousels/carries-first-class-02.jpg', 'assets/work/carousels/carries-first-class-03.jpg', 'assets/work/carousels/carries-first-class-04.jpg', 'assets/work/carousels/carries-first-class-05.jpg', 'assets/work/carousels/carries-first-class-06.jpg', 'assets/work/carousels/carries-first-class-07.jpg'] },
 ];
 const KIND_LABEL = { video: 'Reel', photo: 'Photo', design: 'Social graphic', case: 'Case study', portrait: 'Portrait' };
 const SKILLS = [
@@ -2741,7 +2744,7 @@ function SocialContent() {
   return (
     <section id="social" ref={ref} style={{ padding: '100px 8vw', background: 'var(--bg2)', borderTop: '1px solid var(--hair)' }}>
       <SectionHead eyebrow="02 · Social Content" title="Posts, carousels and flyers that match the club." visible={visible}
-        blurb="Grand opening carousels, clinic promos, membership sales & throwback posts for both Picklr clubs. All of it is built inside the franchise brand system, so it sits next to the corporate posts on the same feed." />
+        blurb="Grand opening carousels, clinic promos, membership sales & throwback posts for both Picklr clubs, plus three spec carousels for Carrie's Pilates. All of it is built inside each brand's system, so it sits next to the corporate posts on the same feed." />
       <div className="wg wg-designs">
         {designs.map((item) => <MediaTile key={item.src} item={item} onOpen={(it) => setOpenDesign(designs.indexOf(it))} />)}
       </div>
