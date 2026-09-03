@@ -1129,7 +1129,12 @@
   .laptop-base { width: 100%; height: 14px; background: linear-gradient(#d9d3c4, #b9b2a2); border-radius: 0 0 14px 14px; box-shadow: 0 14px 30px rgba(26,22,18,0.25); position: relative; }
   .laptop-base::after { content: ''; position: absolute; left: 50%; top: 0; width: 14%; height: 5px; margin-left: -7%; background: #a39c8c; border-radius: 0 0 6px 6px; }
   .laptop-cap { display: flex; gap: 10px; align-items: baseline; padding-top: 16px; font-family: 'Google Sans', system-ui, sans-serif; }
-  .wg-photos, .wg-designs { column-count: 4; }
+  .wg-photos { column-count: 4; }
+  /* Social graphics: centered flex rows instead of masonry columns, so a short last row sits centered rather than leaving a hole on the right. */
+  .wg-designs { column-count: auto; display: flex; flex-wrap: wrap; justify-content: center; gap: 18px; }
+  .wg-designs .wt { width: calc((100% - 3 * 18px) / 4); margin: 0; }
+  @media (max-width: 1100px) { .wg-designs .wt { width: calc((100% - 2 * 18px) / 3); } }
+  @media (max-width: 760px) { .wg-designs { gap: 12px; } .wg-designs .wt { width: calc((100% - 12px) / 2); } }
   .wg-filters { display: flex; gap: 8px; flex-wrap: wrap; margin: 0 0 28px; }
   .wg-filter { font-family: var(--btn-font); font-size: 12px; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-dim); background: transparent; border: 1px solid var(--hair-strong); border-radius: 999px; padding: 10px 16px; min-height: 40px; cursor: pointer; transition: color .25s, border-color .25s, background .25s; }
   .wg-filter:hover { color: var(--ink); border-color: var(--ink); }
