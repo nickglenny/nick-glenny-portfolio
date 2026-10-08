@@ -3500,7 +3500,9 @@ function ClientGrid() {
   useEffect(() => {
     const el = grid.current;
     const mq = window.matchMedia('(max-width: 640px)');
-    const check = () => el.classList.toggle('docked', !mq.matches || Math.abs(el.getBoundingClientRect().top - 55) < 3);
+    // Keep an entered feed scrollable even if browser chrome or scroll chaining moves the page.
+    // Only delay feed scrolling while approaching its first card from above.
+    const check = () => el.classList.toggle('docked', !mq.matches || el.getBoundingClientRect().top <= 58 || el.scrollTop > 0);
     check();
     window.addEventListener('scroll', check, { passive: true }); window.addEventListener('resize', check);
     return () => { window.removeEventListener('scroll', check); window.removeEventListener('resize', check); };
