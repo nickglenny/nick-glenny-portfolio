@@ -1204,6 +1204,7 @@
   .project-subhead h3 { font-family: var(--display); font-size: clamp(22px, 2.7vw, 34px); font-weight: 400; }
   .project-subhead span { font-size: 12px; color: var(--ink-dim); }
   .carries-row { display: grid; grid-template-columns: 1.24fr 1fr 1fr; gap: 24px; align-items: start; }
+  .carries-carousels { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .carries-row .phones { margin: 0; width: 100%; }
   .carries-row .phone-wrap { width: calc((100% - clamp(16px, 2vw, 28px)) / 2); }
   @media (max-width: 900px) { .carries-row { grid-template-columns: 1fr 1fr; } .carries-row .phones { grid-column: 1 / -1; max-width: 540px; margin: 0 auto 8px; } }
@@ -1354,6 +1355,9 @@
   .skill-arrow { grid-column: 2; grid-row: 1 / span 2; font-size: 18px; color: var(--accent); transition: transform .4s; }
   .skill:hover .skill-arrow { transform: translateY(4px); }
   .phones { display: flex; flex-wrap: wrap; justify-content: center; gap: clamp(16px, 2vw, 28px); margin: 0 auto 64px; max-width: 1080px; }
+  .new-reels { max-width: 860px; }
+  .new-reels .phone-wrap { width: calc((100% - 2 * clamp(16px, 2vw, 28px)) / 3); }
+  @media (max-width: 560px) { .new-reels .phone-wrap { width: min(100%, 280px); } }
   .phone-wrap { display: flex; flex-direction: column; width: calc((100% - 4 * clamp(16px, 2vw, 28px)) / 5); }
   .phone { display: block; width: 100%; padding: 0; border: 0; background: transparent; cursor: pointer; text-align: left; }
   .phone:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 40px; }
@@ -1382,9 +1386,9 @@
   .photo-rows-more { display: flex; justify-content: center; margin-top: 28px; }
   @media (max-width: 760px) { .photo-rows { grid-template-columns: repeat(2, 1fr); gap: 12px; } }
   /* Spec ad rows: each tile grows by its aspect ratio so mixed 2:3 and 4:5 ads share one height. */
-  .ad-row { display: flex; gap: 18px; align-items: flex-start; }
-  .ad-row .wt { flex: var(--ar) 1 0; min-width: 0; margin: 0; cursor: zoom-in; }
-  @media (max-width: 760px) { .ad-row { flex-wrap: wrap; justify-content: center; gap: 12px; } .ad-row .wt { flex: 1 1 calc((100% - 12px) / 2); } .ad-row .wt:has(.wt-frame[style*="3 / 2"]) { flex-basis: 100%; } }
+  .project-media-row { display: flex; gap: 18px; align-items: flex-start; }
+  .project-media-row .wt { flex: var(--ar) 1 0; min-width: 0; margin: 0; cursor: zoom-in; }
+  @media (max-width: 760px) { .project-media-row { flex-wrap: wrap; justify-content: center; gap: 12px; } .project-media-row .wt { flex: 1 1 calc((100% - 12px) / 2); } .project-media-row .wt:has(.wt-frame[style*="3 / 2"]) { flex-basis: 100%; } }
   .wg-designs { column-count: auto; display: flex; flex-wrap: wrap; justify-content: center; gap: 18px; }
   .wg-designs .wt { width: calc((100% - 2 * 18px) / 3); margin: 0; }
   @media (max-width: 1100px) { .wg-designs .wt { width: calc((100% - 2 * 18px) / 3); } }
@@ -2661,6 +2665,12 @@ const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
 
 /* ── Real client work: media-first grid ── */
 const WORK = [
+  {"kind": "video", "client": "Carrie's Pilates", "title": "Carrie's 1", "src": "content/carries-pilates/videos/carries-reel-1.mp4", "poster": "content/carries-pilates/videos/carries-reel-1-poster.jpg", "ratio": "9 / 16", "newReel": true},
+  {"kind": "video", "client": "Carrie's Pilates", "title": "Carrie's 2", "src": "content/carries-pilates/videos/carries-reel-2.mp4", "poster": "content/carries-pilates/videos/carries-reel-2-poster.jpg", "ratio": "9 / 16", "newReel": true},
+  {"kind": "video", "client": "Carrie's Pilates", "title": "Carrie's 3", "src": "content/carries-pilates/videos/carries-reel-3.mp4", "poster": "content/carries-pilates/videos/carries-reel-3-poster.jpg", "ratio": "9 / 16", "newReel": true},
+  {"kind": "video", "client": "The Picklr", "title": "Nightmare at the Picklr recap", "src": "content/the-picklr/videos/picklr-reel-1.mp4", "poster": "content/the-picklr/videos/picklr-reel-1-poster.jpg", "ratio": "9 / 16", "newReel": true},
+  {"kind": "video", "client": "The Picklr", "title": "Nightmare at the Picklr tournament promo", "src": "content/the-picklr/videos/picklr-reel-2.mp4", "poster": "content/the-picklr/videos/picklr-reel-2-poster.jpg", "ratio": "9 / 16", "newReel": true},
+  {"kind": "video", "client": "The Picklr", "title": "Member interviews", "src": "content/the-picklr/videos/picklr-reel-3.mp4", "poster": "content/the-picklr/videos/picklr-reel-3-poster.jpg", "ratio": "9 / 16", "newReel": true},
   { kind: 'photo', client: 'The Picklr RSM', title: 'Rally at the net', src: 'content/the-picklr/photos/picklr-rally-pair.jpg', ratio: '3 / 2' },
   { kind: 'photo', client: 'The Picklr RSM', title: 'Overhead put-away', src: 'content/the-picklr/photos/picklr-overhead.jpg', ratio: '2 / 3' },
   { kind: 'photo', client: 'The Picklr RSM', title: 'Court six, open play', src: 'content/the-picklr/photos/picklr-court6.jpg', ratio: '2 / 3' },
@@ -2672,17 +2682,13 @@ const WORK = [
   { kind: 'photo', client: 'The Picklr RSM', title: 'Coaching session', src: 'content/the-picklr/photos/picklr-coaching.jpg', ratio: '2 / 3' },
   { kind: 'video', client: 'The Picklr RSM', title: "Mic'd up with Coach Dylan", src: 'content/the-picklr/videos/picklr-coach-dylan.mp4', poster: 'content/the-picklr/videos/picklr-coach-dylan-poster.jpg', ratio: '9 / 16' },
   { kind: 'design', client: 'The Picklr RSM', title: 'Courtside Bash post', src: 'content/the-picklr/photos/picklr-courtside-bash.jpg', ratio: '4 / 5' },
-  { kind: 'design', client: 'The Picklr FV', title: 'Grand opening carousel', src: 'content/the-picklr/photos/picklr-fv-go-cover.jpg', ratio: '4 / 5', slides: ['content/the-picklr/photos/fv-go-01.jpg', 'content/the-picklr/photos/fv-go-02.jpg', 'content/the-picklr/photos/fv-go-03.jpg', 'content/the-picklr/photos/fv-go-04.jpg', 'content/the-picklr/photos/fv-go-05.jpg', 'content/the-picklr/photos/fv-go-06.jpg', 'content/the-picklr/photos/fv-go-07.jpg'] },
   { kind: 'video', client: 'The Picklr FV', title: 'How players describe Picklr', src: 'content/the-picklr/videos/picklr-how-players-describe.mp4', poster: 'content/the-picklr/videos/picklr-how-players-describe-poster.jpg', ratio: '9 / 16' },
   { kind: 'design', client: 'The Picklr FV', title: 'Connor Garnett clinic', src: 'content/the-picklr/photos/picklr-cg-stats.jpg', ratio: '4 / 5' },
   { kind: 'video', client: 'UForce', title: 'Trial week ad hook', src: 'content/uforce/videos/uforce-ad-hook.mp4', poster: 'content/uforce/videos/uforce-ad-hook-poster.jpg', ratio: '9 / 16' },
-  { kind: 'design', client: 'The Picklr FV', title: 'Five reasons to come inside', src: 'content/the-picklr/photos/picklr-fv-indoors-5.jpg', ratio: '1 / 1', slides: ['content/the-picklr/photos/fv-indoors-01.jpg', 'content/the-picklr/photos/fv-indoors-02.jpg', 'content/the-picklr/photos/fv-indoors-03.jpg', 'content/the-picklr/photos/fv-indoors-04.jpg', 'content/the-picklr/photos/fv-indoors-05.jpg', 'content/the-picklr/photos/fv-indoors-06.jpg'] },
   { kind: 'video', client: 'The Picklr FV', title: 'Grand opening day', src: 'content/the-picklr/videos/picklr-fv-grand-opening.mp4', poster: 'content/the-picklr/videos/picklr-fv-grand-opening-poster.jpg', ratio: '9 / 16' },
   { kind: 'design', client: 'The Picklr RSM', title: 'Opening day throwback', src: 'content/the-picklr/photos/picklr-throwback-cover.jpg', ratio: '4 / 5', slides: ['content/the-picklr/photos/rsm-throwback-01.jpg', 'content/the-picklr/photos/rsm-throwback-02.jpg', 'content/the-picklr/photos/rsm-throwback-03.jpg', 'content/the-picklr/photos/rsm-throwback-04.jpg', 'content/the-picklr/photos/rsm-throwback-05.jpg'] },
   { kind: 'video', client: 'AudioToyz', title: 'The lot on a Wednesday', src: 'content/audiotoyz/videos/audiotoyz-lot.mp4', poster: 'content/audiotoyz/videos/audiotoyz-lot-poster.jpg', ratio: '9 / 16' },
   { kind: 'design', client: 'The Picklr RSM', title: 'Courtside Bash membership sale', src: 'content/the-picklr/photos/picklr-courtside-sale.jpg', ratio: '4 / 5' },
-  { kind: 'video', client: "Carrie's Pilates", title: 'Girl math', src: 'content/carries-pilates/videos/carries-girl-math.mp4', poster: 'content/carries-pilates/videos/carries-girl-math-poster.jpg', ratio: '9 / 16' },
-  { kind: 'video', client: "Carrie's Pilates", title: 'Classes at Carrie\'s Pilates', src: 'content/carries-pilates/videos/carries-classes.mp4', poster: 'content/carries-pilates/videos/carries-classes-poster.jpg', ratio: '9 / 16' },
   { kind: 'design', set: 'studio', client: "Carrie's Pilates", title: "The Carrie's Experience", src: 'content/carries-pilates/photos/carousel-experience/slide-01-cover.jpg', ratio: '3 / 4', slides: ['content/carries-pilates/photos/carousel-experience/slide-01-cover.jpg', 'content/carries-pilates/photos/carousel-experience/slide-02-full-body-burn.jpg', 'content/carries-pilates/photos/carousel-experience/slide-03-abs-and-ass.jpg', 'content/carries-pilates/photos/carousel-experience/slide-04-strength-and-stretch.jpg', 'content/carries-pilates/photos/carousel-experience/slide-05-power-hour.jpg', 'content/carries-pilates/photos/carousel-experience/slide-06-private-sessions.jpg', 'content/carries-pilates/photos/carousel-experience/slide-07-first-burn.jpg'] },
   { kind: 'design', set: 'studio', client: "Carrie's Pilates", title: 'Google reviews', src: 'content/carries-pilates/photos/carousel-reviews/slide-01-cover.jpg', ratio: '4 / 5', slides: ['content/carries-pilates/photos/carousel-reviews/slide-01-cover.jpg', 'content/carries-pilates/photos/carousel-reviews/slide-02-push-ups.jpg', 'content/carries-pilates/photos/carousel-reviews/slide-03-oc-gem.jpg', 'content/carries-pilates/photos/carousel-reviews/slide-04-45-minutes.jpg', 'content/carries-pilates/photos/carousel-reviews/slide-05-keep-showing-up.jpg', 'content/carries-pilates/photos/carousel-reviews/slide-06-never-bored.jpg'] },
   { kind: 'photo', client: "Prime Volleyball Club", title: 'Team photo under the wall logo', src: 'content/prime-volleyball/photos/prime-00576.jpg', ratio: '3 / 2' },
@@ -2712,7 +2718,6 @@ const WORK = [
   { kind: 'photo', set: 'gym', client: '@gymjilly', title: 'In the gym', src: 'content/gymjilly/photos/jill-gym-00722.jpg', ratio: '2 / 3' },
   { kind: 'photo', set: 'gym', client: '@gymjilly', title: 'In the gym', src: 'content/gymjilly/photos/jill-gym-00751.jpg', ratio: '2 / 3' },
   { kind: 'photo', set: 'gym', client: '@gymjilly', title: 'In the gym', src: 'content/gymjilly/photos/jill-gym-00727.jpg', ratio: '2 / 3' },
-  { kind: 'photo', set: 'gym', client: '@gymjilly', title: 'In the gym', src: 'content/gymjilly/photos/jill-gym-00759.jpg', ratio: '2 / 3' },
   { kind: 'photo', set: 'gym', client: '@gymjilly', title: 'In the gym', src: 'content/gymjilly/photos/jill-gym-00736.jpg', ratio: '2 / 3' },
   { kind: 'photo', set: 'gym', client: '@gymjilly', title: 'In the gym', src: 'content/gymjilly/photos/jill-gym-00739.jpg', ratio: '2 / 3' },
   { kind: 'photo', set: 'gym', client: '@gymjilly', title: 'In the gym', src: 'content/gymjilly/photos/jill-gym-00746.jpg', ratio: '2 / 3' },
@@ -2729,7 +2734,6 @@ const WORK = [
   { kind: 'photo', set: 'gym', client: '@gymjilly', title: 'In the gym', src: 'content/gymjilly/photos/jill-gym-00752.jpg', ratio: '2 / 3' },
   { kind: 'photo', set: 'gym', client: '@gymjilly', title: 'In the gym', src: 'content/gymjilly/photos/jill-gym-00754.jpg', ratio: '2 / 3' },
   { kind: 'photo', set: 'gym', client: '@gymjilly', title: 'In the gym', src: 'content/gymjilly/photos/jill-gym-00756.jpg', ratio: '2 / 3' },
-  { kind: 'photo', set: 'gym', client: '@gymjilly', title: 'In the gym', src: 'content/gymjilly/photos/jill-gym-00758.jpg', ratio: '2 / 3' },
   { kind: 'photo', client: '@gymjilly', title: 'Out the roof', src: 'content/gymjilly/photos/jill-00789.jpg', ratio: '2 / 3' },
   { kind: 'photo', client: '@gymjilly', title: 'On the hood', src: 'content/gymjilly/photos/jill-00855.jpg', ratio: '2 / 3' },
   { kind: 'photo', client: '@gymjilly', title: 'Up top with the mountains', src: 'content/gymjilly/photos/jill-00807.jpg', ratio: '3 / 2' },
@@ -2984,7 +2988,7 @@ function ImageOverlay({ items, index, onClose }) {
   );
 }
 
-function MediaTile({ item, onOpen }) {
+function MediaTile({ item, onOpen, showCaption = true }) {
   const inner = (
     <>
       <div className="wt-frame" style={{ aspectRatio: item.ratio }}>
@@ -2992,11 +2996,11 @@ function MediaTile({ item, onOpen }) {
         {item.kind === 'case' && <div className="wt-case-tag">View case study <span>→</span></div>}
         {item.slides && <div className="wt-stack" aria-label={item.slides.length + ' slides'}><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="7" width="14" height="14" rx="2"/><path d="M7 3h12a2 2 0 0 1 2 2v12"/></svg></div>}
       </div>
-      <div className="wt-cap">
+      {showCaption && <div className="wt-cap">
         <span className="wt-client">{item.client}</span>
         <span className="wt-title">{item.title}</span>
         <span className="wt-kind">{KIND_LABEL[item.kind]}</span>
-      </div>
+      </div>}
     </>
   );
   if (item.href) return <a className={'wt wt-' + item.kind} href={item.href}>{inner}</a>;
@@ -3145,33 +3149,23 @@ function PicklrProject() {
   const [openDesign, setOpenDesign] = useState(null);
   const work = WORK.filter(w => /Picklr/.test(w.client));
   const photos = work.filter(w => w.kind === 'photo');
-  const reels = work.filter(w => w.kind === 'video' && /coach-dylan|grand-opening/.test(w.src));
-  const carousels = ['picklr-fv-go-cover.jpg', 'picklr-fv-indoors-5.jpg'].map(name => work.find(w => w.src.endsWith(name)));
-  const selected = new Set([photos[0], ...reels, ...carousels]);
-  const morePhotos = photos.filter(item => !selected.has(item));
-  const moreReels = work.filter(item => item.kind === 'video' && !selected.has(item));
-  const moreDesigns = work.filter(item => item.kind === 'design' && !selected.has(item));
-  const remaining = work.length - selected.size;
-  return <section id="picklr" className="client-chapter picklr-curated">
+  const reels = work.filter(w => w.kind === 'video');
+  const designs = work.filter(w => w.kind === 'design');
+  const carousels = designs.filter(w => w.slides);
+  const posts = designs.filter(w => !w.slides);
+  return <section id="picklr" className="client-chapter">
     <ChapterHeading name="The Picklr" tags={['Photography', 'Reels', 'Social design', 'Event coverage']} />
     <p className="project-role"><span>My role</span> I shoot and edit photos and reels and design social posts for The Picklr’s Rancho Santa Margarita (RSM) and Fountain Valley locations. I also manage the monthly content calendar, member outreach, and community engagement.</p>
-    <div className="project-subhead"><h3>Selected work.</h3><span>Five examples across photography, reels, and social design</span></div>
-    <div className="picklr-lead">
-      <div><button type="button" className="project-photo" onClick={() => setOpenPhoto(0)} aria-label="Open Picklr photography"><img src={photos[0].src} alt="Picklr players rallying at the net" loading="lazy" /></button><p className="project-note">On court at The Picklr. Real members, coaches, and moments between points.</p></div>
-      <div className="phones">{reels.map(item => <PhoneReel key={item.src} item={item} onOpen={setOpenReel} />)}</div>
-    </div>
-    <div id="motion-start" className="project-subhead"><h3>From the court to the feed.</h3><span>Swipe each cover to explore · tap to enlarge</span></div>
-    <CarouselShowcase items={carousels} labels={['Fountain Valley opening', 'Five reasons to come inside']} />
-    <details className="project-more">
-      <summary>More from this project · {remaining} pieces</summary>
-      <div className="project-subhead"><h3>More photography.</h3><span>{morePhotos.length} photos · tap to enlarge</span></div>
-      <div className="wg wg-photos">{morePhotos.map(item => <MediaTile key={item.src} item={item} onOpen={() => setOpenPhoto(photos.indexOf(item))} />)}</div>
-      {moreReels.length > 0 && <><div className="project-subhead"><h3>More reels.</h3></div><div className="phones">{moreReels.map(item => <PhoneReel key={item.src} item={item} onOpen={setOpenReel} />)}</div></>}
-      {moreDesigns.length > 0 && <><div className="project-subhead"><h3>More social design.</h3><span>Tap to enlarge · swipe through carousels</span></div><div className="wg wg-designs">{moreDesigns.map((item, n) => <MediaTile key={item.src} item={item} onOpen={() => setOpenDesign(n)} />)}</div></>}
-    </details>
+    <div className="project-subhead"><h3>Reels.</h3></div>
+    <div className="phones new-reels">{reels.map(item => <PhoneReel key={item.src} item={item} onOpen={setOpenReel} />)}</div>
+    <div className="project-subhead"><h3>Photography.</h3><span>{photos.length} photos · tap to enlarge</span></div>
+    <div className="wg wg-photos">{photos.map((item, n) => <MediaTile key={item.src} item={item} showCaption={false} onOpen={() => setOpenPhoto(n)} />)}</div>
+    <div className="project-subhead"><h3>Carousels & social posts.</h3><span>Tap to enlarge · swipe through carousels</span></div>
+    <CarouselShowcase items={carousels} labels={carousels.map(item => item.title)} />
+    <div className="wg wg-designs">{posts.map(item => <MediaTile key={item.src} item={item} onOpen={() => setOpenDesign(designs.indexOf(item))} />)}</div>
     {openReel && <ReelOverlay item={openReel} onClose={() => setOpenReel(null)} />}
     {openPhoto != null && <ImageOverlay items={photos} index={openPhoto} onClose={() => setOpenPhoto(null)} />}
-    {openDesign != null && <ImageOverlay items={moreDesigns} index={openDesign} onClose={() => setOpenDesign(null)} />}
+    {openDesign != null && <ImageOverlay items={designs} index={openDesign} onClose={() => setOpenDesign(null)} />}
   </section>;
 }
 
@@ -3214,18 +3208,19 @@ function PrimeProject() {
 function CarriesProject() {
   const [openReel, setOpenReel] = useState(null);
   const carries = WORK.filter(w => w.client === "Carrie's Pilates");
-  const reels = carries.filter(w => w.kind === 'video');
+  const newReels = carries.filter(w => w.newReel);
   const studio = carries.filter(w => w.set === 'studio');
   return <section id="carries" className="client-chapter">
     <ChapterHeading name="Carrie's Pilates" tags={['Social design', 'Reels', 'Copywriting']} />
     <div className="project-summary">
       <article><h3>The brief</h3><p>Show what classes at Carrie's Pilates Saddleback feel like and give people a reason to join in. I mix class guides, humor, member stories, and community moments to reach a wider audience and encourage conversation among current members, new members, and people considering their first class.</p></article>
       <article><h3>My role</h3><p>I create reels, design social posts and carousels, and write captions. I create and manage the content calendar, coordinate with UGC creators, and publish content. I also respond to comments and DMs and engage with members and the local community.</p></article>
-      <article><h3>The work shown</h3><p>Two studio reels, a class guide carousel, and a member reviews carousel. Carousel design and copy by me, using photography from Anna’s studio shoot.</p></article>
+      <article><h3>The work shown</h3><p>Three studio reels, a class guide carousel, and a member reviews carousel. Carousel design and copy by me, using photography from Anna’s studio shoot.</p></article>
     </div>
+    <div className="project-subhead"><h3>Studio reels.</h3></div>
+    <div className="phones new-reels">{newReels.map(item => <PhoneReel key={item.src} item={item} onOpen={setOpenReel} />)}</div>
     <div className="project-subhead"><h3>Made for the studio.</h3><span>Swipe each cover · tap to enlarge</span></div>
-    <div className="carries-row">
-      <div className="phones">{reels.map(item => <PhoneReel key={item.src} item={item} onOpen={setOpenReel} />)}</div>
+    <div className="carries-row carries-carousels">
       {studio.map(item => <CarouselCard key={item.src} item={item} title={item.title} />)}
     </div>
     {openReel && <ReelOverlay item={openReel} onClose={() => setOpenReel(null)} />}
@@ -3248,8 +3243,8 @@ function BrandWeb() {
   </section>;
 }
 
-function AdRow({ items, onOpen }) {
-  return <div className="ad-row">{items.map(item => { const [w, h] = item.ratio.split('/').map(Number); return <div key={item.src} style={{ '--ar': w / h, display: 'contents' }}><MediaTile item={item} onOpen={onOpen} /></div>; })}</div>;
+function ProjectMediaRow({ items, onOpen }) {
+  return <div className="project-media-row">{items.map(item => { const [w, h] = item.ratio.split('/').map(Number); return <div key={item.src} style={{ '--ar': w / h, display: 'contents' }}><MediaTile item={item} onOpen={onOpen} /></div>; })}</div>;
 }
 
 function JillProject() {
@@ -3272,11 +3267,11 @@ function JillProject() {
       <div className="phones">{reels.map(item => <PhoneReel key={item.src} item={item} onOpen={setOpenReel} />)}</div>
     </div>
     <div className="project-subhead"><h3>Training spec ads.</h3><span>Spec work, not made for or endorsed by Gymshark · tap to enlarge</span></div>
-    <AdRow items={gym} onOpen={open} />
+    <ProjectMediaRow items={gym} onOpen={open} />
     <div className="project-subhead"><h3>In the gym.</h3><span>{gymPhotos.length} photos · tap to enlarge</span></div>
     <PhotoRows items={gymPhotos} onOpen={open} />
     <div className="project-subhead"><h3>More from the road.</h3><span>{rest.length} photos · tap to enlarge</span></div>
-    <AdRow items={rest} onOpen={open} />
+    <ProjectMediaRow items={rest} onOpen={open} />
     {openReel && <ReelOverlay item={openReel} onClose={() => setOpenReel(null)} />}
     {openAd != null && <ImageOverlay items={ads} index={openAd} onClose={() => setOpenAd(null)} />}
   </section>;
@@ -3358,7 +3353,7 @@ function MotionPreviewControls() {
 }
 const CLIENT_TILES = [
   { key: 'picklr', name: 'The Picklr', kicker: 'Pickleball clubs · RSM + Fountain Valley', match: /Picklr/, Project: () => <PicklrProject />,
-    cover: 'content/the-picklr/photos/picklr-rally-pair.jpg', video: 'content/the-picklr/videos/picklr-coach-dylan.mp4', thumbs: ['content/the-picklr/photos/picklr-fv-go-cover.jpg', 'content/the-picklr/photos/picklr-overhead-smash.jpg', 'content/the-picklr/photos/picklr-throwback-cover.jpg', 'content/the-picklr/photos/picklr-coaching.jpg'],
+    cover: 'content/the-picklr/photos/picklr-rally-pair.jpg', video: 'content/the-picklr/videos/picklr-coach-dylan.mp4', thumbs: ['content/the-picklr/photos/picklr-courtside-bash.jpg', 'content/the-picklr/photos/picklr-overhead-smash.jpg', 'content/the-picklr/photos/picklr-throwback-cover.jpg', 'content/the-picklr/photos/picklr-coaching.jpg'],
     blurb: 'Coaching sessions, opening days, and the everyday on court, turned into photos, reels, and posts.', tags: ['Photography', 'Reels', 'Social design'] },
   { key: 'gymjilly', name: '@gymjilly', kicker: 'Fitness creator · spec ads', match: /@gymjilly/, Project: () => <JillProject />,
     cover: 'content/gymjilly/photos/jill-00917.jpg', video: 'content/gymjilly/videos/jill-spec-1.mp4', thumbs: ['content/gymjilly/photos/jill-gym-1.jpg', 'content/gymjilly/photos/jill-gym-00751.jpg', 'content/gymjilly/photos/jill-gym-4.jpg', 'content/gymjilly/photos/jill-00991.jpg'],
@@ -3367,8 +3362,8 @@ const CLIENT_TILES = [
     cover: 'content/prime-volleyball/photos/prime-00001.jpg', video: 'content/prime-volleyball/videos/prime-c6240.mp4', thumbs: ['content/prime-volleyball/photos/prime-00576.jpg', 'content/prime-volleyball/photos/prime-00032.jpg', 'content/prime-volleyball/photos/prime-00079.jpg', 'content/prime-volleyball/photos/prime-00095.jpg'],
     blurb: 'Players mid-swing at the net, coaches hitting off the box, and the team under the wall logo.', tags: ['Photography', 'Video'] },
   { key: 'carries', name: "Carrie's Pilates", kicker: 'Pilates studio · reels + carousels', match: /Carrie's Pilates/, Project: () => <CarriesProject />,
-    cover: 'content/carries-pilates/videos/carries-girl-math-poster.jpg', video: 'content/carries-pilates/videos/carries-girl-math.mp4',
-    thumbs: ['content/carries-pilates/photos/carousel-experience/slide-01-cover.jpg', 'content/carries-pilates/photos/carousel-reviews/slide-01-cover.jpg', 'content/carries-pilates/photos/carousel-experience/slide-05-power-hour.jpg', 'content/carries-pilates/videos/carries-classes-poster.jpg'],
+    cover: 'content/carries-pilates/videos/carries-reel-1-poster.jpg', video: 'content/carries-pilates/videos/carries-reel-1.mp4',
+    thumbs: ['content/carries-pilates/photos/carousel-experience/slide-01-cover.jpg', 'content/carries-pilates/photos/carousel-reviews/slide-01-cover.jpg', 'content/carries-pilates/photos/carousel-experience/slide-05-power-hour.jpg', 'content/carries-pilates/videos/carries-reel-2-poster.jpg'],
     blurb: 'A class-by-class guide to the studio, real member reviews, and short video from the studio floor.', tags: ['Social design', 'Reels', 'Copywriting'] },
   { key: 'simpleshots', name: 'SimpleShots', kicker: 'Shopify store · brand to storefront', Project: () => <BrandWeb />,
     ground: '#2A2620', wide: true, stack: ['content/simpleshots/photos/simpleshots-site-old.jpg', 'content/simpleshots/photos/simpleshots-site-home.jpg'],
