@@ -7,3 +7,5 @@ body{text-align:center}.top,footer{justify-content:center;flex-wrap:wrap}.intro 
 
 /* Full-width individual emails on phones; paired comparison on desktop. */
 @media(max-width:760px){.email-review .email-wide{display:none}.email-review .email-mobile{display:grid;gap:28px;min-width:0}.email-mobile img{display:block;width:100%;height:auto}.email-mobile a{display:block}}
+
+.video-wrapper{position:relative}.mobile-video-open{display:none}@media(max-width:760px){.mobile-video-open{display:flex;position:absolute;inset:0;width:100%;height:100%;align-items:flex-end;justify-content:center;padding:20px;border:0;background:linear-gradient(transparent 75%,#000b);color:white;font-weight:700;cursor:pointer}.video-wrapper:has(video:fullscreen) .mobile-video-open{display:none}}

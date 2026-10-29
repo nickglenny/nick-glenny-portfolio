@@ -21,6 +21,19 @@ videos.forEach(video => {
   }
   updatePlaybackMode();
   mobileVideo.addEventListener('change', updatePlaybackMode);
+  const opener = document.createElement('button');
+  opener.className = 'mobile-video-open';
+  opener.type = 'button';
+  opener.textContent = '▶ Play fullscreen';
+  opener.setAttribute('aria-label', 'Play comparison video fullscreen');
+  const wrapper = document.createElement('div');
+  wrapper.className = 'video-wrapper';
+  video.before(wrapper);
+  wrapper.append(video, opener);
+  opener.addEventListener('click', () => {
+    openVideoFullscreen(video);
+    video.play().catch(() => {});
+  });
   video.addEventListener('click', () => openVideoFullscreen(video));
   video.addEventListener('play', () => {
     videos.forEach(other => { if (other !== video) other.pause(); });
