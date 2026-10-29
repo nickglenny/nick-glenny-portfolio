@@ -4,11 +4,11 @@ const mobileVideo = window.matchMedia('(max-width: 760px)');
 function openVideoFullscreen(video) {
   if (!mobileVideo.matches || document.fullscreenElement || video.webkitDisplayingFullscreen) return;
   try {
-    if (typeof video.webkitEnterFullscreen === 'function') {
-      video.webkitEnterFullscreen();
-    } else if (video.requestFullscreen) {
+    if (video.requestFullscreen) {
       const request = video.requestFullscreen();
       if (request && request.catch) request.catch(() => {});
+    } else if (typeof video.webkitEnterFullscreen === 'function') {
+      video.webkitEnterFullscreen();
     }
   } catch (_) {
     // Native video controls remain available if the browser declines fullscreen.
