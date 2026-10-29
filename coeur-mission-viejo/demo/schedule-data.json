@@ -1,0 +1,67 @@
+{
+  "date": "Wednesday, October 28, 2026",
+  "source": "Xplor / Mariana Tek public Mission Viejo schedule",
+  "captured": "2026-10-28",
+  "classes": [
+    {
+      "time": "6:30 AM",
+      "duration": "45 min.",
+      "name": "Fortè Sculpt (Heated)",
+      "instructor": "Faith",
+      "room": "Mat Room・MV",
+      "studio": "Mission Viejo",
+      "type": "Sculpt",
+      "availability": null
+    },
+    {
+      "time": "7:30 AM",
+      "duration": "45 min.",
+      "name": "Fortè Power (Heated)",
+      "instructor": "Faith",
+      "room": "Mat Room・MV",
+      "studio": "Mission Viejo",
+      "type": "Power",
+      "availability": null
+    },
+    {
+      "time": "9:30 AM",
+      "duration": "45 min.",
+      "name": "Fortè Power (Heated)",
+      "instructor": "Desirae",
+      "room": "Mat Room・MV",
+      "studio": "Mission Viejo",
+      "type": "Power",
+      "availability": null
+    },
+    {
+      "time": "11:30 AM",
+      "duration": "50 min.",
+      "name": "Free Mat Class",
+      "instructor": "Pilates Instructor",
+      "room": "Mat Room・MV",
+      "studio": "Mission Viejo",
+      "type": "Mat",
+      "availability": null
+    },
+    {
+      "time": "5:30 PM",
+      "duration": "45 min.",
+      "name": "Fortè Sculpt (Heated)",
+      "instructor": "Kalyssa",
+      "room": "Mat Room・MV",
+      "studio": "Mission Viejo",
+      "type": "Sculpt",
+      "availability": "8/28 Open"
+    },
+    {
+      "time": "6:30 PM",
+      "duration": "45 min.",
+      "name": "Fortè Power (Heated)",
+      "instructor": "Kalyssa",
+      "room": "Mat Room・MV",
+      "studio": "Mission Viejo",
+      "type": "Power",
+      "availability": "14/28 Open"
+    }
+  ]
+}
