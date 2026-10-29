@@ -4,3 +4,6 @@
 .email-review{display:grid;grid-template-columns:minmax(0,1.8fr) minmax(260px,1fr);gap:32px;align-items:start}.email-changes{padding-top:12px}.email-review .email-wide{width:100%}@media(max-width:760px){.email-review{grid-template-columns:1fr;gap:20px}.email-changes{padding-top:0}}
 /* Centered, concise brief. */
 body{text-align:center}.top,footer{justify-content:center;flex-wrap:wrap}.intro h1{color:var(--ink);font-style:normal}.intro h1 em{color:inherit;font-style:normal}.lead,.personal,.section-head,.next,.next>p,.fine,#email-copy{margin-left:auto;margin-right:auto}.split,.email-review{align-items:center}.media,.email-wide{margin-left:auto;margin-right:auto}.notes ul,.next ul{list-style:none;padding-left:0}.notes li,.next li{margin:12px 0}.notes .text-link{justify-content:center}.actions{justify-content:center}.offer-note{border-left:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.section-head{margin-bottom:32px}details{text-align:center}.intro{padding-bottom:36px}
+
+/* Full-width individual emails on phones; paired comparison on desktop. */
+@media(max-width:760px){.email-review .email-wide{display:none}.email-review .email-mobile{display:grid;gap:28px;min-width:0}.email-mobile img{display:block;width:100%;height:auto}.email-mobile a{display:block}}
