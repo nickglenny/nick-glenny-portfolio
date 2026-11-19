@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231D3A32'/%3E%3Ccircle cx='16' cy='19' r='5' fill='%23E2B866'/%3E%3Ccircle cx='9' cy='12' r='2.4' fill='%23E2B866'/%3E%3Ccircle cx='13.5' cy='7.5' r='2.4' fill='%23E2B866'/%3E%3Ccircle cx='18.5' cy='7.5' r='2.4' fill='%23E2B866'/%3E%3Ccircle cx='23' cy='12' r='2.4' fill='%23E2B866'/%3E%3C/svg%3E">
+<title>Social Media Plan | Prepared by Nick Glenny</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600&display=swap">
+<style>
+/* Layout: one narrow reading column; two deep-green bands (hero, timeline) and a mock profile grid carry the visual weight. */
+:root {
+  --paper: #F4F6F2;
+  --surface: #FFFFFF;
+  --ink: #14241F;
+  --muted: #4A5A54;
+  --line: #D9E0DB;
+  --green: #1D3A32;
+  --green-ink: #EEF3EF;
+  --brass: #A8782E;
+  --brass-soft: #E9D8B8;
+  --display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --body: "Figtree", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --r: 14px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0F1A17; --surface: #16241F; --ink: #E8EEEA; --muted: #A9B8B1; --line: #2A3B35;
+    --green: #1F3D35; --green-ink: #EEF3EF; --brass: #D4A65A; --brass-soft: #3A3122; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0F1A17; --surface: #16241F; --ink: #E8EEEA; --muted: #A9B8B1; --line: #2A3B35;
+  --green: #1F3D35; --green-ink: #EEF3EF; --brass: #D4A65A; --brass-soft: #3A3122; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body { background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 17px; line-height: 1.6; }
+.wrap { max-width: 760px; margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { font-family: var(--display); line-height: 1.12; text-wrap: balance; margin: 0; letter-spacing: -0.01em; }
+h2 { font-size: clamp(28px, 4.4vw, 38px); font-weight: 700; }
+h3 { font-size: 20px; font-weight: 700; }
+p { margin: 0; }
+.lede { color: var(--muted); max-width: 62ch; }
+section { padding-block: 64px; }
+.stack { display: flex; flex-direction: column; gap: 20px; }
+
+/* Hero */
+.hero { background: var(--green); color: var(--green-ink); padding-block: 72px 64px; }
+.hero .meta { font-size: 14px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--brass-soft); }
+:root[data-theme="dark"] .hero .meta { color: #E9D8B8; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .hero .meta { color: #E9D8B8; } }
+.hero h1 { font-size: clamp(40px, 7vw, 64px); font-weight: 800; margin-top: 18px; }
+.hero h1 .name { color: #E2B866; }
+.hero p.sub { margin-top: 22px; font-size: 19px; max-width: 54ch; color: #D3DED8; }
+.placeholder { background: rgba(226,184,102,.16); border-radius: 6px; padding: 0 6px; }
+
+/* Now */
+.facts { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 28px 40px; margin-top: 8px; }
+.facts div { display: flex; flex-direction: column; gap: 4px; }
+.facts strong { font-family: var(--display); font-size: 19px; }
+.facts span { color: var(--muted); font-size: 16px; }
+
+/* Why */
+.why { display: grid; gap: 26px; }
+.why-row { display: grid; grid-template-columns: 44px minmax(0,1fr); gap: 16px; align-items: start; }
+.why-row svg { width: 30px; height: 30px; stroke: var(--brass); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; margin-top: 2px; }
+.why-row p { color: var(--muted); margin-top: 4px; }
+
+/* Split: me / you */
+.split { display: grid; grid-template-columns: 1.35fr 1fr; gap: 20px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 26px; }
+.card.you { background: transparent; }
+.card ul { margin: 14px 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.card li { padding-left: 20px; position: relative; }
+.card li::before { content: ""; position: absolute; left: 0; top: .62em; width: 8px; height: 8px; border-radius: 50%; background: var(--brass); }
+.card li em { font-style: normal; color: var(--muted); display: block; font-size: 15px; }
+.glossary { margin-top: 18px; font-size: 15px; color: var(--muted); }
+.glossary b { color: var(--ink); font-weight: 600; }
+
+/* Pillars */
+.pillars { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 36px 40px; }
+.pillar { display: flex; flex-direction: column; gap: 8px; }
+.pillar .tag { font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--brass); }
+.pillar ul { margin: 4px 0 0; padding-left: 18px; color: var(--muted); display: flex; flex-direction: column; gap: 4px; }
+
+/* Grid mock */
+.phone { max-width: 420px; margin: 8px auto 0; background: var(--surface); border: 1px solid var(--line); border-radius: 28px; padding: 18px 14px 14px; }
+.profile { display: flex; align-items: center; gap: 14px; padding: 0 6px 14px; }
+.avatar { width: 52px; height: 52px; border-radius: 50%; background: var(--green); color: #E2B866; display: grid; place-items: center; font-family: var(--display); font-weight: 800; font-size: 20px; flex: none; }
+.profile b { font-size: 15px; display: block; }
+.profile span { font-size: 13px; color: var(--muted); line-height: 1.35; display: block; }
+.grid9 { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 3px; border-radius: 14px; overflow: hidden; }
+.tile { aspect-ratio: 4 / 5; padding: 10px 9px; display: flex; flex-direction: column; justify-content: space-between; font-size: 12.5px; line-height: 1.25; }
+.tile .k { font-size: 10px; letter-spacing: .08em; text-transform: uppercase; font-weight: 600; opacity: .8; }
+.tile b { font-family: var(--display); font-weight: 700; font-size: 14px; line-height: 1.15; }
+.t-a { background: #1D3A32; color: #EEF3EF; }
+.t-b { background: #E9D8B8; color: #2A1F0E; }
+.t-c { background: #DCE4DF; color: #14241F; }
+.t-d { background: #A8782E; color: #FFF8EC; }
+.caption { text-align: center; font-size: 14px; color: var(--muted); margin-top: 14px; }
+
+/* Timeline band */
+.band { background: var(--green); color: var(--green-ink); }
+.band .lede { color: #C9D6CF; }
+.steps { display: grid; gap: 0; margin-top: 10px; }
+.step { display: grid; grid-template-columns: 112px minmax(0,1fr); gap: 20px; padding-block: 22px; border-top: 1px solid rgba(238,243,239,.16); }
+.step:first-child { border-top: 0; }
+.step .when { font-family: var(--display); font-weight: 700; color: #E2B866; font-size: 17px; line-height: 1.3; }
+.step ul { margin: 8px 0 0; padding-left: 18px; color: #C9D6CF; display: flex; flex-direction: column; gap: 4px; }
+
+/* Cost + next */
+.cta-box { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 30px; display: flex; flex-direction: column; gap: 14px; }
+.contact { display: flex; flex-wrap: wrap; gap: 12px 28px; margin-top: 6px; font-weight: 600; }
+.contact span { user-select: all; }
+.contact a { color: var(--brass); text-decoration-thickness: 1.5px; text-underline-offset: 3px; }
+.confirm { margin: 0; padding-left: 20px; color: var(--muted); display: flex; flex-direction: column; gap: 6px; font-size: 16px; }
+footer { padding-block: 32px 56px; color: var(--muted); font-size: 14px; }
+
+@media (max-width: 640px) {
+  section { padding-block: 48px; }
+  .facts, .pillars, .split { grid-template-columns: minmax(0,1fr); }
+  .step { grid-template-columns: minmax(0,1fr); gap: 4px; }
+  .tile { font-size: 11px; padding: 8px 7px; }
+  .tile b { font-size: 12.5px; }
+}
+body{margin:0} img{max-width:100%}
+</style>
+</head><body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="meta">Social media plan · Prepared by Nick Glenny · November 2026</p>
+    <h1>Getting <span class="name"><span class="placeholder">[Business Name]</span></span> seen across south Orange County</h1>
+    <p class="sub">Right now new clients find you through word of mouth. This page explains, in plain terms, how social media can bring in more of them: training now, the luxury van and pack walks next.</p>
+  </div>
+</header>
+
+<main>
+  <section>
+    <div class="wrap stack">
+      <h2>Where things stand today</h2>
+      <div class="facts">
+        <div><strong>Word of mouth only</strong><span>Every client so far came from a referral. That works, but it only reaches people who already know a client.</span></div>
+        <div><strong>No social accounts yet</strong><span>A clean start. Nothing to fix or delete, so the account can look high-end from the first post.</span></div>
+        <div><strong>Clients around RSM and Coto de Caza</strong><span>A tight local area, which is exactly where local social posts work best.</span></div>
+        <div><strong>Something new on the way</strong><span>A luxury van is being refurbished for group pack walks, ready in a couple of months.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap stack">
+      <h2>What social media does for the business</h2>
+      <p class="lede">When someone hears about a dog trainer, the first thing they do is look them up. Social media is what they find. It works like a shop window that's open all day.</p>
+      <div class="why">
+        <div class="why-row">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="11"/><path d="M11 16.5l3.5 3.5 6.5-7"/></svg>
+          <div><h3>People trust you before they call</h3><p>Short videos of real sessions show how you work with dogs and owners. By the time someone books, they already feel like they know you.</p></div>
+        </div>
+        <div class="why-row">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M5 22c4-1 6-6 11-6s7 5 11 6"/><circle cx="16" cy="9" r="4"/></svg>
+          <div><h3>Word of mouth goes further</h3><p>Happy clients can share a video of their own dog with friends in one tap. Every share is a referral that keeps working on its own.</p></div>
+        </div>
+        <div class="why-row">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="7" width="22" height="20" rx="3"/><path d="M5 13h22M11 4v6M21 4v6"/></svg>
+          <div><h3>Pack walks launch with people already waiting</h3><p>If people follow the van being built, they're excited for it before it's finished. The first walks can fill from people who signed up early.</p></div>
+        </div>
+        <div class="why-row">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 4l3.5 7.5 8 1-6 5.5 1.6 8L16 22l-7.1 4 1.6-8-6-5.5 8-1z"/></svg>
+          <div><h3>The luxury shows</h3><p>A service like this is chosen on look and feel. A consistent, polished account with the same colors, type and photo style on every post tells people this isn't the average dog walker.</p></div>
+        </div>
+      </div>
+      <p class="lede">Every post points to one simple action: <strong style="color:var(--ink)">book a free consultation.</strong></p>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap stack">
+      <h2>What I handle, and what you do</h2>
+      <div class="split">
+        <div class="card">
+          <h3>I handle</h3>
+          <ul>
+            <li>Setting up your accounts<em>Instagram and Facebook, with your photo, bio, contact details and booking link.</em></li>
+            <li>Filming and photos<em>I come out to sessions and walks and capture real moments.</em></li>
+            <li>Editing short videos<em>Reels for the main feed, cut so they look and sound professional.</em></li>
+            <li>Writing every caption<em>In your voice, with the free consultation in every one.</em></li>
+            <li>Posting on a schedule<em>Planned a month ahead so the account never goes quiet.</em></li>
+            <li>A short monthly update<em>What went out, what people responded to, and what's next. In plain English.</em></li>
+          </ul>
+        </div>
+        <div class="card you">
+          <h3>You do</h3>
+          <ul>
+            <li>Train the dogs, like you already do</li>
+            <li>Tell me when good sessions are happening</li>
+            <li>Ask clients if their dog can be filmed</li>
+            <li>Look over posts before they go out</li>
+            <li>Reply to messages from new people</li>
+          </ul>
+        </div>
+      </div>
+      <p class="glossary"><b>Reel:</b> a short vertical video, usually 15 to 60 seconds. Instagram shows these to people who don't follow you yet, so they're the main way new people find you. <b>Story:</b> a quick photo or clip that disappears after a day. Good for "out on a walk right now" moments.</p>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap stack">
+      <h2>What we'd post</h2>
+      <p class="lede">You mentioned not knowing what to post. You already have plenty. It falls into four groups, and we rotate between them so the account always has something new.</p>
+      <div class="pillars">
+        <div class="pillar">
+          <span class="tag">Training</span>
+          <h3>Show the work</h3>
+          <ul>
+            <li>A series on each of the five training levels</li>
+            <li>Before and after: a dog's first session vs. today</li>
+            <li>On-the-spot fixes, like pulling on the leash</li>
+            <li>"Homework" tips owners can practice at home</li>
+          </ul>
+        </div>
+        <div class="pillar">
+          <span class="tag">The van</span>
+          <h3>Follow the build</h3>
+          <ul>
+            <li>Before photos and the plan for it</li>
+            <li>Progress clips as each part comes together</li>
+            <li>The details that make it luxury</li>
+            <li>A big reveal video when it's done</li>
+          </ul>
+        </div>
+        <div class="pillar">
+          <span class="tag">Pack walks</span>
+          <h3>Explain how it works</h3>
+          <ul>
+            <li>What a pack walk is and why dogs love it</li>
+            <li>Pickup, the trails, group size, safety</li>
+            <li>Who it's a good fit for</li>
+            <li>How to get on the list</li>
+          </ul>
+        </div>
+        <div class="pillar">
+          <span class="tag">Clients</span>
+          <h3>Let happy owners talk</h3>
+          <ul>
+            <li>Short clips of owners describing the change</li>
+            <li>A "dog of the week" from your current clients</li>
+            <li>Meet the trainer: who you are and how you work</li>
+            <li>Answers to questions people always ask</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="phone" aria-label="Example of the first nine posts on the profile">
+        <div class="profile">
+          <div class="avatar" aria-hidden="true"><svg viewBox="0 0 32 32" width="26" height="26" fill="none" stroke="#E2B866" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="20" r="5"/><circle cx="8.5" cy="13" r="2.3"/><circle cx="13" cy="8.5" r="2.3"/><circle cx="19" cy="8.5" r="2.3"/><circle cx="23.5" cy="13" r="2.3"/></svg></div>
+          <div><b>[Business Name]</b><span>Luxury dog training &amp; pack walks · RSM / Coto de Caza<br>Free consultation ↓</span></div>
+        </div>
+        <div class="grid9">
+          <div class="tile t-a"><span class="k">Reel</span><b>Meet your trainer</b></div>
+          <div class="tile t-b"><span class="k">Van build</span><b>Here's what we're building</b></div>
+          <div class="tile t-c"><span class="k">Training</span><b>Level 1: what we work on first</b></div>
+          <div class="tile t-c"><span class="k">Reel</span><b>Fixing leash pulling in 5 minutes</b></div>
+          <div class="tile t-a"><span class="k">Pack walks</span><b>What is a pack walk?</b></div>
+          <div class="tile t-d"><span class="k">Clients</span><b>Dog of the week</b></div>
+          <div class="tile t-b"><span class="k">Van build</span><b>Progress, week 3</b></div>
+          <div class="tile t-d"><span class="k">Tip</span><b>Homework for owners</b></div>
+          <div class="tile t-a"><span class="k">Offer</span><b>Book a free consultation</b></div>
+        </div>
+      </div>
+      <p class="caption">An example of what the first nine posts could look like on your profile. The finished posts use real photos and video of your dogs.</p>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap stack">
+      <h2>How it rolls out</h2>
+      <p class="lede">Pack walks can be promoted right away, before the van is finished. The van then becomes the big moment.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="when">First month</div>
+          <div><h3>Launch</h3><ul><li>Accounts set up and the look designed</li><li>First filming day at a training session</li><li>Training posts start, plus the first van "before" video</li><li>Pack walk info posts go out with a sign-up for updates</li></ul></div>
+        </div>
+        <div class="step">
+          <div class="when">While the van is built</div>
+          <div><h3>Build interest</h3><ul><li>Weekly training posts and client stories</li><li>Van progress clips as it comes together</li><li>Countdown to the first pack walk</li></ul></div>
+        </div>
+        <div class="step">
+          <div class="when">Van is ready</div>
+          <div><h3>Pack walk launch</h3><ul><li>Reveal video of the finished van</li><li>Launch week posts and Stories</li><li>A recap video of the very first pack walk</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap stack">
+      <h2>Cost and next steps</h2>
+      <div class="cta-box">
+        <p>I work on a monthly package, priced to fit how often you'd like me filming and posting. Once we agree on that, I'll send a simple quote with everything included.</p>
+        <p><strong>Next step:</strong> a short call to pick a start date and plan the first filming day.</p>
+        <div class="contact"><span>nickglenny@gmail.com</span><a href="https://www.glenny.digital/" target="_blank" rel="noopener">See my work at glenny.digital</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap stack">
+      <h2>A few things to confirm</h2>
+      <p class="lede">Some details here are my best guess from our first call. Let's check these together.</p>
+      <ol class="confirm">
+        <li>The business name and the Instagram handle you'd like</li>
+        <li>Whether to start with Instagram and Facebook, or add TikTok too</li>
+        <li>When the van is expected to be ready</li>
+        <li>Pack walk details: group size, trails and pickup area</li>
+        <li>The names of the five training levels</li>
+        <li>That clients are happy for their dogs to appear in posts</li>
+      </ol>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">Prepared by Nick Glenny · Content &amp; social media · Orange County</div>
+</footer>
+</body></html>
