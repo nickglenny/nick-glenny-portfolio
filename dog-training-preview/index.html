@@ -108,6 +108,24 @@ section { padding-block: 64px; }
 .step .when { font-family: var(--display); font-weight: 700; color: #E2B866; font-size: 17px; line-height: 1.3; }
 .step ul { margin: 8px 0 0; padding-left: 18px; color: #C9D6CF; display: flex; flex-direction: column; gap: 4px; }
 
+/* Plans */
+.plans { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 20px; align-items: start; }
+.plan { border: 1px solid var(--line); border-radius: var(--r); padding: 26px; display: flex; flex-direction: column; gap: 18px; }
+.plan.main { background: var(--green); color: var(--green-ink); border-color: var(--green); }
+.plan-head { display: flex; flex-direction: column; gap: 6px; }
+.pick { font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #E2B866; }
+.price { font-family: var(--display); font-weight: 800; font-size: 40px; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.price span { font-family: var(--body); font-weight: 500; font-size: 16px; color: var(--muted); margin-left: 4px; }
+.plan.main .price span, .plan.main .fit, .plan.main li em { color: #C9D6CF; }
+.fit { color: var(--muted); font-size: 16px; }
+.plan ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 12px; border-top: 1px solid var(--line); padding-top: 18px; }
+.plan.main ul { border-top-color: rgba(238,243,239,.16); }
+.plan li { padding-left: 20px; position: relative; }
+.plan li::before { content: ""; position: absolute; left: 0; top: .62em; width: 8px; height: 8px; border-radius: 50%; background: var(--brass); }
+.plan.main li::before { background: #E2B866; }
+.plan li em { font-style: normal; color: var(--muted); display: block; font-size: 15px; }
+.fine { font-size: 15px; color: var(--muted); }
+
 /* Cost + next */
 .cta-box { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 30px; display: flex; flex-direction: column; gap: 14px; }
 .contact { display: flex; flex-wrap: wrap; gap: 12px 28px; margin-top: 6px; font-weight: 600; }
@@ -118,7 +136,7 @@ footer { padding-block: 32px 56px; color: var(--muted); font-size: 14px; }
 
 @media (max-width: 640px) {
   section { padding-block: 48px; }
-  .facts, .pillars, .split { grid-template-columns: minmax(0,1fr); }
+  .facts, .pillars, .split, .plans { grid-template-columns: minmax(0,1fr); }
   .step { grid-template-columns: minmax(0,1fr); gap: 4px; }
   .tile { font-size: 11px; padding: 8px 7px; }
   .tile b { font-size: 12.5px; }
@@ -295,10 +313,44 @@ body{margin:0} img{max-width:100%}
 
   <section>
     <div class="wrap stack">
-      <h2>Cost and next steps</h2>
+      <h2>Two ways to start</h2>
+      <p class="lede">Both are monthly, and both include setting up your accounts. You can move up or down a package as the business changes.</p>
+      <div class="plans">
+        <div class="plan">
+          <div class="plan-head">
+            <h3>Social Starter</h3>
+            <p class="price">$1,000<span>/month</span></p>
+            <p class="fit">A steady, professional presence while you focus on training.</p>
+          </div>
+          <ul>
+            <li>1 to 2 posts a week<em>A mix of reels and photo posts.</em></li>
+            <li>Stories a few times a week<em>Quick day-to-day moments from sessions and walks.</em></li>
+            <li>One filming visit a month</li>
+            <li>Captions written and posts scheduled</li>
+            <li>Replies to comments and messages<em>I answer common questions and pass new client inquiries straight to you.</em></li>
+            <li>Short monthly update</li>
+          </ul>
+        </div>
+        <div class="plan main">
+          <div class="plan-head">
+            <p class="pick">Best fit for the van launch</p>
+            <h3>Full Launch</h3>
+            <p class="price">$2,500<span>/month</span></p>
+            <p class="fit">Everything in Social Starter, plus more posting and help turning interest into bookings.</p>
+          </div>
+          <ul>
+            <li>3 to 4 posts a week<em>Including the full van build series and the reveal.</em></li>
+            <li>Stories most days</li>
+            <li>Two filming visits a month<em>Plus coverage of the first pack walk.</em></li>
+            <li>Your website handled<em>Set up or refreshed, then kept current with services, pack walk info and photos.</em></li>
+            <li>Help with bookings<em>An easy online form for free consultations and pack walk sign-ups, plus follow-up with people who ask.</em></li>
+            <li>Monthly update with what's bringing in new clients</li>
+          </ul>
+        </div>
+      </div>
+      <p class="fine">Paid ads, website hosting and booking software, if you want them, are billed separately at cost.</p>
       <div class="cta-box">
-        <p>I work on a monthly package, priced to fit how often you'd like me filming and posting. Once we agree on that, I'll send a simple quote with everything included.</p>
-        <p><strong>Next step:</strong> a short call to pick a start date and plan the first filming day.</p>
+        <p><strong>Next step:</strong> a short call to pick a package, choose a start date and plan the first filming day.</p>
         <div class="contact"><span>nickglenny@gmail.com</span><a href="https://www.glenny.digital/" target="_blank" rel="noopener">See my work at glenny.digital</a></div>
       </div>
     </div>
@@ -312,6 +364,7 @@ body{margin:0} img{max-width:100%}
         <li>The business name and the Instagram handle you'd like</li>
         <li>Whether to start with Instagram and Facebook, or add TikTok too</li>
         <li>When the van is expected to be ready</li>
+        <li>Whether you have a website and a booking system today</li>
         <li>Pack walk details: group size, trails and pickup area</li>
         <li>The names of the five training levels</li>
         <li>That clients are happy for their dogs to appear in posts</li>
